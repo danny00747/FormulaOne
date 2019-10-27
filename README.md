@@ -5,6 +5,8 @@
 [![official JetBrains project](http://jb.gg/badges/official.svg)](https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 ![version](https://img.shields.io/badge/version-1.0-blue)
+![Badge w/ Platform](https://img.shields.io/badge/platform-linux--64-lightgrey)
+
 
 # FormulaOne
 
