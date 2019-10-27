@@ -4,7 +4,7 @@
 [![GitHub contributors](https://camo.githubusercontent.com/72f84692f9f89555c176bb9e0eca9cf08d97fec9/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f636f6e747269627574696f6e732d77656c636f6d652d6f72616e67652e737667)](https://github.com/danny00747/FormulaOne/settings/collaboration)
 [![official JetBrains project](http://jb.gg/badges/official.svg)](https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-![version](https://img.shields.io/badge/version-1.0-blue)](https://github.com/danny00747/FormulaOne/releases/)
+![version](https://img.shields.io/badge/version-1.0-blue)
 
 # FormulaOne
 
