@@ -21,8 +21,10 @@ This a project of the lesson Operating Systems. (Unix) 2nd Bachelor at EPHEC
 
 :point_right: Authors :
 
-1. **Daniel Olivier** (_**@danny00747**_)
-2. Others will added later... 
+1. **Daniel Olivier** ([@danny00747](https://github.com/danny00747 "danny00747"))
+
+
+2. Others will be added later... 
 
 ## How to compile this program
 
@@ -31,7 +33,7 @@ This a project of the lesson Operating Systems. (Unix) 2nd Bachelor at EPHEC
 ## How to run this program
 
 `./prog` followed by `--day` and the value of the day option `sat` for example. And finally `--step` 
-  and it's value to specify the step that needs to be runned `Q1` for instance. 
+ with it's value to specify which step that needs to be runned `Q1` for instance. 
 
 - P1/P2/P3 : for warmup
 - Q1/Q2/Q3 : for qualifications
