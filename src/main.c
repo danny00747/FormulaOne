@@ -22,7 +22,7 @@ void print_usage() {
 
 int main(int argc, char **argv) {
 
-    (argc) ? print_usage() : 0;
+   // (argc) ? print_usage() : 0;
 
 
     signal(SIGINT, return_cursor);
