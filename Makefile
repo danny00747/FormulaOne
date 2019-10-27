@@ -19,5 +19,5 @@ watch:
 
 clean:
 	rm $(EXE)
-	killall prog
+
 
