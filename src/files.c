@@ -85,9 +85,9 @@ int findSize(char file_name[]) {
     return res;
 }
 
-void save_eliminated_cars(char file_to_read[], int array[]) {
+void save_eliminated_cars(char file_to_save[], int array[]) {
 
-    FILE *file = fopen(file_to_read, "w");
+    FILE *file = fopen(file_to_save, "w");
 
     if (file == NULL)
         perror("fopen failed !"), exit(1);
