@@ -31,17 +31,19 @@ This a project of the lesson Operating Systems. (Unix) 2nd Bachelor at EPHEC
 
 ## How to run this program
 
-`./prog` followed by `--day` and the value of the day option `sat` for example. And finally `--step` 
+>`./prog` followed by `--day` and the value of the day option `sat` for example. And finally `--step` 
  with it's value to specify which step that needs to be runned `Q1` for instance. 
-
-- P1/P2/P3 : for warmup
-- Q1/Q2/Q3 : for qualifications
-- RACE : for the race.
-
-```
-./prog --day sat --step Q1
-```
-![GIF demo](img/how-to-run-prog.gif)
+>
+> >P1/P2/P3 : for warmup
+>
+> >Q1/Q2/Q3 : for qualifications
+>
+> >RACE : for the race.
+>
+>```
+>./prog --day sat --step Q1
+>```
+>![GIF demo](img/how-to-run-prog.gif)
 
 ## Built With
 
