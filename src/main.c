@@ -99,6 +99,8 @@ int main(int argc, char **argv) {
                                                                                                            last_cars_of_Q2)
                                                                                     : NULL;
 
+    command.number_of_laps = 300 / command.lap_length;
+
     int struct_shm_id = shmget(
             IPC_PRIVATE, sizeof(Voiture) * command.number_of_cars, 0600 | IPC_CREAT);
     if (struct_shm_id == -1) {
@@ -143,6 +145,7 @@ int main(int argc, char **argv) {
             child(sem, &car[i], &qualified_cars[i]) : (strcmp(command.step_name, "RACE") == 0) ?
                                                       child(sem, &car[i], &race_ranking[i]) :
                                                       child(sem, &car[i], &car_names[i]);
+
             exit(0);
         default:
             display(sem, car);
