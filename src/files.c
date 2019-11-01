@@ -109,7 +109,7 @@ void read_eliminated_cars(char file_to_read[], int array[]) {
 
     if (file == NULL)perror("fopen failed !"), exit(1);
 
-    int i = 15, j = 10;
+    int i = 16, j = 11;
     while (fgets(results, sizeof(results), file)) {
 
         if (strcmp(file_to_read, "lastQ1") == 0) {
