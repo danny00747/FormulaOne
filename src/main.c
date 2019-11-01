@@ -38,8 +38,6 @@ int main(int argc, char **argv) {
     char opt;
     while ((opt = getopt_long(argc, argv, "d:s:", long_options, NULL)) != EOF) {
         switch (opt) {
-
-
             case 'd':
                 command.choosen_day = (enum days) optarg;
                 break;
