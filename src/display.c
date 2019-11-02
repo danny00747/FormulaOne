@@ -63,11 +63,15 @@ void print_table() {
                            FT_COLOR_DARK_GRAY)
         : ft_set_cell_prop(table, i + 1, 6, FT_CPROP_CONT_FG_COLOR,
                            FT_COLOR_LIGHT_GRAY);
+       // printf("%s%d\n", "The laps remaning : ", current.lap);
     }
 
     ft_set_cell_prop(table, 1, FT_ANY_COLUMN, FT_CPROP_CONT_FG_COLOR, FT_COLOR_LIGHT_GREEN);
     ft_set_cell_prop(table, 2, FT_ANY_COLUMN, FT_CPROP_CONT_FG_COLOR, FT_COLOR_LIGHT_BLUE);
     ft_set_cell_prop(table, 3, FT_ANY_COLUMN, FT_CPROP_CONT_FG_COLOR, FT_COLOR_LIGHT_YELLOW);
+
+
+
     clear();
     printf("%s\n", ft_to_string(table));
     ft_destroy_table(table);
