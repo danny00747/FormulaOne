@@ -13,12 +13,21 @@ int compare(const void *left, const void *right) {
     const Voiture *process_a = (Voiture *) left;
     const Voiture *process_b = (Voiture *) right;
 
-    if (process_a->best_lap_time < process_b->best_lap_time)
-        return -1;
-    else if (process_a->best_lap_time > process_b->best_lap_time)
-        return 1;
-    else
-        return 0;
+    if (strcmp(circuit.step_name, "RACE")) {
+        if (process_a->best_lap_time < process_b->best_lap_time)
+            return -1;
+        else if (process_a->best_lap_time > process_b->best_lap_time)
+            return 1;
+        else
+            return 0;
+    } else {
+        if (process_a->lap < process_b->lap)
+            return 1;
+        else if (process_a->lap > process_b->lap)
+            return -1;
+        else
+            return 0;
+    }
 
 }
 
@@ -63,13 +72,12 @@ void print_table() {
                            FT_COLOR_DARK_GRAY)
         : ft_set_cell_prop(table, i + 1, 6, FT_CPROP_CONT_FG_COLOR,
                            FT_COLOR_LIGHT_GRAY);
-       // printf("%s%d\n", "The laps remaning : ", current.lap);
+        // printf("%s%d\n", "The laps remaning : ", current.lap);
     }
 
     ft_set_cell_prop(table, 1, FT_ANY_COLUMN, FT_CPROP_CONT_FG_COLOR, FT_COLOR_LIGHT_GREEN);
     ft_set_cell_prop(table, 2, FT_ANY_COLUMN, FT_CPROP_CONT_FG_COLOR, FT_COLOR_LIGHT_BLUE);
     ft_set_cell_prop(table, 3, FT_ANY_COLUMN, FT_CPROP_CONT_FG_COLOR, FT_COLOR_LIGHT_YELLOW);
-
 
 
     clear();
@@ -96,13 +104,13 @@ void display(sem_t *sem, Voiture *data) {
         memcpy(copy, data, sizeof(Voiture) * circuit.number_of_cars);
         sem_post(sem);
         qsort(copy, circuit.number_of_cars, sizeof(Voiture), compare);
-        if (finished() || data->done) {
+        if (finished() || copy[9].done) {
             break;
         }
         print_table();
         sleep(1);
     }
-    sleep(10);
+    sleep(1);
     save_ranking();
     terminate_window();
 }

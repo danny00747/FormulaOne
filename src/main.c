@@ -26,10 +26,10 @@ int main(int argc, char **argv) {
 
 
     signal(SIGINT, return_cursor);
-    circuit.number_of_cars = 20;
 
-
-    circuit.lap_km = 7.0;
+    circuit.lap_km = 7;
+    circuit.race_km = 305;
+    circuit.number_of_laps = circuit.race_km / circuit.lap_km;
 
     static struct option long_options[] = {{"day",  required_argument, NULL, 'd'},
                                            {"step", required_argument, NULL, 's'},
@@ -43,39 +43,39 @@ int main(int argc, char **argv) {
                 break;
             case 's':
 
-                if (strcasecmp(optarg, "P1") == 0) {
+                if (!strcasecmp(optarg, "P1")) {
                     circuit.number_of_cars = 20;
                     circuit.choosen_step = P1;
                     circuit.step_name = "P1";
                     circuit.step_total_time = minutes_to_ms(90);
-                } else if (strcasecmp(optarg, "P2") == 0) {
+                } else if (!strcasecmp(optarg, "P2")) {
                     circuit.number_of_cars = 20;
                     circuit.choosen_step = P2;
                     circuit.step_name = "P2";
                     circuit.step_total_time = minutes_to_ms(90);
-                } else if (strcasecmp(optarg, "P3") == 0) {
+                } else if (!strcasecmp(optarg, "P3")) {
                     circuit.number_of_cars = 20;
                     circuit.choosen_step = P3;
                     circuit.step_name = "P3";
                     circuit.step_total_time = minutes_to_ms(60);
-                } else if (strcasecmp(optarg, "Q1") == 0) {
+                } else if (!strcasecmp(optarg, "Q1")) {
                     circuit.number_of_cars = 20;
                     circuit.choosen_step = Q1;
                     circuit.step_name = "Q1";
                     circuit.step_total_time = minutes_to_ms(18);
-                } else if (strcasecmp(optarg, "Q2") == 0) {
+                } else if (!strcasecmp(optarg, "Q2")){
                     circuit.number_of_cars = 15;
                     circuit.choosen_step = Q2;
                     circuit.step_name = "Q2";
                     circuit.step_total_time = minutes_to_ms(15);
                     read_files(qualified_cars, race_ranking, last_cars_of_Q1, last_cars_of_Q2, "Q1", 15);
-                } else if (strcasecmp(optarg, "Q3") == 0) {
+                } else if (!strcasecmp(optarg, "Q3")) {
                     circuit.number_of_cars = 10;
                     circuit.choosen_step = Q3;
                     circuit.step_name = "Q3";
                     circuit.step_total_time = minutes_to_ms(12);
                     read_files(qualified_cars, race_ranking, last_cars_of_Q1, last_cars_of_Q2, "Q2", 10);
-                } else if (strcasecmp(optarg, "RACE") == 0) {
+                } else if (!strcasecmp(optarg, "RACE")) {
                     circuit.number_of_cars = 20;
                     circuit.choosen_step = RACE;
                     circuit.step_name = "RACE";
@@ -98,9 +98,6 @@ int main(int argc, char **argv) {
                                      : !strcmp(circuit.step_name, "Q3") ? save_eliminated_cars("lastQ2",
                                                                                                last_cars_of_Q2)
                                                                         : NULL;
-
-    circuit.number_of_laps = 300 / circuit.lap_km;
-
     int struct_shm_id = shmget(
             IPC_PRIVATE, sizeof(Voiture) * circuit.number_of_cars, 0600 | IPC_CREAT);
     if (struct_shm_id == -1) {

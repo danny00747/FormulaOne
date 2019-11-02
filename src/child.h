@@ -36,6 +36,7 @@ typedef struct Circuit {
     int number_of_laps;
     int lap_km;
     int number_of_cars;
+    int race_km;
 } Circuit;
 
 
@@ -57,5 +58,9 @@ void asciiArt();
 void child(sem_t *sem, Voiture *car, int *car_names);
 
 void car_crash();
+
+int step_done();
+
+int msleep(unsigned int tms);
 
 
