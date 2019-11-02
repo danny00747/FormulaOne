@@ -7,7 +7,7 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
-Commands command;
+Circuit circuit;
 Voiture *car;
 
 
@@ -26,10 +26,10 @@ int main(int argc, char **argv) {
 
 
     signal(SIGINT, return_cursor);
-    command.number_of_cars = 20;
+    circuit.number_of_cars = 20;
 
 
-    command.lap_length = 7.0;
+    circuit.lap_length = 7.0;
 
     static struct option long_options[] = {{"day",  required_argument, NULL, 'd'},
                                            {"step", required_argument, NULL, 's'},
@@ -39,47 +39,47 @@ int main(int argc, char **argv) {
     while ((opt = getopt_long(argc, argv, "d:s:", long_options, NULL)) != EOF) {
         switch (opt) {
             case 'd':
-                command.choosen_day = (enum days) optarg;
+                circuit.choosen_day = (enum days) optarg;
                 break;
             case 's':
 
                 if (strcasecmp(optarg, "P1") == 0) {
-                    command.number_of_cars = 20;
-                    command.choosen_step = P1;
-                    command.step_name = "P1";
-                    command.step_total_time = minutes_to_ms(90);
+                    circuit.number_of_cars = 20;
+                    circuit.choosen_step = P1;
+                    circuit.step_name = "P1";
+                    circuit.step_total_time = minutes_to_ms(90);
                 } else if (strcasecmp(optarg, "P2") == 0) {
-                    command.number_of_cars = 20;
-                    command.choosen_step = P2;
-                    command.step_name = "P2";
-                    command.step_total_time = minutes_to_ms(90);
+                    circuit.number_of_cars = 20;
+                    circuit.choosen_step = P2;
+                    circuit.step_name = "P2";
+                    circuit.step_total_time = minutes_to_ms(90);
                 } else if (strcasecmp(optarg, "P3") == 0) {
-                    command.number_of_cars = 20;
-                    command.choosen_step = P3;
-                    command.step_name = "P3";
-                    command.step_total_time = minutes_to_ms(60);
+                    circuit.number_of_cars = 20;
+                    circuit.choosen_step = P3;
+                    circuit.step_name = "P3";
+                    circuit.step_total_time = minutes_to_ms(60);
                 } else if (strcasecmp(optarg, "Q1") == 0) {
-                    command.number_of_cars = 20;
-                    command.choosen_step = Q1;
-                    command.step_name = "Q1";
-                    command.step_total_time = minutes_to_ms(18);
+                    circuit.number_of_cars = 20;
+                    circuit.choosen_step = Q1;
+                    circuit.step_name = "Q1";
+                    circuit.step_total_time = minutes_to_ms(18);
                 } else if (strcasecmp(optarg, "Q2") == 0) {
-                    command.number_of_cars = 15;
-                    command.choosen_step = Q2;
-                    command.step_name = "Q2";
-                    command.step_total_time = minutes_to_ms(15);
+                    circuit.number_of_cars = 15;
+                    circuit.choosen_step = Q2;
+                    circuit.step_name = "Q2";
+                    circuit.step_total_time = minutes_to_ms(15);
                     read_files(qualified_cars, race_ranking, last_cars_of_Q1, last_cars_of_Q2, "Q1", 15);
                 } else if (strcasecmp(optarg, "Q3") == 0) {
-                    command.number_of_cars = 10;
-                    command.choosen_step = Q3;
-                    command.step_name = "Q3";
-                    command.step_total_time = minutes_to_ms(12);
+                    circuit.number_of_cars = 10;
+                    circuit.choosen_step = Q3;
+                    circuit.step_name = "Q3";
+                    circuit.step_total_time = minutes_to_ms(12);
                     read_files(qualified_cars, race_ranking, last_cars_of_Q1, last_cars_of_Q2, "Q2", 10);
                 } else if (strcasecmp(optarg, "RACE") == 0) {
-                    command.number_of_cars = 20;
-                    command.choosen_step = RACE;
-                    command.step_name = "RACE";
-                    command.step_total_time = minutes_to_ms(60);
+                    circuit.number_of_cars = 20;
+                    circuit.choosen_step = RACE;
+                    circuit.step_name = "RACE";
+                    circuit.step_total_time = minutes_to_ms(120);
                     read_files(qualified_cars, race_ranking, last_cars_of_Q1, last_cars_of_Q2, "Q3", 10);
                     read_eliminated_cars("lastQ2", race_ranking);
                     read_eliminated_cars("lastQ1", race_ranking);
@@ -94,15 +94,15 @@ int main(int argc, char **argv) {
     }
 
 
-    (strcmp(command.step_name, "Q2") == 0) ? save_eliminated_cars("lastQ1", last_cars_of_Q1)
-                                           : (strcmp(command.step_name, "Q3") == 0) ? save_eliminated_cars("lastQ2",
-                                                                                                           last_cars_of_Q2)
-                                                                                    : NULL;
+    !strcmp(circuit.step_name, "Q2") ? save_eliminated_cars("lastQ1", last_cars_of_Q1)
+                                     : !strcmp(circuit.step_name, "Q3") ? save_eliminated_cars("lastQ2",
+                                                                                               last_cars_of_Q2)
+                                                                        : NULL;
 
-    command.number_of_laps = 300 / command.lap_length;
+    circuit.number_of_laps = 300 / circuit.lap_length;
 
     int struct_shm_id = shmget(
-            IPC_PRIVATE, sizeof(Voiture) * command.number_of_cars, 0600 | IPC_CREAT);
+            IPC_PRIVATE, sizeof(Voiture) * circuit.number_of_cars, 0600 | IPC_CREAT);
     if (struct_shm_id == -1) {
         perror("shmget failed !");
         exit(1);
@@ -130,7 +130,7 @@ int main(int argc, char **argv) {
 
     int i;
     pid_t pid = 0;
-    for (i = 0; i < command.number_of_cars; i++) {
+    for (i = 0; i < circuit.number_of_cars; i++) {
         pid = fork();
         if (pid == 0)
             break;
@@ -141,15 +141,15 @@ int main(int argc, char **argv) {
             fprintf(stderr, "fork failed !");
             exit(-1);
         case 0:
-            (strcmp(command.step_name, "Q2") == 0 || strcmp(command.step_name, "Q3") == 0) ?
-            child(sem, &car[i], &qualified_cars[i]) : (strcmp(command.step_name, "RACE") == 0) ?
+            (!strcmp(circuit.step_name, "Q2") || !strcmp(circuit.step_name, "Q3")) ?
+            child(sem, &car[i], &qualified_cars[i]) : !strcmp(circuit.step_name, "RACE") ?
                                                       child(sem, &car[i], &race_ranking[i]) :
                                                       child(sem, &car[i], &car_names[i]);
 
             exit(0);
         default:
             display(sem, car);
-            for (int j = 0; j < command.number_of_cars; j++) {
+            for (int j = 0; j < circuit.number_of_cars; j++) {
                 wait(NULL);
             }
     }

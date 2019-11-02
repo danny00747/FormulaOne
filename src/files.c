@@ -5,15 +5,15 @@
 #include "files.h"
 
 
-Commands command;
+Circuit circuit;
 Voiture copy[20];
 
 void save_ranking() {
-    FILE *file = fopen(command.step_name, "w");
+    FILE *file = fopen(circuit.step_name, "w");
 
     if (file == NULL) perror("fopen failed !"), exit(1);
 
-    for (int i = 0; i < command.number_of_cars; i++) {
+    for (int i = 0; i < circuit.number_of_cars; i++) {
         char best_lap_str[10];
         to_string(copy[i].best_lap_time, best_lap_str);
         fprintf(file, "%d --> %s\n", copy[i].id, best_lap_str);
@@ -73,7 +73,7 @@ int findSize(char file_name[]) {
 
     // checking if the file exist or not
     if (file == NULL) {
-        printf("%s : %s", command.step_name, "file not Found!\n");
+        printf("%s : %s", circuit.step_name, "file not Found!\n");
         return -1;
     }
 
@@ -109,7 +109,7 @@ void read_eliminated_cars(char file_to_read[], int array[]) {
 
     if (file == NULL)perror("fopen failed !"), exit(1);
 
-    int i = 16, j = 11;
+    int i = 15, j = 10;
     while (fgets(results, sizeof(results), file)) {
 
         if (strcmp(file_to_read, "lastQ1") == 0) {

@@ -2,7 +2,7 @@
 
 int time_passed = 0;
 Voiture *vehicule;
-Commands command;
+Circuit circuit;
 
 void car_crash() {
     if (car_crashed(10000000))
@@ -17,9 +17,9 @@ void child(sem_t *sem, Voiture *car, int *car_names) {
     vehicule = car;
     vehicule->id = *car_names;
 
-    while (time_passed <= command.step_total_time) {
+    while (time_passed <= circuit.step_total_time) {
 
-        (strcmp(command.step_name, "RACE") == 0) ? sleep(10) : 0;
+        (strcmp(circuit.step_name, "RACE") == 0) ? sleep(10) : 0;
 
         sem_wait(sem);
         vehicule->s1 = sector_range(30, 45, 10000000);
@@ -51,7 +51,7 @@ void child(sem_t *sem, Voiture *car, int *car_names) {
             vehicule->best_lap_time > vehicule->lap_time)
             vehicule->best_lap_time = vehicule->lap_time;
 
-        (time_passed >= command.step_total_time) ? vehicule->done = 1 : 0;
+        (time_passed >= circuit.step_total_time) ? vehicule->done = 1 : 0;
         vehicule->lap++;
         sem_post(sem);
         sleep(1);

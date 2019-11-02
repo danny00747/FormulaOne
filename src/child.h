@@ -28,7 +28,7 @@ enum days {
     fri, sat, sun
 };
 
-typedef struct Commands {
+typedef struct Circuit {
     enum step choosen_step;
     enum days choosen_day;
     char *step_name;
@@ -36,7 +36,7 @@ typedef struct Commands {
     int number_of_laps;
     int lap_length;
     int number_of_cars;
-} Commands;
+} Circuit;
 
 
 typedef struct Voiture {

@@ -5,7 +5,7 @@
 #include "display.h"
 
 
-Commands command;
+Circuit circuit;
 Voiture copy[20];
 
 
@@ -36,7 +36,7 @@ void print_table() {
     ft_write_ln(table, "POSITION", "NAME", "S1", "S2", "S3", "OUT", "PIT", "LAP",
                 "LAP TIME", "BEST LAP TIME");
 
-    for (int i = 0; i < command.number_of_cars; i++) {
+    for (int i = 0; i < circuit.number_of_cars; i++) {
         Voiture current = copy[i];
 
         char s1_str[10];
@@ -78,7 +78,7 @@ void print_table() {
 }
 
 int finished() {
-    for (int i = 0; i < command.number_of_cars; ++i) {
+    for (int i = 0; i < circuit.number_of_cars; ++i) {
         if (copy[i].out) {
             return 1;
         }
@@ -93,9 +93,9 @@ void display(sem_t *sem, Voiture *data) {
 
     while (1) {
         sem_wait(sem);
-        memcpy(copy, data, sizeof(Voiture) * command.number_of_cars);
+        memcpy(copy, data, sizeof(Voiture) * circuit.number_of_cars);
         sem_post(sem);
-        qsort(copy, command.number_of_cars, sizeof(Voiture), compare);
+        qsort(copy, circuit.number_of_cars, sizeof(Voiture), compare);
         if (finished() || data->done) {
             break;
         }
