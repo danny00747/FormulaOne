@@ -34,7 +34,7 @@ typedef struct Circuit {
     char *step_name;
     int step_total_time;
     int number_of_laps;
-    int lap_length;
+    int lap_km;
     int number_of_cars;
 } Circuit;
 

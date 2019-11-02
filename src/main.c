@@ -29,7 +29,7 @@ int main(int argc, char **argv) {
     circuit.number_of_cars = 20;
 
 
-    circuit.lap_length = 7.0;
+    circuit.lap_km = 7.0;
 
     static struct option long_options[] = {{"day",  required_argument, NULL, 'd'},
                                            {"step", required_argument, NULL, 's'},
@@ -99,7 +99,7 @@ int main(int argc, char **argv) {
                                                                                                last_cars_of_Q2)
                                                                         : NULL;
 
-    circuit.number_of_laps = 300 / circuit.lap_length;
+    circuit.number_of_laps = 300 / circuit.lap_km;
 
     int struct_shm_id = shmget(
             IPC_PRIVATE, sizeof(Voiture) * circuit.number_of_cars, 0600 | IPC_CREAT);
