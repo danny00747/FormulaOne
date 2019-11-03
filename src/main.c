@@ -17,79 +17,107 @@ int car_names[NUMBER_OF_CARS] = {44, 77, 5, 7, 3, 33, 11, 31, 18, 35,
 int qualified_cars[15], race_ranking[20], last_cars_of_Q1[15], last_cars_of_Q2[10];
 
 void print_usage() {
-    printf("Usage: prog --day [dayName] --step [stepName]\n");
+    printf("%s", "Usage: ./prog --day [dayName] --step [stepName]\n");
+    printf("%s", "Usage: For race you can specify the lap length, by default it's 7km !\n");
+    printf("%s", "Usage: ./prog --day [dayName] --step [stepName] --length [number]\n");
+    exit(EXIT_FAILURE);
 }
 
 int main(int argc, char **argv) {
 
-   // (argc) ? print_usage() : 0;
+    // (argc) ? print_usage() : 0;
 
 
     signal(SIGINT, return_cursor);
 
     circuit.lap_km = 7;
     circuit.race_km = 305;
-    circuit.number_of_laps = circuit.race_km / circuit.lap_km;
 
-    static struct option long_options[] = {{"day",  required_argument, NULL, 'd'},
-                                           {"step", required_argument, NULL, 's'},
-                                           {NULL, 0,                   NULL, 0}};
+    int user_km = 0;
+    char day_name[5], step_name[5];
+
+    static struct option long_options[] = {{"day",    required_argument, NULL, 'd'},
+                                           {"step",   required_argument, NULL, 's'},
+                                           {"length", required_argument, NULL, 'l'},
+                                           {NULL, 0,                     NULL, 0}};
 
     char opt;
-    while ((opt = getopt_long(argc, argv, "d:s:", long_options, NULL)) != EOF) {
+    while ((opt = getopt_long(argc, argv, "d:s:l:", long_options, NULL)) != EOF) {
         switch (opt) {
             case 'd':
-                circuit.choosen_day = (enum days) optarg;
+                strcpy(day_name, optarg);
                 break;
             case 's':
+                strcpy(step_name, optarg);
+                break;
+            case 'l':
+                user_km = atoi(optarg);
+                break;
+            default:
+                print_usage();
+        }
+    }
 
-                if (!strcasecmp(optarg, "P1")) {
-                    circuit.number_of_cars = 20;
-                    circuit.choosen_step = P1;
-                    circuit.step_name = "P1";
-                    circuit.step_total_time = minutes_to_ms(90);
-                } else if (!strcasecmp(optarg, "P2")) {
-                    circuit.number_of_cars = 20;
-                    circuit.choosen_step = P2;
-                    circuit.step_name = "P2";
-                    circuit.step_total_time = minutes_to_ms(90);
-                } else if (!strcasecmp(optarg, "P3")) {
-                    circuit.number_of_cars = 20;
-                    circuit.choosen_step = P3;
-                    circuit.step_name = "P3";
-                    circuit.step_total_time = minutes_to_ms(60);
-                } else if (!strcasecmp(optarg, "Q1")) {
-                    circuit.number_of_cars = 20;
-                    circuit.choosen_step = Q1;
-                    circuit.step_name = "Q1";
-                    circuit.step_total_time = minutes_to_ms(18);
-                } else if (!strcasecmp(optarg, "Q2")){
-                    circuit.number_of_cars = 15;
-                    circuit.choosen_step = Q2;
-                    circuit.step_name = "Q2";
-                    circuit.step_total_time = minutes_to_ms(15);
-                    read_files(qualified_cars, race_ranking, last_cars_of_Q1, last_cars_of_Q2, "Q1", 15);
-                } else if (!strcasecmp(optarg, "Q3")) {
-                    circuit.number_of_cars = 10;
-                    circuit.choosen_step = Q3;
-                    circuit.step_name = "Q3";
-                    circuit.step_total_time = minutes_to_ms(12);
-                    read_files(qualified_cars, race_ranking, last_cars_of_Q1, last_cars_of_Q2, "Q2", 10);
-                } else if (!strcasecmp(optarg, "RACE")) {
-                    circuit.number_of_cars = 20;
-                    circuit.choosen_step = RACE;
-                    circuit.step_name = "RACE";
-                    circuit.step_total_time = minutes_to_ms(120);
-                    read_files(qualified_cars, race_ranking, last_cars_of_Q1, last_cars_of_Q2, "Q3", 10);
-                    read_eliminated_cars("lastQ2", race_ranking);
-                    read_eliminated_cars("lastQ1", race_ranking);
-                    read_eliminated_cars("Q3", race_ranking);
-                } else {
-                    break;
-                    default:
-                        print_usage();
-                    exit(EXIT_FAILURE);
-                }
+    if (!strcmp(day_name, "fri")) {
+        if (!strcmp(step_name, "P1")) {
+            circuit.number_of_cars = 20;
+            circuit.choosen_step = P1;
+            circuit.step_name = "P1";
+            circuit.step_total_time = minutes_to_ms(90);
+        } else if (!strcmp(step_name, "P2")) {
+            circuit.number_of_cars = 20;
+            circuit.choosen_step = P2;
+            circuit.step_name = "P2";
+            circuit.step_total_time = minutes_to_ms(90);
+        } else if (!strcmp(step_name, "P3")) {
+            circuit.number_of_cars = 20;
+            circuit.choosen_step = P3;
+            circuit.step_name = "P3";
+            circuit.step_total_time = minutes_to_ms(60);
+        } else {
+            print_usage();
+        }
+    } else if (!strcmp(day_name, "sat")) {
+        if (!strcmp(step_name, "Q1")) {
+            circuit.number_of_cars = 20;
+            circuit.choosen_step = Q1;
+            circuit.step_name = "Q1";
+            circuit.step_total_time = minutes_to_ms(18);
+        } else if (!strcmp(step_name, "Q2")) {
+            circuit.number_of_cars = 15;
+            circuit.choosen_step = Q2;
+            circuit.step_name = "Q2";
+            circuit.step_total_time = minutes_to_ms(15);
+            read_files(qualified_cars, race_ranking, last_cars_of_Q1, last_cars_of_Q2, "Q1", 15);
+        } else if (!strcmp(step_name, "Q3")) {
+            circuit.number_of_cars = 10;
+            circuit.choosen_step = Q3;
+            circuit.step_name = "Q3";
+            circuit.step_total_time = minutes_to_ms(12);
+            read_files(qualified_cars, race_ranking, last_cars_of_Q1, last_cars_of_Q2, "Q2", 10);
+        } else {
+            print_usage();
+        }
+    } else if (!strcmp(day_name, "sun")) {
+        if (!strcmp(step_name, "RACE")) {
+            circuit.number_of_cars = 20;
+            circuit.choosen_step = RACE;
+            circuit.step_name = "RACE";
+            circuit.step_total_time = minutes_to_ms(120);
+            read_files(qualified_cars, race_ranking, last_cars_of_Q1, last_cars_of_Q2, "Q3", 10);
+            read_eliminated_cars("lastQ2", race_ranking);
+            read_eliminated_cars("lastQ1", race_ranking);
+            read_eliminated_cars("Q3", race_ranking);
+
+            if (user_km == 0) {
+                circuit.number_of_laps = circuit.race_km / circuit.lap_km;
+            } else if (user_km > 0) {
+                circuit.number_of_laps = circuit.race_km / user_km;
+            } else {
+                print_usage();
+            }
+        } else {
+            print_usage();
         }
     }
 
