@@ -46,6 +46,9 @@ typedef struct Voiture {
     double s1;
     double s2;
     double s3;
+    int best_s1;
+    int best_s2;
+    int best_s3;
     int stand;
     int out;
     int lap;

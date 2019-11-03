@@ -37,11 +37,17 @@ void child(sem_t *sem, Voiture *car, int *car_names) {
 
         sem_wait(sem);
         vehicule->s1 = sector_range(30, 45, 10000000);
+        if (vehicule->best_s2 == 0 || vehicule->best_s1 > vehicule->s1) {
+            vehicule->best_s1 = vehicule->s1;
+        }
         car_crash();
         sem_post(sem);
 
         sem_wait(sem);
         vehicule->s2 = sector_range(30, 45, 10000000);
+        if (vehicule->best_s2 == 0 || vehicule->best_s2 > vehicule->s2) {
+            vehicule->best_s2 = vehicule->s2;
+        }
         car_crash();
         sem_post(sem);
 
@@ -56,8 +62,12 @@ void child(sem_t *sem, Voiture *car, int *car_names) {
             i++;
             vehicule->stand = 1;
         }
+        if (vehicule->best_s3 == 0 || vehicule->best_s3 > vehicule->s3) {
+            vehicule->best_s3 = vehicule->s3;
+        }
         car_crash();
         msleep(80);
+
         vehicule->lap_time = vehicule->s1 + vehicule->s2 + vehicule->s3;
         time_passed += vehicule->lap_time;
 

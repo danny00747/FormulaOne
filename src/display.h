@@ -17,4 +17,4 @@
 void display(sem_t *_sem, Voiture *data);
 
 int compare(const void *left, const void *right);
-
+int best_sector(char sector[]);
