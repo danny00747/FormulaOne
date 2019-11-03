@@ -37,19 +37,17 @@ This a project of the lesson Operating Systems. (Unix) 2nd Bachelor at EPHEC
  by default it's 7Km
 
 >P1/P2/P3 for warmup
-```
- ./prog --day fri --step P3
- ```
+>>
+>>``` ./prog --day fri --step P3 ```
 
 >Q1/Q2/Q3 : for qualifications
-```
- ./prog --day sat --step Q1 
- ```
+>>
+>>``` ./prog --day sat --step Q1 ```
 
 >RACE : for the race.
-```
-./prog --day sun --step RACE --length 10
-```
+>>
+>>``` ./prog --day sun --step RACE --length 10 ```
+
 ![GIF demo](img/how-to-run-prog.gif.gif)
 
 ## Built With

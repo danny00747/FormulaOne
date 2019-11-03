@@ -1,7 +1,7 @@
 
 #include "window.h"
 
-void init_window() { printf("\e[?1049h\e[?7l\e[?25l\e[2J\e[1;58r"); }
+void init_window() { printf("\e[?1049h\e[?7l\e[?25l\e[2J\e[1;52r"); }
 
 void clear() { printf("\e[53H\e[9999C\e[1J\e[1;53r"); }
 
