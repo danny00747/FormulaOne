@@ -28,7 +28,6 @@ int compare(const void *left, const void *right) {
         else
             return 0;
     }
-
 }
 
 void print_table() {
