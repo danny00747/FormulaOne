@@ -33,17 +33,24 @@ This a project of the lesson Operating Systems. (Unix) 2nd Bachelor at EPHEC
 
 `./prog` followed by `--day` and the value of the day option `sat` for example. And finally `--step` 
  with it's value to specify which step that needs to be runned `Q1` for instance. 
+ For race the user has the option to specify the lap `--length`, 
+ by default it's 7Km
 
 >P1/P2/P3 for warmup
+```
+ ./prog --day fri --step P3
+ ```
 
 >Q1/Q2/Q3 : for qualifications
+```
+ ./prog --day sat --step Q1 
+ ```
 
 >RACE : for the race.
-
 ```
-./prog --day sat --step Q1
+./prog --day sun --step RACE --length 10
 ```
-![GIF demo](img/how-to-run-prog.gif)
+![GIF demo](img/how-to-run-prog.gif.gif)
 
 ## Built With
 
