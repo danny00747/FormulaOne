@@ -84,17 +84,14 @@ void print_table() {
     ft_set_cell_prop(second_table, 0, FT_ANY_COLUMN, FT_CPROP_CELL_TEXT_STYLE, FT_TSTYLE_BOLD);
     ft_set_cell_prop(second_table, 0, FT_ANY_COLUMN, FT_CPROP_CONT_FG_COLOR, FT_COLOR_CYAN);
 
-    int s1 = best_sector("S1");
     char s1_value[10];
-    to_string(copy[s1].best_s1, s1_value);
+    to_string(copy[best_sector("S1")].best_s1, s1_value);
 
-    int s2 = best_sector("S2");
     char s2_value[10];
-    to_string(copy[s2].best_s2, s2_value);
+    to_string(copy[best_sector("S2")].best_s2, s2_value);
 
-    int s3 = best_sector("S3");
     char s3_value[10];
-    to_string(copy[s3].best_s3, s3_value);
+    to_string(copy[best_sector("S3")].best_s3, s3_value);
 
     ft_printf_ln(second_table, "%s|%d|%s", "S1", copy[best_sector("S1")].id, s1_value);
     ft_printf_ln(second_table, "%s|%d|%s", "S2", copy[best_sector("S2")].id, s2_value);
