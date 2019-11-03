@@ -121,7 +121,7 @@ Votre projet devra prendre en charge les choses suivantes.
 - [x] Le premier classement est l’ordre sur la grille de départ
 - [x] Le classement doit toujours être maintenu tout au long de la course (gérer les dépassements)
 - [x] Relever les temps dans les 3 secteurs à chaque passage pour chaque voiture
-- [ ] Toujours savoir qui a le meilleur temps dans chacun des secteurs
+- [x] Toujours savoir qui a le meilleur temps dans chacun des secteurs
 - [x] Toujours savoir qui a le tour le plus rapide
 - [ ] Savoir si la voiture est out (abandon) ; dans ce cas, elle sera classée en fin de classement
 - [x] Savoir si la voiture est aux stands (PIT), gérer le temps aux stands et faire ressortir la voiture à sa place dans la course (généralement 2 ou 3 PIT par voitures)
