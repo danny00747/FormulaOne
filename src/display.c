@@ -45,24 +45,24 @@ void print_table() {
     for (int i = 0; i < circuit.number_of_cars; i++) {
         F1_Car current = car_array[i];
 
-        char s1_str[10];
-        to_string(current.s1, s1_str);
+        char sector1_time[10];
+        to_string(current.s1, sector1_time);
 
-        char s2_str[10];
-        to_string(current.s2, s2_str);
+        char sector2_time[10];
+        to_string(current.s2, sector2_time);
 
-        char s3_str[10];
-        to_string(current.s3, s3_str);
+        char sector3_time[10];
+        to_string(current.s3, sector3_time);
 
-        char lap_str[10];
-        to_string(current.lap_time, lap_str);
+        char lap_time[10];
+        to_string(current.lap_time, lap_time);
 
-        char best_lap_str[10];
-        to_string(current.best_lap_time, best_lap_str);
+        char best_lap_time[10];
+        to_string(current.best_lap_time, best_lap_time);
 
         ft_printf_ln(table, "%d|%d|%.6s|%.6s|%.6s|%d|%d|%d|%.7s|%.7s", i + 1,
-                     current.id, s1_str, s2_str, s3_str, current.out,
-                     current.stand, current.lap, lap_str, best_lap_str);
+                     current.id, sector1_time, sector2_time, sector3_time, current.out,
+                     current.stand, current.lap, lap_time, best_lap_time);
 
         (current.stand)
         ? ft_set_cell_prop(table, i + 1, FT_ANY_COLUMN, FT_CPROP_CONT_FG_COLOR, FT_COLOR_DARK_GRAY)
@@ -83,18 +83,18 @@ void print_table() {
     ft_set_cell_prop(second_table, 0, FT_ANY_COLUMN, FT_CPROP_CELL_TEXT_STYLE, FT_TSTYLE_BOLD);
     ft_set_cell_prop(second_table, 0, FT_ANY_COLUMN, FT_CPROP_CONT_FG_COLOR, FT_COLOR_CYAN);
 
-    char s1_value[10];
-    to_string(car_array[best_sector("S1")].best_s1, s1_value);
+    char s1_time[10];
+    to_string(car_array[best_sector("S1")].best_s1, s1_time);
 
-    char s2_value[10];
-    to_string(car_array[best_sector("S2")].best_s2, s2_value);
+    char s2_time[10];
+    to_string(car_array[best_sector("S2")].best_s2, s2_time);
 
-    char s3_value[10];
-    to_string(car_array[best_sector("S3")].best_s3, s3_value);
+    char s3_time[10];
+    to_string(car_array[best_sector("S3")].best_s3, s3_time);
 
-    ft_printf_ln(second_table, "%s|%d|%s", "S1", car_array[best_sector("S1")].id, s1_value);
-    ft_printf_ln(second_table, "%s|%d|%s", "S2", car_array[best_sector("S2")].id, s2_value);
-    ft_printf_ln(second_table, "%s|%d|%s", "S3", car_array[best_sector("S3")].id, s3_value);
+    ft_printf_ln(second_table, "%s|%d|%s", "S1", car_array[best_sector("S1")].id, s1_time);
+    ft_printf_ln(second_table, "%s|%d|%s", "S2", car_array[best_sector("S2")].id, s2_time);
+    ft_printf_ln(second_table, "%s|%d|%s", "S3", car_array[best_sector("S3")].id, s3_time);
 
     clear();
     printf("%s", ft_to_string(table));
@@ -104,23 +104,23 @@ void print_table() {
 }
 
 int best_sector(char sector[]) {
-    int best_sec = 0;
+    int sector_number = 0;
     int id = 0;
     for (int i = 0; i < circuit.number_of_cars; i++) {
 
         if (!strcmp(sector, "S1")) {
-            if (best_sec == 0 || car_array[i].best_s1 < best_sec) {
-                best_sec = car_array[i].best_s1;
+            if (sector_number == 0 || car_array[i].best_s1 < sector_number) {
+                sector_number = car_array[i].best_s1;
                 id = i;
             }
         } else if (!strcmp(sector, "S2")) {
-            if (best_sec == 0 || car_array[i].best_s2 < best_sec) {
-                best_sec = car_array[i].best_s2;
+            if (sector_number == 0 || car_array[i].best_s2 < sector_number) {
+                sector_number = car_array[i].best_s2;
                 id = i;
             }
         } else if (!strcmp(sector, "S3")) {
-            if (best_sec == 0 || car_array[i].best_s3 < best_sec) {
-                best_sec = car_array[i].best_s3;
+            if (sector_number == 0 || car_array[i].best_s3 < sector_number) {
+                sector_number = car_array[i].best_s3;
                 id = i;
             }
         }
