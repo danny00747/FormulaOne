@@ -84,7 +84,6 @@ void print_table() {
     printf("%s\n", ft_to_string(table));
     ft_destroy_table(table);
 }
-
 int finished() {
     for (int i = 0; i < circuit.number_of_cars; ++i) {
         if (copy[i].out) {
