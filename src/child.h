@@ -56,13 +56,11 @@ typedef struct F1_Car {
     int done;
 } F1_Car;
 
-void asciiArt();
-
 void child(sem_t *sem, F1_Car *car, int *car_names);
 
 void car_crash();
 
-int step_done();
+int finished_running();
 
 int msleep(unsigned int tms);
 

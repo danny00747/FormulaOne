@@ -9,6 +9,7 @@ Circuit circuit;
 F1_Car car_array[20];
 
 void save_ranking() {
+
     FILE *file = fopen(circuit.step_name, "w");
 
     if (file == NULL) perror("fopen failed !"), exit(1);

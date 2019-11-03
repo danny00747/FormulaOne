@@ -2,17 +2,17 @@
 
 int time_passed = 0;
 int current_lap = 0;
-F1_Car *vehicule;
+F1_Car *vehicle;
 Circuit circuit;
 
 void car_crash() {
     if (car_crashed(10000000))
-        vehicule->out = 1;
+        vehicle->out = 1;
     else
-        vehicule->out = 0;
+        vehicle->out = 0;
 }
 
-int step_done() {
+int finished_running() {
     if (!strcmp(circuit.step_name, "RACE")) {
         return current_lap == circuit.number_of_laps;
     } else {
@@ -28,55 +28,55 @@ int msleep(unsigned int tms) {
 void child(sem_t *sem, F1_Car *car, int *car_names) {
 
     random_seed(getpid());
-    vehicule = car;
-    vehicule->id = *car_names;
+    vehicle = car;
+    vehicle->id = *car_names;
 
-    while (!step_done()) {
+    while (!finished_running()) {
 
-        (!strcmp(circuit.step_name, "RACE")) ? sleep(10) : 0;
+        //(!strcmp(circuit.step_name, "RACE")) ? sleep(10) : 0;
 
         sem_wait(sem);
-        vehicule->s1 = sector_range(30, 45, 10000000);
-        if (vehicule->best_s2 == 0 || vehicule->best_s1 > vehicule->s1) {
-            vehicule->best_s1 = vehicule->s1;
+        vehicle->s1 = sector_range(30, 45, 10000000);
+        if (vehicle->best_s2 == 0 || vehicle->best_s1 > vehicle->s1) {
+            vehicle->best_s1 = vehicle->s1;
         }
         car_crash();
         sem_post(sem);
 
         sem_wait(sem);
-        vehicule->s2 = sector_range(30, 45, 10000000);
-        if (vehicule->best_s2 == 0 || vehicule->best_s2 > vehicule->s2) {
-            vehicule->best_s2 = vehicule->s2;
+        vehicle->s2 = sector_range(30, 45, 10000000);
+        if (vehicle->best_s2 == 0 || vehicle->best_s2 > vehicle->s2) {
+            vehicle->best_s2 = vehicle->s2;
         }
         car_crash();
         sem_post(sem);
 
         sem_wait(sem);
-        vehicule->s3 = sector_range(30, 45, 10000000);
+        vehicle->s3 = sector_range(30, 45, 10000000);
 
         int i = 1;
-        vehicule->stand = 0;
+        vehicle->stand = 0;
         while (stand_probability(10)) {
 
-            vehicule->s3 += stand_duration(1, 100);
+            vehicle->s3 += stand_duration(1, 100);
             i++;
-            vehicule->stand = 1;
+            vehicle->stand = 1;
         }
-        if (vehicule->best_s3 == 0 || vehicule->best_s3 > vehicule->s3) {
-            vehicule->best_s3 = vehicule->s3;
+        if (vehicle->best_s3 == 0 || vehicle->best_s3 > vehicle->s3) {
+            vehicle->best_s3 = vehicle->s3;
         }
         car_crash();
         msleep(80);
 
-        vehicule->lap_time = vehicule->s1 + vehicule->s2 + vehicule->s3;
-        time_passed += vehicule->lap_time;
+        vehicle->lap_time = vehicle->s1 + vehicle->s2 + vehicle->s3;
+        time_passed += vehicle->lap_time;
 
-        if (vehicule->best_lap_time == 0 ||
-            vehicule->best_lap_time > vehicule->lap_time)
-            vehicule->best_lap_time = vehicule->lap_time;
-        vehicule->lap++;
-        current_lap = vehicule->lap;
-        (time_passed >= circuit.step_total_time || current_lap == circuit.number_of_laps) ? vehicule->done = 1 : 0;
+        if (vehicle->best_lap_time == 0 ||
+            vehicle->best_lap_time > vehicle->lap_time)
+            vehicle->best_lap_time = vehicle->lap_time;
+        vehicle->lap++;
+        current_lap = vehicle->lap;
+        (time_passed >= circuit.step_total_time || current_lap == circuit.number_of_laps) ? vehicle->done = 1 : 0;
         sem_post(sem);
         sleep(1);
     }
