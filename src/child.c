@@ -2,7 +2,7 @@
 
 int time_passed = 0;
 int current_lap = 0;
-Voiture *vehicule;
+F1_Car *vehicule;
 Circuit circuit;
 
 void car_crash() {
@@ -25,7 +25,7 @@ int msleep(unsigned int tms) {
 }
 
 
-void child(sem_t *sem, Voiture *car, int *car_names) {
+void child(sem_t *sem, F1_Car *car, int *car_names) {
 
     random_seed(getpid());
     vehicule = car;
@@ -33,7 +33,7 @@ void child(sem_t *sem, Voiture *car, int *car_names) {
 
     while (!step_done()) {
 
-        //(!strcmp(circuit.step_name, "RACE")) ? sleep(10) : 0;
+        (!strcmp(circuit.step_name, "RACE")) ? sleep(10) : 0;
 
         sem_wait(sem);
         vehicule->s1 = sector_range(30, 45, 10000000);

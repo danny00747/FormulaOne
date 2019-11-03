@@ -1,5 +1,5 @@
 
-#include "curses.h"
+#include "window.h"
 
 void init_window() { printf("\e[?1049h\e[?7l\e[?25l\e[2J\e[1;57r"); }
 

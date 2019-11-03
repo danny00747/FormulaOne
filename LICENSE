@@ -2,7 +2,7 @@
                        Version 3, 29 June 2007
 
  Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
- Everyone is permitted to copy and distribute verbatim copies
+ Everyone is permitted to car_array and distribute verbatim copies
  of this license document, but changing it is not allowed.
 
                             Preamble
@@ -39,7 +39,7 @@ know their rights.
 
   Developers that use the GNU GPL protect your rights with two steps:
 (1) assert copyright on the software, and (2) offer you this License
-giving you legal permission to copy, distribute and/or modify it.
+giving you legal permission to car_array, distribute and/or modify it.
 
   For the developers' and authors' protection, the GPL clearly explains
 that there is no warranty for this free software.  For both users' and
@@ -81,9 +81,9 @@ works, such as semiconductor masks.
 License.  Each licensee is addressed as "you".  "Licensees" and
 "recipients" may be individuals or organizations.
 
-  To "modify" a work means to copy from or adapt all or part of the work
+  To "modify" a work means to car_array from or adapt all or part of the work
 in a fashion requiring copyright permission, other than the making of an
-exact copy.  The resulting work is called a "modified version" of the
+exact car_array.  The resulting work is called a "modified version" of the
 earlier work or a work "based on" the earlier work.
 
   A "covered work" means either the unmodified Program or a work based
@@ -92,20 +92,20 @@ on the Program.
   To "propagate" a work means to do anything with it that, without
 permission, would make you directly or secondarily liable for
 infringement under applicable copyright law, except executing it on a
-computer or modifying a private copy.  Propagation includes copying,
+computer or modifying a private car_array.  Propagation includes copying,
 distribution (with or without modification), making available to the
 public, and in some countries other activities as well.
 
   To "convey" a work means any kind of propagation that enables other
 parties to make or receive copies.  Mere interaction with a user through
-a computer network, with no transfer of a copy, is not conveying.
+a computer network, with no transfer of a car_array, is not conveying.
 
   An interactive user interface displays "Appropriate Legal Notices"
 to the extent that it includes a convenient and prominently visible
 feature that (1) displays an appropriate copyright notice, and (2)
 tells the user that there is no warranty for the work (except to the
 extent that warranties are provided), that licensees may convey the
-work under this License, and how to view a copy of this License.  If
+work under this License, and how to view a car_array of this License.  If
 the interface presents a list of user commands or options, such as a
 menu, a prominent item in the list meets this criterion.
 
@@ -196,13 +196,13 @@ technological measures.
 
   You may convey verbatim copies of the Program's source code as you
 receive it, in any medium, provided that you conspicuously and
-appropriately publish on each copy an appropriate copyright notice;
+appropriately publish on each car_array an appropriate copyright notice;
 keep intact all notices stating that this License and any
 non-permissive terms added in accord with section 7 apply to the code;
 keep intact all notices of the absence of any warranty; and give all
-recipients a copy of this License along with the Program.
+recipients a car_array of this License along with the Program.
 
-  You may charge any price or no price for each copy that you convey,
+  You may charge any price or no price for each car_array that you convey,
 and you may offer support or warranty protection for a fee.
 
   5. Conveying Modified Source Versions.
@@ -220,7 +220,7 @@ terms of section 4, provided that you also meet all of these conditions:
     "keep intact all notices".
 
     c) You must license the entire work, as a whole, under this
-    License to anyone who comes into possession of a copy.  This
+    License to anyone who comes into possession of a car_array.  This
     License will therefore apply, along with any applicable section 7
     additional terms, to the whole of the work, and all its parts,
     regardless of how they are packaged.  This License gives no
@@ -259,14 +259,14 @@ in one of these ways:
     written offer, valid for at least three years and valid for as
     long as you offer spare parts or customer support for that product
     model, to give anyone who possesses the object code either (1) a
-    copy of the Corresponding Source for all the software in the
+    car_array of the Corresponding Source for all the software in the
     product that is covered by this License, on a durable physical
     medium customarily used for software interchange, for a price no
     more than your reasonable cost of physically performing this
-    conveying of source, or (2) access to copy the
+    conveying of source, or (2) access to car_array the
     Corresponding Source from a network server at no charge.
 
-    c) Convey individual copies of the object code with a copy of the
+    c) Convey individual copies of the object code with a car_array of the
     written offer to provide the Corresponding Source.  This
     alternative is allowed only occasionally and noncommercially, and
     only if you received the object code with such an offer, in accord
@@ -275,9 +275,9 @@ in one of these ways:
     d) Convey the object code by offering access from a designated
     place (gratis or for a charge), and offer equivalent access to the
     Corresponding Source in the same way through the same place at no
-    further charge.  You need not require recipients to copy the
+    further charge.  You need not require recipients to car_array the
     Corresponding Source along with the object code.  If the place to
-    copy the object code is a network server, the Corresponding Source
+    car_array the object code is a network server, the Corresponding Source
     may be on a different server (operated by you or a third party)
     that supports equivalent copying facilities, provided you maintain
     clear directions next to the object code saying where to find the
@@ -351,8 +351,8 @@ apply only to part of the Program, that part may be used separately
 under those permissions, but the entire Program remains governed by
 this License without regard to the additional permissions.
 
-  When you convey a copy of a covered work, you may at your option
-remove any additional permissions from that copy, or from any part of
+  When you convey a car_array of a covered work, you may at your option
+remove any additional permissions from that car_array, or from any part of
 it.  (Additional permissions may be written to require their own
 removal in certain cases when you modify the work.)  You may place
 additional permissions on material, added by you to a covered work,
@@ -435,9 +435,9 @@ material under section 10.
   9. Acceptance Not Required for Having Copies.
 
   You are not required to accept this License in order to receive or
-run a copy of the Program.  Ancillary propagation of a covered work
+run a car_array of the Program.  Ancillary propagation of a covered work
 occurring solely as a consequence of using peer-to-peer transmission
-to receive a copy likewise does not require acceptance.  However,
+to receive a car_array likewise does not require acceptance.  However,
 nothing other than this License grants you permission to propagate or
 modify any covered work.  These actions infringe copyright if you do
 not accept this License.  Therefore, by modifying or propagating a
@@ -454,7 +454,7 @@ for enforcing compliance by third parties with this License.
 organization, or substantially all assets of one, or subdividing an
 organization, or merging organizations.  If propagation of a covered
 work results from an entity transaction, each party to that
-transaction who receives a copy of the work also receives whatever
+transaction who receives a car_array of the work also receives whatever
 licenses to the work the party's predecessor in interest had or could
 give under the previous paragraph, plus a right to possession of the
 Corresponding Source of the work from the predecessor in interest, if
@@ -498,7 +498,7 @@ patent against the party.
 
   If you convey a covered work, knowingly relying on a patent license,
 and the Corresponding Source of the work is not available for anyone
-to copy, free of charge and under the terms of this License, through a
+to car_array, free of charge and under the terms of this License, through a
 publicly available network server or other readily accessible means,
 then you must either (1) cause the Corresponding Source to be so
 available, or (2) arrange to deprive yourself of the benefit of the
@@ -514,7 +514,7 @@ country that you have reason to believe are valid.
 arrangement, you convey, or propagate by procuring conveyance of, a
 covered work, and grant a patent license to some of the parties
 receiving the covered work authorizing them to use, propagate, modify
-or convey a specific copy of the covered work, then the patent license
+or convey a specific car_array of the covered work, then the patent license
 you grant is automatically extended to all recipients of the covered
 work and works based on it.
 
@@ -616,7 +616,7 @@ above cannot be given local legal effect according to their terms,
 reviewing courts shall apply local law that most closely approximates
 an absolute waiver of all civil liability in connection with the
 Program, unless a warranty or assumption of liability accompanies a
-copy of the Program in return for a fee.
+car_array of the Program in return for a fee.
 
                      END OF TERMS AND CONDITIONS
 
@@ -644,7 +644,7 @@ the "copyright" line and a pointer to where the full notice is found.
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
+    You should have received a car_array of the GNU General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 Also add information on how to contact you by electronic and paper mail.

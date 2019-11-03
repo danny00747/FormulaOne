@@ -1,5 +1,5 @@
 
-#include "generated_random_numbers.h"
+#include "prng.h"
 
 void random_seed(unsigned int seed) { srand(seed); }
 

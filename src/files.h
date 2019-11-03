@@ -2,7 +2,7 @@
 
 
 #include "child.h"
-#include "curses.h"
+#include "window.h"
 #include "time.h"
 #include "../lib/fort.h"
 #include <stdio.h>

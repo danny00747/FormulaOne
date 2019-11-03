@@ -6,7 +6,7 @@
 
 
 Circuit circuit;
-Voiture copy[20];
+F1_Car car_array[20];
 
 void save_ranking() {
     FILE *file = fopen(circuit.step_name, "w");
@@ -15,8 +15,8 @@ void save_ranking() {
 
     for (int i = 0; i < circuit.number_of_cars; i++) {
         char best_lap_str[10];
-        to_string(copy[i].best_lap_time, best_lap_str);
-        fprintf(file, "%d --> %s\n", copy[i].id, best_lap_str);
+        to_string(car_array[i].best_lap_time, best_lap_str);
+        fprintf(file, "%d --> %s\n", car_array[i].id, best_lap_str);
     }
 
     if (fclose(file) != 0) perror("fclose failed !"), exit(1);

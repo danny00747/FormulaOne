@@ -6,12 +6,12 @@
 
 
 Circuit circuit;
-Voiture copy[20];
+F1_Car car_array[20];
 
 
 int compare(const void *left, const void *right) {
-    const Voiture *process_a = (Voiture *) left;
-    const Voiture *process_b = (Voiture *) right;
+    const F1_Car *process_a = (F1_Car *) left;
+    const F1_Car *process_b = (F1_Car *) right;
 
     if (strcmp(circuit.step_name, "RACE")) {
         if (process_a->best_lap_time < process_b->best_lap_time)
@@ -44,7 +44,7 @@ void print_table() {
     ft_write_ln(table, "POSITION", "NAME", "S1", "S2", "S3", "OUT", "PIT", "LAP", "LAP TIME", "BEST LAP TIME");
 
     for (int i = 0; i < circuit.number_of_cars; i++) {
-        Voiture current = copy[i];
+        F1_Car current = car_array[i];
 
         char s1_str[10];
         to_string(current.s1, s1_str);
@@ -85,17 +85,17 @@ void print_table() {
     ft_set_cell_prop(second_table, 0, FT_ANY_COLUMN, FT_CPROP_CONT_FG_COLOR, FT_COLOR_CYAN);
 
     char s1_value[10];
-    to_string(copy[best_sector("S1")].best_s1, s1_value);
+    to_string(car_array[best_sector("S1")].best_s1, s1_value);
 
     char s2_value[10];
-    to_string(copy[best_sector("S2")].best_s2, s2_value);
+    to_string(car_array[best_sector("S2")].best_s2, s2_value);
 
     char s3_value[10];
-    to_string(copy[best_sector("S3")].best_s3, s3_value);
+    to_string(car_array[best_sector("S3")].best_s3, s3_value);
 
-    ft_printf_ln(second_table, "%s|%d|%s", "S1", copy[best_sector("S1")].id, s1_value);
-    ft_printf_ln(second_table, "%s|%d|%s", "S2", copy[best_sector("S2")].id, s2_value);
-    ft_printf_ln(second_table, "%s|%d|%s", "S3", copy[best_sector("S3")].id, s3_value);
+    ft_printf_ln(second_table, "%s|%d|%s", "S1", car_array[best_sector("S1")].id, s1_value);
+    ft_printf_ln(second_table, "%s|%d|%s", "S2", car_array[best_sector("S2")].id, s2_value);
+    ft_printf_ln(second_table, "%s|%d|%s", "S3", car_array[best_sector("S3")].id, s3_value);
 
     clear();
     printf("%s", ft_to_string(table));
@@ -105,49 +105,49 @@ void print_table() {
 }
 
 int best_sector(char sector[]) {
-    int best = 0;
-    int index = 0;
+    int best_sec = 0;
+    int id = 0;
     for (int i = 0; i < circuit.number_of_cars; i++) {
 
         if (!strcmp(sector, "S1")) {
-            if (best == 0 || copy[i].best_s1 < best) {
-                best = copy[i].best_s1;
-                index = i;
+            if (best_sec == 0 || car_array[i].best_s1 < best_sec) {
+                best_sec = car_array[i].best_s1;
+                id = i;
             }
         } else if (!strcmp(sector, "S2")) {
-            if (best == 0 || copy[i].best_s2 < best) {
-                best = copy[i].best_s2;
-                index = i;
+            if (best_sec == 0 || car_array[i].best_s2 < best_sec) {
+                best_sec = car_array[i].best_s2;
+                id = i;
             }
         } else if (!strcmp(sector, "S3")) {
-            if (best == 0 || copy[i].best_s3 < best) {
-                best = copy[i].best_s3;
-                index = i;
+            if (best_sec == 0 || car_array[i].best_s3 < best_sec) {
+                best_sec = car_array[i].best_s3;
+                id = i;
             }
         }
     }
-    return index;
+    return id;
 }
 
 int finished() {
     for (int i = 0; i < circuit.number_of_cars; ++i) {
-        if (copy[i].out) {
+        if (car_array[i].out) {
             return 1;
         }
     }
     return 0;
 }
 
-void display(sem_t *sem, Voiture *data) {
+void display(sem_t *sem, F1_Car *data) {
 
     init_window();
 
     while (1) {
         sem_wait(sem);
-        memcpy(copy, data, sizeof(Voiture) * circuit.number_of_cars);
+        memcpy(car_array, data, sizeof(F1_Car) * circuit.number_of_cars);
         sem_post(sem);
-        qsort(copy, circuit.number_of_cars, sizeof(Voiture), compare);
-        if (finished() || copy[9].done) {
+        qsort(car_array, circuit.number_of_cars, sizeof(F1_Car), compare);
+        if (finished() || car_array[9].done) {
             break;
         }
         print_table();

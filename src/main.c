@@ -8,7 +8,7 @@
 #include <unistd.h>
 
 Circuit circuit;
-Voiture *car;
+F1_Car *car;
 
 
 int car_names[NUMBER_OF_CARS] = {44, 77, 5, 7, 3, 33, 11, 31, 18, 35,
@@ -99,7 +99,7 @@ int main(int argc, char **argv) {
                                                                                                last_cars_of_Q2)
                                                                         : NULL;
     int struct_shm_id = shmget(
-            IPC_PRIVATE, sizeof(Voiture) * circuit.number_of_cars, 0600 | IPC_CREAT);
+            IPC_PRIVATE, sizeof(F1_Car) * circuit.number_of_cars, 0600 | IPC_CREAT);
     if (struct_shm_id == -1) {
         perror("shmget failed !");
         exit(1);

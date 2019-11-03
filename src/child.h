@@ -4,7 +4,7 @@
 #pragma once
 
 #include "time.h"
-#include "generated_random_numbers.h"
+#include "prng.h"
 #include <semaphore.h>
 #include <time.h>
 #include <sys/shm.h>
@@ -40,7 +40,7 @@ typedef struct Circuit {
 } Circuit;
 
 
-typedef struct Voiture {
+typedef struct F1_Car {
     int id;
     double lap_time;
     double s1;
@@ -54,11 +54,11 @@ typedef struct Voiture {
     int lap;
     int best_lap_time;
     int done;
-} Voiture;
+} F1_Car;
 
 void asciiArt();
 
-void child(sem_t *sem, Voiture *car, int *car_names);
+void child(sem_t *sem, F1_Car *car, int *car_names);
 
 void car_crash();
 
