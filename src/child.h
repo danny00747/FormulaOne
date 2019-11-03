@@ -20,17 +20,7 @@
 
 #define NUMBER_OF_CARS 20
 
-enum step {
-    P1, P2, P3, Q1, Q2, Q3, RACE
-};
-
-enum days {
-    fri, sat, sun
-};
-
 typedef struct Circuit {
-    enum step choosen_step;
-    enum days choosen_day;
     char *step_name;
     int step_total_time;
     int number_of_laps;

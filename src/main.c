@@ -61,17 +61,14 @@ int main(int argc, char **argv) {
     if (!strcmp(day_name, "fri")) {
         if (!strcmp(step_name, "P1")) {
             circuit.number_of_cars = 20;
-            circuit.choosen_step = P1;
             circuit.step_name = "P1";
             circuit.step_total_time = minutes_to_ms(90);
         } else if (!strcmp(step_name, "P2")) {
             circuit.number_of_cars = 20;
-            circuit.choosen_step = P2;
             circuit.step_name = "P2";
             circuit.step_total_time = minutes_to_ms(90);
         } else if (!strcmp(step_name, "P3")) {
             circuit.number_of_cars = 20;
-            circuit.choosen_step = P3;
             circuit.step_name = "P3";
             circuit.step_total_time = minutes_to_ms(60);
         } else {
@@ -80,18 +77,15 @@ int main(int argc, char **argv) {
     } else if (!strcmp(day_name, "sat")) {
         if (!strcmp(step_name, "Q1")) {
             circuit.number_of_cars = 20;
-            circuit.choosen_step = Q1;
             circuit.step_name = "Q1";
             circuit.step_total_time = minutes_to_ms(18);
         } else if (!strcmp(step_name, "Q2")) {
             circuit.number_of_cars = 15;
-            circuit.choosen_step = Q2;
             circuit.step_name = "Q2";
             circuit.step_total_time = minutes_to_ms(15);
             read_files(qualified_cars, race_ranking, last_cars_of_Q1, last_cars_of_Q2, "Q1", 15);
         } else if (!strcmp(step_name, "Q3")) {
             circuit.number_of_cars = 10;
-            circuit.choosen_step = Q3;
             circuit.step_name = "Q3";
             circuit.step_total_time = minutes_to_ms(12);
             read_files(qualified_cars, race_ranking, last_cars_of_Q1, last_cars_of_Q2, "Q2", 10);
@@ -101,7 +95,6 @@ int main(int argc, char **argv) {
     } else if (!strcmp(day_name, "sun")) {
         if (!strcmp(step_name, "RACE")) {
             circuit.number_of_cars = 20;
-            circuit.choosen_step = RACE;
             circuit.step_name = "RACE";
             circuit.step_total_time = minutes_to_ms(120);
             read_files(qualified_cars, race_ranking, last_cars_of_Q1, last_cars_of_Q2, "Q3", 10);
