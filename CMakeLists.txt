@@ -14,7 +14,7 @@ set(Sources
         src/time.c)
 
 set(Headers
-        lib/fort.h lib/fort.hpp
+        lib/fort.h
         src/child.h src/window.h src/display.h
         src/files.h src/prng.h src/time.h)
 

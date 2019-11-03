@@ -5,10 +5,10 @@ MIT License
 
 Copyright (c) 2017 - 2019 Seleznev Anton
 
-Permission is hereby granted, free of charge, to any person obtaining a car_array
+Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
-to use, car_array, modify, merge, publish, distribute, sublicense, and/or sell
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
 
@@ -368,7 +368,7 @@ int mk_wcswidth(const wchar_t *pwcs, size_t n);
 
 // This is free and unencumbered software released into the public domain.
 //
-// Anyone is free to car_array, modify, publish, use, compile, sell, or
+// Anyone is free to copy, modify, publish, use, compile, sell, or
 // distribute this software, either in source code form or as a compiled
 // binary, for any purpose, commercial or non-commercial, and by any
 // means.
@@ -596,7 +596,7 @@ int utf8casecmp(const void *src1, const void *src2)
         src1 = utf8codepoint(src1, &src1_cp);
         src2 = utf8codepoint(src2, &src2_cp);
 
-        // Take a car_array of src1 & src2
+        // Take a copy of src1 & src2
         src1_orig_cp = src1_cp;
         src2_orig_cp = src2_cp;
 
@@ -776,7 +776,7 @@ void *utf8dup(const void *src)
     const char *s = (const char *)src;
     char *n = utf8_null;
 
-    // figure out how many bytes (including the terminator) we need to car_array first
+    // figure out how many bytes (including the terminator) we need to copy first
     size_t bytes = utf8size(src);
 
     n = (char *)malloc(bytes);
@@ -787,7 +787,7 @@ void *utf8dup(const void *src)
     } else {
         bytes = 0;
 
-        // car_array src byte-by-byte into our new utf8 string
+        // copy src byte-by-byte into our new utf8 string
         while ('\0' != s[bytes]) {
             n[bytes] = s[bytes];
             bytes++;
@@ -963,7 +963,7 @@ int utf8ncasecmp(const void *src1, const void *src2, size_t n)
         src2 = utf8codepoint(src2, &src2_cp);
         n -= utf8codepointsize(src1_cp);
 
-        // Take a car_array of src1 & src2
+        // Take a copy of src1 & src2
         src1_orig_cp = src1_cp;
         src2_orig_cp = src2_cp;
 
@@ -1069,7 +1069,7 @@ void *utf8ndup(const void *src, size_t n)
     }
 
     // In case bytes is actually less than n, we need to set it
-    // to be used later in the car_array byte by byte.
+    // to be used later in the copy byte by byte.
     n = bytes;
 
     c = (char *)malloc(bytes + 1);
@@ -1080,7 +1080,7 @@ void *utf8ndup(const void *src, size_t n)
 
     bytes = 0;
 
-    // car_array src byte-by-byte into our new utf8 string
+    // copy src byte-by-byte into our new utf8 string
     while ('\0' != s[bytes] && bytes < n) {
         c[bytes] = s[bytes];
         bytes++;
@@ -2556,10 +2556,10 @@ MIT License
 
 Copyright (c) 2017 - 2018 Seleznev Anton
 
-Permission is hereby granted, free of charge, to any person obtaining a car_array
+Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
-to use, car_array, modify, merge, publish, distribute, sublicense, and/or sell
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
 
@@ -2682,7 +2682,7 @@ ft_table_t *ft_copy_table(ft_table_t *table)
         return NULL;
     }
 
-    /* todo: car_array conv_buffer  ??  */
+    /* todo: copy conv_buffer  ??  */
 
     result->cur_row = table->cur_row;
     result->cur_col = table->cur_col;
@@ -3622,7 +3622,7 @@ static void *custom_fort_realloc(void *ptr, size_t size)
         return NULL;
 
     /*
-     * In theory we should car_array MIN(size, size allocated for ptr) bytes,
+     * In theory we should copy MIN(size, size allocated for ptr) bytes,
      * but this is rather dummy implementation so we don't care about it
      */
     memcpy(new_chunk, ptr, size);
@@ -7161,7 +7161,7 @@ void vector_clear(f_vector_t *vector)
  *
  * Markus Kuhn -- 2007-05-26 (Unicode 5.0)
  *
- * Permission to use, car_array, modify, and distribute this software
+ * Permission to use, copy, modify, and distribute this software
  * for any purpose and without fee is hereby granted. The author
  * disclaims all warranties with regard to this software.
  *
