@@ -121,7 +121,6 @@ int main(int argc, char **argv) {
         }
     }
 
-
     !strcmp(circuit.step_name, "Q2") ? save_eliminated_cars("lastQ1", last_cars_of_Q1)
                                      : !strcmp(circuit.step_name, "Q3") ? save_eliminated_cars("lastQ2",
                                                                                                last_cars_of_Q2)
