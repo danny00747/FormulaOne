@@ -118,8 +118,8 @@ int main(int argc, char **argv) {
                                      : !strcmp(circuit.step_name, "Q3") ? save_eliminated_cars("lastQ2",
                                                                                                last_cars_of_Q2)
                                                                         : NULL;
-    int struct_shm_id = shmget(
-            IPC_PRIVATE, sizeof(F1_Car) * circuit.number_of_cars, 0600 | IPC_CREAT);
+
+    int struct_shm_id = shmget(IPC_PRIVATE, sizeof(F1_Car) * circuit.number_of_cars, 0600 | IPC_CREAT);
     if (struct_shm_id == -1) {
         perror("shmget failed !");
         exit(1);
