@@ -10,5 +10,5 @@ void terminate_window() { printf("\e[?7h\e[?25h\e[2J\e[;r\e[?1049l"); }
 void return_cursor() {
   clear();
   terminate_window();
-  exit(0);
+  exit(EXIT_SUCCESS);
 }

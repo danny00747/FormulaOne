@@ -158,7 +158,7 @@ int main(int argc, char **argv) {
     sem_t *sem = shmat(sem_shm_id, NULL, 0);
     if (sem == (void *) (-1)) {
         perror("shmat failed !");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     // init semaphore with 1 as initial value
@@ -195,6 +195,6 @@ int main(int argc, char **argv) {
     sem_destroy(sem);
     shmdt(sem);
     shmctl(sem_shm_id, IPC_RMID, NULL);
-    exit(0);
+    exit(EXIT_SUCCESS);
 
 }
