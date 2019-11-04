@@ -24,7 +24,6 @@ void save_ranking() {
 
 }
 
-
 void
 read_files(int qualified_cars[], int race_ranking[], int last_cars_of_Q1[], int last_cars_of_Q2[], char file_to_read[],
            int lines_to_read) {
@@ -100,7 +99,6 @@ void save_eliminated_cars(char file_to_save[], int array[]) {
     if (fclose(file) != 0)
         perror("fclose failed !"), exit(1);
 }
-
 
 void read_eliminated_cars(char file_to_read[], int array[]) {
 
