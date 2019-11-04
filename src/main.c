@@ -20,13 +20,28 @@ void print_usage() {
     printf("%s", "Usage: ./prog --day [dayName] --step [stepName]\n");
     printf("%s", "Usage: For race you can specify the lap length, by default it's 7km !\n");
     printf("%s", "Usage: ./prog --day [dayName] --step [stepName] --length [number]\n");
+    printf("%s", "Use the --help command for more information. \n");
     exit(EXIT_FAILURE);
+}
+
+void help (){
+    printf("%s\n\n", "These are some commands used to run this program.");
+    printf("%s\n", "For P sessions : \t There are run on fridays, use the --day command.");
+    printf("%s\n", "\t\t\t followed by a day name and which step needs to be runned for the P sessions.");
+    printf("%s\n\n", "\t\t\t --day fri --step P3 for instance.");
+    printf("%s\n", "For Q sessions : \t There are run on saturdays, use the --day command.");
+    printf("%s\n", "\t\t\t followed by a day name and which step needs to be runned for the Q sessions. \n");
+    printf("%s\n\n", "\t\t\t --day sat --step Q3 for instance.");
+    printf("%s\n", "For the RACE session : \t It's run on sundays, use the --day command.");
+    printf("%s\n", "\t\t\t followed by a day name. Here you can specify the race's lap length.");
+    printf("%s\n", "\t\t\t by default it's 7km, the --length command is optional.");
+    printf("%s\n\n", "\t\t\t --day sun --step RACE --length 10 for instance. ");
+    exit(EXIT_SUCCESS);
 }
 
 int main(int argc, char **argv) {
 
-    // (argc) ? print_usage() : 0;
-
+    //(argc) ? print_usage() : 0;
 
     signal(SIGINT, return_cursor);
 
@@ -39,11 +54,15 @@ int main(int argc, char **argv) {
     static struct option long_options[] = {{"day",    required_argument, NULL, 'd'},
                                            {"step",   required_argument, NULL, 's'},
                                            {"length", required_argument, NULL, 'l'},
+                                           {"help",   no_argument, 0,          'h'},
                                            {NULL, 0,                     NULL, 0}};
 
     char opt;
-    while ((opt = getopt_long(argc, argv, "d:s:l:", long_options, NULL)) != EOF) {
+    while ((opt = getopt_long(argc, argv, "hd:s:l:", long_options, NULL)) != EOF) {
         switch (opt) {
+            case 'h':
+                help();
+                break;
             case 'd':
                 strcpy(day_name, optarg);
                 break;
@@ -112,6 +131,8 @@ int main(int argc, char **argv) {
         } else {
             print_usage();
         }
+    } else {
+        print_usage();
     }
 
     !strcmp(circuit.step_name, "Q2") ? save_eliminated_cars("lastQ1", last_cars_of_Q1)
