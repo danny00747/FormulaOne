@@ -30,7 +30,7 @@ void help (){
     printf("%s\n", "\t\t\t followed by a day name and which step needs to be runned for the P sessions.");
     printf("%s\n\n", "\t\t\t --day fri --step P3 for instance.");
     printf("%s\n", "For Q sessions : \t There are run on saturdays, use the --day command.");
-    printf("%s\n", "\t\t\t followed by a day name and which step needs to be runned for the Q sessions. \n");
+    printf("%s\n", "\t\t\t followed by a day name and which step needs to be runned for the Q sessions.");
     printf("%s\n\n", "\t\t\t --day sat --step Q3 for instance.");
     printf("%s\n", "For the RACE session : \t It's run on sundays, use the --day command.");
     printf("%s\n", "\t\t\t followed by a day name. Here you can specify the race's lap length.");
@@ -40,8 +40,6 @@ void help (){
 }
 
 int main(int argc, char **argv) {
-
-    //(argc) ? print_usage() : 0;
 
     signal(SIGINT, return_cursor);
 
