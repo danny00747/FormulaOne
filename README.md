@@ -31,10 +31,10 @@ This a project of the lesson Operating Systems. (Unix) 2nd Bachelor at EPHEC
 
 ## How to run this program
 
-`./prog` followed by `--day` and the value of the day option `sat` for example. And finally `--step` 
+`./prog` followed by `--day` with it's value option `sat` for example. And `--step` 
  with it's value to specify which step that needs to be runned `Q1` for instance. 
  For race the user has the option to specify the lap `--length`, 
- by default it's 7Km
+ by default it's 7Km. The length command is optional. 
 
 >P1/P2/P3 for warmup
 >>
