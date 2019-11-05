@@ -25,7 +25,7 @@ void print_usage() {
 }
 
 void help (){
-    printf("%s\n\n", "These are some commands used to run this program.");
+    printf("\n%s\n\n", "These are some commands used to run this program.");
     printf("%s\n", "For P sessions : \t There are run on fridays, use the --day command.");
     printf("%s\n", "\t\t\t followed by a day name and which step needs to be runned for the P sessions.");
     printf("%s\n\n", "\t\t\t --day fri --step P3 for instance.");
