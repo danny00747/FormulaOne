@@ -84,15 +84,15 @@ int main(int argc, char **argv) {
             circuit.number_of_cars = 20;
             circuit.step_name = "P2";
             circuit.step_total_time = minutes_to_ms(90);
-        } else if (!strcmp(step_name, "P3")) {
-            circuit.number_of_cars = 20;
-            circuit.step_name = "P3";
-            circuit.step_total_time = minutes_to_ms(60);
-        } else {
+        }  else {
             print_usage();
         }
     } else if (!strcmp(day_name, "sat")) {
-        if (!strcmp(step_name, "Q1")) {
+        if (!strcmp(step_name, "P3")) {
+            circuit.number_of_cars = 20;
+            circuit.step_name = "P3";
+            circuit.step_total_time = minutes_to_ms(60);
+        } else if (!strcmp(step_name, "Q1")) {
             circuit.number_of_cars = 20;
             circuit.step_name = "Q1";
             circuit.step_total_time = minutes_to_ms(18);
@@ -161,7 +161,6 @@ int main(int argc, char **argv) {
         exit(EXIT_FAILURE);
     }
 
-    // init semaphore with 1 as initial value
     sem_init(sem, 1, 1);
 
     int i;

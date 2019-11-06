@@ -73,8 +73,6 @@ void print_table() {
     ft_set_cell_prop(table, 2, FT_ANY_COLUMN, FT_CPROP_CONT_FG_COLOR, FT_COLOR_LIGHT_BLUE);
     ft_set_cell_prop(table, 3, FT_ANY_COLUMN, FT_CPROP_CONT_FG_COLOR, FT_COLOR_LIGHT_YELLOW);
 
-    /* Second table */
-
     ft_table_t *second_table = ft_create_table();
     ft_write_ln(second_table, "SECTORS", "NAME", "TIME");
     ft_set_border_style(second_table, FT_DOUBLE2_STYLE);

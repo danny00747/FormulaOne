@@ -68,10 +68,8 @@ read_files(int qualified_cars[], int race_ranking[], int last_cars_of_Q1[], int 
 
 int findSize(char file_name[]) {
 
-    // opening the file in read mode
     FILE *file = fopen(file_name, "r");
 
-    // checking if the file exist or not
     if (file == NULL) {
         printf("%s : %s", circuit.step_name, "file not Found!\n");
         return -1;
@@ -79,7 +77,6 @@ int findSize(char file_name[]) {
 
     fseek(file, 0L, SEEK_END);
 
-    // calculating the size of the file
     int res = ftell(file);
     if (fclose(file) != 0) perror("fclose failed !"), exit(1);
     return res;
