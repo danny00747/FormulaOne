@@ -24,7 +24,7 @@ void print_usage() {
     exit(EXIT_FAILURE);
 }
 
-void help (){
+void help() {
     printf("\n%s\n\n", "These are some commands used to run this program.");
     printf("%s\n", "For P sessions : \t There are run on fridays, use the --day command.");
     printf("%s\n", "\t\t\t followed by a day name and which step needs to be runned for the P sessions.");
@@ -77,34 +77,22 @@ int main(int argc, char **argv) {
 
     if (!strcmp(day_name, "fri")) {
         if (!strcmp(step_name, "P1")) {
-            circuit.number_of_cars = 20;
-            circuit.step_name = "P1";
-            circuit.step_total_time = minutes_to_ms(90);
+            circuit = (Circuit) {.number_of_cars = 20, .step_name = "P1", .step_total_time = minutes_to_ms(90)};
         } else if (!strcmp(step_name, "P2")) {
-            circuit.number_of_cars = 20;
-            circuit.step_name = "P2";
-            circuit.step_total_time = minutes_to_ms(90);
-        }  else {
+            circuit = (Circuit) {.number_of_cars = 20, .step_name = "P2", .step_total_time = minutes_to_ms(90)};
+        } else {
             print_usage();
         }
     } else if (!strcmp(day_name, "sat")) {
         if (!strcmp(step_name, "P3")) {
-            circuit.number_of_cars = 20;
-            circuit.step_name = "P3";
-            circuit.step_total_time = minutes_to_ms(60);
+            circuit = (Circuit) {.number_of_cars = 20, .step_name = "P3", .step_total_time = minutes_to_ms(60)};
         } else if (!strcmp(step_name, "Q1")) {
-            circuit.number_of_cars = 20;
-            circuit.step_name = "Q1";
-            circuit.step_total_time = minutes_to_ms(18);
+            circuit = (Circuit) {.number_of_cars = 20, .step_name = "Q1", .step_total_time = minutes_to_ms(18)};
         } else if (!strcmp(step_name, "Q2")) {
-            circuit.number_of_cars = 15;
-            circuit.step_name = "Q2";
-            circuit.step_total_time = minutes_to_ms(15);
+            circuit = (Circuit) {.number_of_cars = 15, .step_name = "Q2", .step_total_time = minutes_to_ms(15)};
             read_files(qualified_cars, race_ranking, last_cars_of_Q1, last_cars_of_Q2, "Q1", 15);
         } else if (!strcmp(step_name, "Q3")) {
-            circuit.number_of_cars = 10;
-            circuit.step_name = "Q3";
-            circuit.step_total_time = minutes_to_ms(12);
+            circuit = (Circuit) {.number_of_cars = 10, .step_name = "Q3", .step_total_time = minutes_to_ms(12)};
             read_files(qualified_cars, race_ranking, last_cars_of_Q1, last_cars_of_Q2, "Q2", 10);
         } else {
             print_usage();
