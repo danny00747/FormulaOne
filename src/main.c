@@ -129,19 +129,19 @@ int main(int argc, char **argv) {
     int struct_shm_id = shmget(IPC_PRIVATE, sizeof(F1_Car) * circuit.number_of_cars, 0600 | IPC_CREAT);
     if (struct_shm_id == -1) {
         perror("shmget failed !");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     car = shmat(struct_shm_id, NULL, 0);
     if (car == (void *) (-1)) {
         perror("shmat failed !");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     int sem_shm_id = shmget(IPC_PRIVATE, sizeof(sem_t), 0600 | IPC_CREAT);
     if (sem_shm_id == -1) {
         perror("shmget failed !");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
     sem_t *sem = shmat(sem_shm_id, NULL, 0);
     if (sem == (void *) (-1)) {
@@ -162,7 +162,7 @@ int main(int argc, char **argv) {
     switch (pid) {
         case -1:
             fprintf(stderr, "fork failed !");
-            exit(-1);
+            exit(EXIT_FAILURE);
         case 0:
             (!strcmp(circuit.step_name, "Q2") || !strcmp(circuit.step_name, "Q3")) ?
             child(sem, &car[i], &qualified_cars[i]) : !strcmp(circuit.step_name, "RACE") ?
