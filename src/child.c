@@ -37,7 +37,7 @@ void child(sem_t *sem, F1_Car *car, int *car_names) {
 
         sem_wait(sem);
         vehicle->s1 = sector_range(30, 45, 10000000);
-        if (vehicle->best_s2 == 0 || vehicle->best_s1 > vehicle->s1) {
+        if (vehicle->best_s1 == 0 || vehicle->best_s1 > vehicle->s1) {
             vehicle->best_s1 = vehicle->s1;
         }
         car_crash();
