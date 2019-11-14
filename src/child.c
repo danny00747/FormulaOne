@@ -24,7 +24,6 @@ int msleep(unsigned int tms) {
     return usleep(tms * 1000);
 }
 
-
 void child(sem_t *sem, F1_Car *car, int *car_names) {
 
     random_seed(getpid());

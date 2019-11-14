@@ -90,9 +90,14 @@ void print_table() {
     char s3_time[10];
     to_string(car_array[best_sector("S3")].best_s3, s3_time);
 
+    char winner[10];
+    to_string(car_array[best_lap_time()].best_lap_time, winner);
+
     ft_printf_ln(second_table, "%s|%d|%s", "S1", car_array[best_sector("S1")].id, s1_time);
     ft_printf_ln(second_table, "%s|%d|%s", "S2", car_array[best_sector("S2")].id, s2_time);
     ft_printf_ln(second_table, "%s|%d|%s", "S3", car_array[best_sector("S3")].id, s3_time);
+    (!strcmp(circuit.step_name, "RACE")) ?
+    ft_printf_ln(second_table, "%s|%d|%.7s", "Winner", car_array[best_lap_time()].id, winner) : 0;
 
     clear();
     printf("%s", ft_to_string(table));
@@ -121,6 +126,18 @@ int best_sector(char sector[]) {
                 sector_number = car_array[i].best_s3;
                 id = i;
             }
+        }
+    }
+    return id;
+}
+
+int best_lap_time() {
+    int winner = 0;
+    int id = 0;
+    for (int i = 0; i < circuit.number_of_cars; i++) {
+        if (winner == 0 || car_array[i].best_lap_time < winner) {
+            winner = car_array[i].best_lap_time;
+            id = i;
         }
     }
     return id;
