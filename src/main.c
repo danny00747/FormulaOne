@@ -183,5 +183,4 @@ int main(int argc, char **argv) {
     shmdt(sem);
     shmctl(sem_shm_id, IPC_RMID, NULL);
     exit(EXIT_SUCCESS);
-
 }

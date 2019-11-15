@@ -45,19 +45,12 @@ void print_table() {
     for (int i = 0; i < circuit.number_of_cars; i++) {
         F1_Car current = car_array[i];
 
-        char sector1_time[10];
+        char sector1_time[10], sector2_time[10], sector3_time[10], lap_time[10], best_lap_time[10];
+
         to_string(current.s1, sector1_time);
-
-        char sector2_time[10];
         to_string(current.s2, sector2_time);
-
-        char sector3_time[10];
         to_string(current.s3, sector3_time);
-
-        char lap_time[10];
         to_string(current.lap_time, lap_time);
-
-        char best_lap_time[10];
         to_string(current.best_lap_time, best_lap_time);
 
         ft_printf_ln(table, "%d|%d|%.6s|%.6s|%.6s|%d|%d|%d|%.7s|%.7s", i + 1,
@@ -81,16 +74,11 @@ void print_table() {
     ft_set_cell_prop(second_table, 0, FT_ANY_COLUMN, FT_CPROP_CELL_TEXT_STYLE, FT_TSTYLE_BOLD);
     ft_set_cell_prop(second_table, 0, FT_ANY_COLUMN, FT_CPROP_CONT_FG_COLOR, FT_COLOR_CYAN);
 
-    char s1_time[10];
+    char s1_time[10], s2_time[10], s3_time[10], winner[10];
+
     to_string(car_array[best_sector("S1")].best_s1, s1_time);
-
-    char s2_time[10];
     to_string(car_array[best_sector("S2")].best_s2, s2_time);
-
-    char s3_time[10];
     to_string(car_array[best_sector("S3")].best_s3, s3_time);
-
-    char winner[10];
     to_string(car_array[best_lap_time()].best_lap_time, winner);
 
     ft_printf_ln(second_table, "%s|%d|%s", "S1", car_array[best_sector("S1")].id, s1_time);
@@ -107,8 +95,7 @@ void print_table() {
 }
 
 int best_sector(char sector[]) {
-    int sector_number = 0;
-    int id = 0;
+    int sector_number = 0, id = 0;
     for (int i = 0; i < circuit.number_of_cars; i++) {
 
         if (!strcmp(sector, "S1")) {
@@ -132,8 +119,7 @@ int best_sector(char sector[]) {
 }
 
 int best_lap_time() {
-    int winner = 0;
-    int id = 0;
+    int winner = 0, id = 0;
     for (int i = 0; i < circuit.number_of_cars; i++) {
         if (winner == 0 || car_array[i].best_lap_time < winner) {
             winner = car_array[i].best_lap_time;

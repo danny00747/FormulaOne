@@ -12,7 +12,7 @@ void save_ranking() {
 
     FILE *file = fopen(circuit.step_name, "w");
 
-    if (file == NULL) perror("fopen failed !"), exit(1);
+    if (file == NULL) perror("fopen failed !"), exit(EXIT_FAILURE);;
 
     for (int i = 0; i < circuit.number_of_cars; i++) {
         char best_lap_str[10];
@@ -20,8 +20,7 @@ void save_ranking() {
         fprintf(file, "%d --> %s\n", car_array[i].id, best_lap_str);
     }
 
-    if (fclose(file) != 0) perror("fclose failed !"), exit(1);
-
+    if (fclose(file) != 0) perror("fclose failed !"), exit(EXIT_FAILURE);;
 }
 
 void
@@ -41,7 +40,7 @@ read_files(int qualified_cars[], int race_ranking[], int last_cars_of_Q1[], int 
     sprintf(command_file_path_name, "egrep -o '^[0-9]{1,2}' '%s'", file_path_name);
 
     cmd = popen(command_file_path_name, "r");
-    if (cmd == NULL) perror("popen failed !"), exit(1);
+    if (cmd == NULL) perror("popen failed !"), exit(EXIT_FAILURE);;
 
     int i = 0, j = 0, k = 0;
     while (fgets(result, sizeof(result), cmd)) {
@@ -63,7 +62,7 @@ read_files(int qualified_cars[], int race_ranking[], int last_cars_of_Q1[], int 
         }
     }
 
-    if (pclose(cmd) != 0) perror("pclose failed !"), exit(1);
+    if (pclose(cmd) != 0) perror("pclose failed !"), exit(EXIT_FAILURE);;
 }
 
 int findSize(char file_name[]) {
@@ -78,7 +77,7 @@ int findSize(char file_name[]) {
     fseek(file, 0L, SEEK_END);
 
     int res = ftell(file);
-    if (fclose(file) != 0) perror("fclose failed !"), exit(1);
+    if (fclose(file) != 0) perror("fclose failed !"), exit(EXIT_FAILURE);;
     return res;
 }
 
@@ -87,14 +86,14 @@ void save_eliminated_cars(char file_to_save[], int array[]) {
     FILE *file = fopen(file_to_save, "w");
 
     if (file == NULL)
-        perror("fopen failed !"), exit(1);
+        perror("fopen failed !"), exit(EXIT_FAILURE);;
 
     for (int i = 0; i < 5; i++) {
         fprintf(file, "%d\n", array[i]);
     }
 
     if (fclose(file) != 0)
-        perror("fclose failed !"), exit(1);
+        perror("fclose failed !"), exit(EXIT_FAILURE);;
 }
 
 void read_eliminated_cars(char file_to_read[], int array[]) {
@@ -103,7 +102,7 @@ void read_eliminated_cars(char file_to_read[], int array[]) {
 
     FILE *file = fopen(file_to_read, "r");
 
-    if (file == NULL)perror("fopen failed !"), exit(1);
+    if (file == NULL)perror("fopen failed !"), exit(EXIT_FAILURE);;
 
     int i = 15, j = 10;
     while (fgets(results, sizeof(results), file)) {
@@ -120,5 +119,5 @@ void read_eliminated_cars(char file_to_read[], int array[]) {
     }
 
     if (fclose(file) != 0)
-        perror("fclose failed !"), exit(1);
+        perror("fclose failed !"), exit(EXIT_FAILURE);;
 }
