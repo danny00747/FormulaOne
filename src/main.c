@@ -26,9 +26,9 @@ void print_usage() {
 
 void help() {
     printf("\n%s\n\n", "These are some commands used to run this program.");
-    printf("%s\n", "For P sessions : \t There are run on fridays, use the --day command.");
+    printf("%s\n", "For P sessions : \t There are run on fridays & P3 on sat. Use the --day command.");
     printf("%s\n", "\t\t\t followed by a day name and which step needs to be runned for the P sessions.");
-    printf("%s\n\n", "\t\t\t --day fri --step P3 for instance.");
+    printf("%s\n\n", "\t\t\t --day fri --step P2 for instance.");
     printf("%s\n", "For Q sessions : \t There are run on saturdays, use the --day command.");
     printf("%s\n", "\t\t\t followed by a day name and which step needs to be runned for the Q sessions.");
     printf("%s\n\n", "\t\t\t --day sat --step Q3 for instance.");
