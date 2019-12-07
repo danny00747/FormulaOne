@@ -39,9 +39,7 @@ This a project of the lesson Operating Systems. (Unix) 2nd Bachelor at EPHEC
 
 >P1/P2/P3 for warmup
 >>
->>``` ./prog --day fri --step P2 ```
-
->Q1/Q2/Q3 : for qualifications
+>>``` ./prog --day fri --step P2Q1/Q2/Q3 : for qualifications
 >>
 >>``` ./prog --day sat --step Q1 ```
 

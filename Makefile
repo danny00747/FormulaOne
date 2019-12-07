@@ -10,6 +10,8 @@ compile: $(EXE)
 
 $(EXE):	$(SRC) $(LIBS)
 	@$(CC) $^ $(CFLAGS) -o $@
+	@echo
+	@echo "Build finished."
 
 format:
 	clang-format -i $(SRC)
