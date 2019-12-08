@@ -1,134 +1,3 @@
----
-title: "Rapport de projet \"Formule 1\" Groupe 4"
-subtitle: "OS travaux pratiques"
-author:
-- Daniel Olivier
-- Martin Michotte
-- Morgan Valentin
-- Martin Perdaens
-date: 07 dec 2019
-lang: fr
-papersize: a4
-fontsize: 12pt
-whitespace: small
-margin-top: 1cm
-margin-left: 1.75cm
-margin-right: 1.75cm
-margin-bottom: 1cm
-subject: Rapport de projet de programmation en C de Formule 1
-keywords: [OS, Projet, Formule 1, F1, développement, C, EPHEC, 2TI]
-titlepage: true
-titlepage-rule-height: 6
-titlepage-rule-color: "ef4524"
-titlepage-text-color: "343434"
-logo: "logoo.png"
-logo-width: 400
-toc: true
-toc-won-page: true
-toc-title: Table des matières 
----
-
-\pagebreak
-
-Rapport du projet : F1-of-Linux
-===============================
-
-**Groupe 4**
-
-Notre groupe est constitué de 4 personnes :
-
-- Daniel Olivier
-- Martin Michotte
-- Morgan Valentin
-- Martin Perdaens
-
-Introduction et présentation du projet
---------------------------------------
-
-Ce projet consiste à présenter un week-end complet d'un grand prix de Formule 1, depuis les séances d'essais du vendredi jusqu'à la course du dimanche, en passant par les essais du samedi et la séance de qualifications.
-
-Notre but consiste à reproduire cela dans un langage de programmation performant à l'exécution des méthodes implémentées, le langage C.
-Nous devons générer un affichage qui gèrera les séances d'essais libres, les qualifications ainsi que la course.
-De plus, certaines informations doivent être disponible : temps au tour, temps secteur, disqualification, arrêt aux stands, temps depuis le début de la course.
-
-De plus, nous devons appliquer des concepts vus en cours en première année ainsi qu'en deuxième : processus père-fils (dont `fork` est la création d'un nouveau processus utilisateur), sémaphores (pour gérer la synchronisation des processus) et la mémoire partagée (allocation et utilisation par appel des mémoires partagées via leurs identificateurs).
-
-\pagebreak
-
-Cahier des charges
-------------------
-
-Nous voulons organiser un grand prix contenant 20 voitures, à la manière de la Formule 1.
-Leurs numéros sont : 44, 77, 5, 7, 3, 33, 11, 31, 18, 35, 27, 55, 10, 28, 8, 20, 2, 14, 9, 16.
-
-Un circuit de F1 est divisé en 3 secteurs (S1, S2, S3).
-
-Le calendrier d’un week-end de Formule 1 est établi de la manière suivante :
-
-- Vendredi matin, une séance d’essais libres d'une durée de 1h30 (P1)
-- Vendredi après-midi, une deuxième séance d’essais libres d'une durée de 1h30 (P2)
-- Samedi matin, une troisième et dernière séance d’essais libres d'une durée de 1h (P3)
-- Samedi après-midi, une séance de qualifications est organisée et divisée en 3 parties :
-  - Q1, d'une durée 18 minutes et visant à éliminer les 5 dernières voitures qui occuperont les places 16 à 20 sur la grille de départ de la course en fonction de leur meilleur temps au tour,
-  - Q2, d'une durée 15 minutes, qui éliminera les 5 dernières voitures suivantes et qui occuperont les places 11 à 16 sur la grille de départ de la course en fonction de leur meilleur temps au tour,
-  - Q3, d'une durée 12 minutes et permettant de classer les 10 voitures restantes pour établir les 10 premières places sur la grille de départ de la course en fonction de leur meilleur temps au tour.
-- Dimanche après-midi, la course en elle-même visant à obtenir un podium ainsi qu'un classement général typique des courses de voitures.
-
-Ce projet devra prendre en charge plusieurs particularités qui seront développées dans les points ci-dessous.
-
-### Première partie : gestion des séances d’essai, qualifications et course
-
-#### Lors des séances d’essais (P1, P2, P3) :
-
-Il est nécessaire de relever les temps dans les différents secteurs (au nombre de 3) à chaque passage de chacune des voitures.
-
-De plus, dans l'affichage des séances d'essais, il est important de connaître le meilleur temps à chaque secteur ainsi que d'autres informations pertinentes comme si la voiture est au stand (PIT) ou si elle abandonne la séance (OUT).
-Malgré que les voitures soient au stand où ait abandonné la séance, on conserve toujours le meilleur temps de la voiture ainsi que son classement.
-
-Pendant la séance d'essais, le classement des voitures se fait en fonction de leur tour complet le plus rapide.
-À la fin des séances d'essais, on conserve le classement final.
-
-#### Lors des qualifications (Q1, Q2, Q3) :
-
-Lors des qualifications,le temps des 3 secteurs à chaque passage pour chaque voiture est à relever.
-
-De plus, dans l'affichage des qualifications, il est important de connaître le meilleur temps à chaque secteur ainsi que d'autres informations pertinentes comme si la voiture est au stand (PIT) ou si elle abandonne la séance (OUT).
-Malgré que les voitures soient au stand où ait abandonné la séance, on conserve toujours le meilleur temps de la voiture ainsi que son classement.
-
-Le classement des voitures se fait en fonction de leur tour complet le plus rapide.
-
-La particularité avec les qualifications est un temps réduit et l'importance de conserver le classement de chacune des séances afin d'en définir l'ordre de départ de la course.
-
-- À la fin de la première qualification, 15 voitures resteront qualifiées pour la 2ème séance et les 5 dernières sont placées à la fin de la grille de départ (places 16 à 20),
-- À la fin de la deuxième qualification, il reste 10 voitures qualifiées pour la 3ème séance et les 5 dernières sont placées dans les places 11 à 15 de la grille de départ,
-- Le classement de la troisième qualification attribue les places 1 à 10 de la grille de départ.
-
-#### Lors de la course :
-
-L'affichage de la course présente le classement de l'ordre sur la grille de départ.
-Le classement doit toujours être maintenu durant la course, même s'il y a des dépassements.
-Il est important de savoir qui a le meilleur temps dans chacun des secteurs et également qui a le tour le plus rapide.
-
-Comme pour les essais libres et les qualifications, il est nécessaire de relever les temps dans les différents secteurs à chaque passage de chacune des voitures.
-
-- Si une voiture est en abandon de course (out), elle sera classée en fin de classement.
-- Si la voiture est aux stands (PIT), le temps au stand est comptabilisé dans son temps et elle ressort à sa place dans la course.
-Par ailleurs, pour ce point, il y a généralement 2 ou 3 PIT par voiture par course.
-
-À la fin de la course, on conserve le classement final et le tour le plus rapide.
-
-**_Remarque :_ les stands se trouvent toujours dans le secteur 3.**
-
-De plus, il est demandé de paramétrer le programme.
-En effet, les circuits peuvent être de longueur variable et le nombre de tours pour la course varie également (on essaie que le nombre total de kilomètres soit toujours plus ou moins le même pour chacune des courses du calendrier).
-
-#### On vous demande de :
-
-- Réaliser le programme en C sous Linux;
-- Utiliser la mémoire partagée comme moyen de communication interprocessus;
-- Utiliser les sémaphores pour synchroniser l’accès à la mémoire partagée.
-
-\pagebreak
 
 Explication des particularités du code
 --------------------------------------
@@ -152,6 +21,21 @@ Ce fichier sera chargé lors de l'étape suivante afin de déterminer les partic
 
 ### Mémoire partagée et communication entre processus
 
+La mémoire partagée est un moyen efficace de transférer des données entre processus
+indépendants (issus de programmes binaires séparés, de propriétaires différents). Il s’agit
+d’un ensemble d’adresses (perçu sous la forme d’un bloc d'octets) apparaissant dans
+l’espace d’adressage du processus qui le crée. Les autres processus pouvant alors
+« attacher » le même segment de mémoire partagée dans leur propre espace d’adressage
+(virtuel).
+
+Si un processus écrit dans la mémoire partagée, la modification est immédiatement perçue
+par tout autre processus ayant accès à cette mémoire partagée.
+
+La mémoire partagée ne dispose d’aucun dispositif de synchronisation. Rien ne permet de
+veiller automatiquement à ce qu’un processus ne puisse commencer à lire la mémoire alors
+qu’un autre processus n’y a pas terminé son écriture : c’est au programmeur de régler
+l’accès à cette ressource commune aux processus ayant accès à cette mémoire partagée.
+
 La mémoire partagée contient un tableau de structure comportant les informations de secteurs entre autres choses.
 
 ```c
@@ -173,10 +57,12 @@ typedef struct F1_Car {
 ```
 
 - `shmget` (cle,taille,flag) retourne l’identificateur d’un segment à partir de sa clé(cle) ou -1 en cas d’échec. 
-Le segment sera créé s’il n’existait pas encore. On peut utiliser la clé IPC_PRIVATE pour la création quand il n’est pas utile ensuite d’acquérir l’identificateur. 
-Le paramètre taille donne le nombre d’octets du segment (s’il a déjà été créé, la taille doit être inférieure ou égale à la taille de création). 
-Le paramètre option est une combinaison (par OU bit à bit) de constantes (telles que IPC_CREAT pour la création) et de droits d’accès (comme 0666). 
-Par exemple pour créer un segment on utilisera typiquement l’option IPC_CREAT|0666, et pour l’acquisition simplement 0666
+Le segment sera créé s’il n’existait pas encore. On peut utiliser la clé IPC_PRIVATE pour la création quand 
+il n’est pas utile ensuite d’acquérir l’identificateur. Le paramètre taille donne le nombre d’octets du segment 
+(s’il a déjà été créé, la taille doit être inférieure ou égale à la taille de création). 
+Le paramètre option est une combinaison (par OU bit à bit) de constantes (telles que IPC_CREAT pour la création) 
+et de droits d’accès (comme 0666). Par exemple pour créer un segment on utilisera typiquement l’option IPC_CREAT|0666, 
+et pour l’acquisition simplement 0666. 
 
 ```c
 #include <sys/types.h>
@@ -215,6 +101,22 @@ void *shmat(int shmid, void *shmaddr, int shmflg);
     }
 ```
 
+Dans notre cas, la mémoire partagée n'est accédée ou modifiée qu'avec un seul "écrivain" et un seul "lecteur" à la fois; il n'y aura jamais plus d'une écriture et lecture en même temps.
+Ici, chaque processus fils est un écrivain alors que le lecteur est le processus père.
+
+La sémaphore nous permettent de garantir l'accès exclusif à la mémoire partagée.
+Les opérations `sem_wait(sem_t *sem)` et `sem_post(sem_t *sem)` permettent respectivement de verrouiller et déverrouiller une sémaphore.
+
+### Libération des ressources de l'ordinateur
+
+Afin de libérer les ressources de l'ordinateur, plusieurs étapes sont réalisées une fois que les processus 
+enfants ont terminé leur fonction et que le programme est prêt à quitter.
+
+Premièrement, il y a "destruction" de la sémaphore par le biais de l'opération `sem_destroy(sem_t *sem)`.
+
+Ensuite, on se détache des zones de mémoire partage et ensuite on les supprime.
+
+
 - `shmdt` (adresse) sert à détacher le segment attaché à l’adresse passée en paramètre. Retourne 0 en cas de succès, ou -1 en cas d’échec.
 Lorsqu'un processus n'utilise plus un segment de mémoire partagée, il peut le détacher de son espace adresses par shmdt. Attention, l'argument de shmdt est l'adresse à laquelle le segment a été attaché, pas le semid du segment!
 shmdt ne détruit pas le segment. Pour cela, il faut utiliser shmctl.
@@ -230,32 +132,14 @@ int shmdt(void *shmaddr);
 shmdt(car);
 ```
 
-Dans notre cas, la mémoire partagée n'est accédée ou modifiée qu'avec un seul "écrivain" et un seul "lecteur" à la fois; il n'y aura jamais plus d'une écriture et lecture en même temps.
-Ici, chaque processus fils est un écrivain alors que le lecteur est le processus père.
-
-La sémaphore nous permettent de garantir l'accès exclusif à la mémoire partagée.
-Les opérations `sem_wait(sem_t *sem)` et `sem_post(sem_t *sem)` permettent respectivement de verrouiller et déverrouiller une sémaphore.
-
-### Libération des ressources de l'ordinateur
-
-Afin de libérer les ressources de l'ordinateur, plusieurs étapes sont réalisées une fois que les processus enfants ont terminé leur fonction et que le programme est prêt à quitter.
-
-Premièrement, il y a "destruction" de la sémaphore par le biais de l'opération `sem_destroy(sem_t *sem)`.
-
-Ensuite, on se détache des zones de mémoire partage et ensuite on les supprime.
-
 ```c
-shmdt(data);
+shmdt(car);
 shmctl(struct_shm_id, IPC_RMID, NULL);
 
 sem_destroy(sem);
 shmdt(sem);
 shmctl(sem_shm_id, IPC_RMID, NULL);
 ```
-
-<!-- Pour ce faire, nous commençons par les détachements puis ensuite la suppression des id dans la mémoire partagée.
-Ensuite, on "détruit" le segment de mémoire partagée allouée tout comme les structures de données associées avec.
-Pour ce faire, nous utilisons l'opération `int shmdt(const void *shmaddr)` pour séparer la mémoire partagée puis `int shmctl(int shmid, IPC_RMID, NULL)` pour supprimer l'ID et détruire le segment de mémoire partagée. -->
 
 ### Création et gestion des processus
 
@@ -337,7 +221,7 @@ Cela correspondrait bien plus à une course de Formule 1 en condition réelle.
 \pagebreak
 
 Conclusion
-----------
+=============
 
 L'avantage de ce projet est l'application de concepts multiples vue en cours théorique au courant du premier quadrimestre.
 Cela nous a permis de comprendre plus concrètement ce que ces concepts permettent de faire (allocation d'une zone mémoire, appel d'une zone mémoire, sémaphores, algorithmes, fork, etc.).
