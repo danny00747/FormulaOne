@@ -2,11 +2,10 @@
 title: "Rapport de projet \"Formule 1\" Groupe 4"
 subtitle: "OS travaux pratiques"
 author:
-- Daniel Olivier
-- Martin Michotte
-- Morgan Valentin
-- Martin Perdaens
-date: 07 dec 2019
+- Daniel O.
+- Martin M.
+- Morgan V.
+- Martin P.
 lang: fr
 papersize: a4
 fontsize: 12pt
@@ -22,8 +21,8 @@ titlepage: true
 titlepage-rule-height: 6
 titlepage-rule-color: "ef4524"
 titlepage-text-color: "343434"
-logo: "backgrounds/background1.jpg"
-logo-width: 400
+titlepage-background: "backgrounds/backkk.jpg"
+date: 07 dec 2019
 toc: true
 toc-won-page: true
 toc-title: Table des matières 

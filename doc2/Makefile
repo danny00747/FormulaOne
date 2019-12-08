@@ -8,7 +8,6 @@ CODE_MD = $(REPORT_IN_DIR)/06_code.md
 REPORT_IN = $(filter-out $(CODE_MD), $(sort $(REPORT_IN_DIR)/*.md))
 REPORT_OUT=report.pdf
 
-
 .PHONY: report
 
 report: $(REPORT_OUT)
