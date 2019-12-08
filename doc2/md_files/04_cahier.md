@@ -45,7 +45,7 @@ Votre projet devra prendre en charge les choses suivantes.
 - [x] A la fin de Q1, il reste 15 voitures qualifiées pour Q2 et les 5 dernières sont placées à la fin de la grille de départ (places 16 à 20)
 - [x] A la fin de Q2, il reste 10 voitures qualifiées pour Q3 et les 5 dernières sont placées dans les places 11 à 15 de la grille de départ
 - [x] Le classement de Q3 attribue les places 1 à 10 de la grille de départ
-- [x] Conserver le classement final à la fin des 3 séances (ce sera l’ordre de départ pour la course)
+- [x] Conserver le classement final à la fin des 3 séances (ce sera l’ordre de départ pour la course).
 
 ##### Lors de la course :
 

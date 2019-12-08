@@ -57,25 +57,30 @@ typedef struct F1_Car {
 } F1_Car;
 ```
 
-- `shmget` (cle,taille,flag) retourne l’identificateur d’un segment à partir de sa clé(cle) ou -1 en cas d’échec. 
-Le segment sera créé s’il n’existait pas encore. On peut utiliser la clé IPC_PRIVATE pour la création quand 
-il n’est pas utile ensuite d’acquérir l’identificateur. Le paramètre taille donne le nombre d’octets du segment 
-(s’il a déjà été créé, la taille doit être inférieure ou égale à la taille de création). 
-Le paramètre option est une combinaison (par OU bit à bit) de constantes (telles que IPC_CREAT pour la création) 
-et de droits d’accès (comme 0666). Par exemple pour créer un segment on utilisera typiquement l’option IPC_CREAT|0666, 
-et pour l’acquisition simplement 0666. 
+Sous Linux, la mémoire partagée peut s’utiliser via les appels systèmes `shmget`, `shmat` et `shmdt`. 
+L’appel système `shmget` permet de créer un segment de mémoire partagée. Le premier argument de `shmget` est une clé 
+qui identifie le segment de mémoire partagée. Cette clé est en pratique encodée sous la forme d’un entier qui 
+identifie le segment de mémoire partagée. Elle sert d’identifiant du segment de mémoire partagée dans le noyau. 
+Un processus doit connaître la clé qui identifie un segment de mémoire partagée pour pouvoir y accéder. 
+On utilise la clé IPC_PRIVATE pour la création de ce dernier. Le deuxième argument de `shmget` donne le nombre d’octets 
+du segment. Enfin, le troisième argument est une combinaison (par OU bit à bit) de constantes 
+(telles que IPC_CREAT pour la création) et de droits d’accès (comme 0666). Par exemple pour créer un segment on utilisera 
+typiquement l’option IPC_CREAT|0666, et pour l’acquisition simplement 0666.
 
 ```c
-#include <sys/types.h>
 #include <sys/ipc.h>
 #include <sys/shm.h>
 
-int shmget(key_t key, int size, int shmflg);
+int shmget(key_t key, size_t size, int shmflg);
 ```
+
+L’appel système `shmget` retourne un entier qui identifie le segment de mémoire partagée à l’intérieur du processus 
+si il réussit et -1 sinon. Il est important de noter que si l’appel à`shmget` réussit, cela indique que le processus 
+dispose des permissions pour accéder au segment de mémoire partagée, mais à ce stade il n’est pas accessible depuis la table 
+des pages du processus. 
 
 ```c
 F1_Car *car;
-
   int struct_shm_id = shmget(IPC_PRIVATE, sizeof(F1_Car) * circuit.number_of_cars, 0600 | IPC_CREAT);
     if (struct_shm_id == -1) {
         perror("shmget failed !");
@@ -83,17 +88,21 @@ F1_Car *car;
     }
 ```
 
-- `shmat` (identificateur,NULL,option) sert à attacher un segment, c’est à dire à obtenir une fois que l’on connaît son identificateur, un pointeur vers la zone de mémoire partagée. L’option sera SHM_RDONLY pour un segment en lecture seule ou 0 pour un segment
-en lecture/écriture. Cette primitive retourne l’adresse de la zone de mémoire partagée ou (void *)(-1) en cas d’échec
+Cette modification à la table des pages du processus se fait en utilisant `shmat`. Cet appel 
+système permet d’attacher un segment de mémoire partagée à un processus. Il prend comme premier argument l’identifiant 
+du segment de mémoire retourné par `shmget`. Le deuxième argument est un pointeur vers la zone mémoire via laquelle le segment 
+doit être accessible dans l’espace d’adressage virtuel du processus. Généralement, c’est la valeur NULL qui est spécifiée 
+comme second argument et le noyau choisit l’adresse à laquelle le segment de mémoire est attaché dans le processus. 
+Il est aussi possible de spécifier une adresse dans l’espace d’adressage du processus. Le troisième argument permet, 
+en utilisant le drapeau SHM_RDONLY, d’attacher le segment en lecture seule ou 0 pour un segment en lecture/écriture. 
+`shmat` retourne l’adresse à laquelle le segment a été attaché en cas de succès et (void *) -1 en cas d’erreur.
 
 ```c
 #include <sys/types.h>
-#include <sys/ipc.h>
 #include <sys/shm.h>
- 
-void *shmat(int shmid, void *shmaddr, int shmflg);
-```
 
+void *shmat(int shmid, const void *shmaddr, int shmflg);
+```
 ```c
    car = shmat(struct_shm_id, NULL, 0);
     if (car == (void *) (-1)) {
@@ -102,54 +111,121 @@ void *shmat(int shmid, void *shmaddr, int shmflg);
     }
 ```
 
-Dans notre cas, la mémoire partagée n'est accédée ou modifiée qu'avec un seul "écrivain" et un seul "lecteur" à la fois; il n'y aura jamais plus d'une écriture et lecture en même temps.
-Ici, chaque processus fils est un écrivain alors que le lecteur est le processus père.
+### Sémaphores 
 
-La sémaphore nous permettent de garantir l'accès exclusif à la mémoire partagée.
-Les opérations `sem_wait(sem_t *sem)` et `sem_post(sem_t *sem)` permettent respectivement de verrouiller et déverrouiller une sémaphore.
+La notion de sémaphore est implémentée dans la plupart des systèmes d'exploitation. Il s'agit d'un concept fondamental 
+car il permet une solution à la plupart des problèmes d'exclusion.
+
+Un sémaphore est un mécanisme empêchant deux processus ou plus d'accéder simultanément à une ressource partagée.
+Sur les voies ferrées, un sémaphore empêche deux trains d'entrer en collision sur un tronçon de voie commune.
+Sur les voies ferrées comme dans les ordinateurs, les sémaphores ne sont qu'indicatifs : si un machiniste ne voit pas 
+le signal ou ne s'y conforme pas, le sémaphore ne pourra éviter la collision.
+
+De même si un processus ne teste pas un sémaphore avant d'accéder à une ressource partagée, le chaos peut en résulter.
+Un sémaphore binaire n'a que deux états :
+
+- 0 verrouillé (ou occupé).
+- 1 déverrouillé (ou libre).
+
+Quand il vaut zéro, un processus tentant de l'acquérir doit attendre qu'un autre processus ait augmenté sa valeur 
+car le sémaphore ne peut jamais devenir négatif. Dans le cas de notre projet on utilise les sémaphores POSIX qui sont disponibles 
+dans la librairie standard C (GNU). La glibc offre donc une implémentation des sémaphores.
+
+Dans notre projet on utilise les fonctions suivantes de la librairie pour gérer un sémaphore de type `sem_t` : 
+
+```c
+#include <semaphore.h>
+
+int sem_init(sem_t *sem, int pshared, unsigned int value);
+int sem_destroy(sem_t *sem);
+int sem_wait(sem_t *sem);
+int sem_post(sem_t *sem);
+```
+
+Pour pouvoir utiliser un sémaphore, il faut d’abord l’initialiser. Cela se fait en utilisant la fonction `sem_init`
+qui prend comme premier argument un pointeur vers le sémaphore à initialiser, deuxième argument pshared indique si ce 
+sémaphore sera partagé  entre les threads d'un processus ou entre processus. Si pshared vaut 0, le sémaphore est partagé entre 
+les threads d'un processus si non c'est entre les processus. Enfin, le troisième argument value spécifie la valeur 
+initiale du sémaphore. 
+
+Les deux principales fonctions de manipulation des sémaphores sont `sem_wait` et `sem_post`. 
+
+- `sem_wait()` décrémente (verrouille) le sémaphore pointé par sem. Si la valeur du sémaphore est plus grande que 0,
+la décrémentation s'effectue et la fonction revient immédiatement. Si le sémaphore vaut zéro, l'appel bloquera jusqu'à 
+ce que soit il devienne disponible pour effectuer la décrémentation (c'est-à-dire la valeur du sémaphore n'est plus nulle), 
+soit un gestionnaire de signaux interrompe l'appel.
+
+- `sem_post()` incrémente (déverrouille) le sémaphore pointé par sem. Si, à la suite de cet incrément, la valeur du sémaphore 
+devient supérieure à zéro, un autre processus ou thread bloqué dans un appel `sem_wait()` sera réveillé et procédera 
+au verrouillage du sémaphore.
+
+Ces deux opérations sont bien entendu des opérations qui ne peuvent s’exécuter simultanément. Leur implémentation 
+réelle comprend des sections critiques qui doivent être construites avec soin. La section critique dans notre projet est lors 
+de l'affichage. 
+
+```c
+#include <semaphore.h>
+
+sem_t *sem;
+
+sem_init(sem, 1, 1);
+
+sem_wait(sem);
+// section critique : affichage voir le code dans le fichier display.c 
+sem_post(sem);
+
+sem_destroy(sem);
+```
 
 ### Libération des ressources de l'ordinateur
 
 Afin de libérer les ressources de l'ordinateur, plusieurs étapes sont réalisées une fois que les processus 
 enfants ont terminé leur fonction et que le programme est prêt à quitter.
 
-Premièrement, il y a "destruction" de la sémaphore par le biais de l'opération `sem_destroy(sem_t *sem)`.
+Premièrement, il y a "détachement" de la mémoire partagée et ensuite ce dernier est supprimée. 
 
-Ensuite, on se détache des zones de mémoire partage et ensuite on les supprime.
+L’appel système `shmdt` permet de détacher un segment de mémoire qui avait été attaché en utilisant `shmat`. 
+L’argument passé à `shmdt` doit être l’adresse d’un segment de mémoire attaché préalablement par `shmat`. 
+Lorsqu’un processus se termine, tous les segments auxquels il était attaché sont détachés lors de l’appel à `exit`. 
 
+Détacher la mémoire partagée ne la supprime pas. Détacher la mémoire partagée permet juste de casser la correspondance 
+entre les pages de l'espace virtuel dédiées au segment  de mémoire et les pages frames de la mémoire physique dédiées 
+au segment de mémoire partagée. Pour réellement la mémoire partagée on fait appel à la fonction `shmctl`. 
 
-- `shmdt` (adresse) sert à détacher le segment attaché à l’adresse passée en paramètre. Retourne 0 en cas de succès, ou -1 en cas d’échec.
-Lorsqu'un processus n'utilise plus un segment de mémoire partagée, il peut le détacher de son espace adresses par shmdt. Attention, l'argument de shmdt est l'adresse à laquelle le segment a été attaché, pas le semid du segment!
-shmdt ne détruit pas le segment. Pour cela, il faut utiliser shmctl.
+L’appel système `shmctl` prend trois arguments. Le premier est un identifiant de segment de mémoire partagée retourné 
+par `shmget`. Le deuxième est une constante qui spécifie une commande. On utilise uniquement la commande IPC_RMID 
+qui permet de retirer le segment de mémoire partagée dont l’identifiant est passé comme premier argument. Si il n’y a plus 
+de processus attaché au segment de mémoire partagée, celui-ci est directement supprimé. Sinon, il est marqué de façon à ce 
+que le noyau retire le segment dès que le dernier processus s’en détache. `shmctl` retourne 0 en cas de succès et -1 en 
+cas d’échec.
 
 ```c
-#include <sys/types.h>
 #include <sys/ipc.h>
 #include <sys/shm.h>
 
-int shmdt(void *shmaddr);
+int shmdt(const void *shmaddr);
+int shmctl(int shmid, int cmd, struct shmid_ds *buf);
 ```
-```c
-shmdt(car);
-```
+
+Deuxièmement, on fait presque la même chose avec les sémaphores mais avec des fonctions différentes. La fonction `sem_destroy` 
+permet de libérer un sémaphore qui a été initialisé avec `sem_init`. Les sémaphores consomment des ressources qui peuvent 
+être limitées dans certains environnements. Il est important de détruire proprement les sémaphores dès qu’ils ne sont plus 
+nécessaires.
 
 ```c
 shmdt(car);
 shmctl(struct_shm_id, IPC_RMID, NULL);
-
 sem_destroy(sem);
-shmdt(sem);
-shmctl(sem_shm_id, IPC_RMID, NULL);
 ```
 
 ### Création et gestion des processus
 
 Chaque voiture correspond à un processus fils, tandis que le père s'occupe de la gestion des étapes et de l'affichage.
 
-La création des processus se fait par le biais de la fonction `fork`, faisant partie des appels système POSIX.
-Elle permet de donner naissance à un nouveau processus qui est sa copie.
+La création des processus se fait par la fonction `fork`, faisant partie des appels système POSIX. Elle permet de donner 
+naissance à un nouveau processus qui est sa copie.
 
-Nos `fork` sont présent dans le fichier de code source `main.c`.
+La création des processus fils est présent dans le fichier de code source `main.c`.
 
 ### Rôle du processus père
 
@@ -158,6 +234,16 @@ Chaque processus fils représente une voiture.
 
 Le processus père, quant à lui, va lire des informations provenant de la mémoire partagée.
 Il s'occupe également de l'affichage ainsi que du tri tout comme la sauvegarde des informations sur fichier.
+
+### Rôle des processus fils
+
+Dans le cadre de ce projet, les fils sont seulement chargés à courir. Càd exécuter les étapes à faire pour un week-end complet d’un 
+grand prix de Formule 1. Pour y arriver on utilise une boucle `while()` avec comme condition si le temps de l'étape chosi n'a
+pas écoulé, alors les fils courent. Pour la course de dimanche les fils courent tant qu'ils n'ont pas fini les tours à faire. Les crash
+sont gérés à l'interieur du la boucle `while()`. 
+
+Le code du fils est présent dans le fichier de code source `child.c`. 
+
 
 \pagebreak
 
