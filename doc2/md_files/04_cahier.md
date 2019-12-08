@@ -22,7 +22,7 @@ Le calendrier d’un week-end de F1 est établi comme suit :
 
 Votre projet devra prendre en charge les choses suivantes.
 
-#### Première partie : gestion des séances d’essai, des qualifications et de la course
+### Première partie : gestion des séances d’essai, des qualifications et de la course
 
 ##### Lors des séances d’essais (P1, P2, P3) :
 
