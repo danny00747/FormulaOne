@@ -20,6 +20,7 @@ $(REPORT_OUT): $(REPORT_IN) eisvogel.tex $(CODE_MD)
 	pandoc -f markdown --template eisvogel.tex -N \
 	    -o $@ --listings --pdf-engine xelatex \
 	    $(REPORT_IN)
+	    @echo "Build finished."
 
 $(CODE_MD): $(SRC_SORTED)
 	./gencode-md.sh $^ > $@
