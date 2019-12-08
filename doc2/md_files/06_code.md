@@ -1,54 +1,55 @@
-## Exemplaire du code
+Exemplaire du code
+======================
 
-### child.c
+## child.c
 
 \lstinputlisting[language=c]{../src/child.c}
 
-### child.h
+## child.h
 
 \lstinputlisting[language=c]{../src/child.h}
 
-### display.c
+## display.c
 
 \lstinputlisting[language=c]{../src/display.c}
 
-### display.h
+## display.h
 
 \lstinputlisting[language=c]{../src/display.h}
 
-### files.c
+## files.c
 
 \lstinputlisting[language=c]{../src/files.c}
 
-### files.h
+## files.h
 
 \lstinputlisting[language=c]{../src/files.h}
 
-### main.c
+## main.c
 
 \lstinputlisting[language=c]{../src/main.c}
 
-### prng.c
+## prng.c
 
 \lstinputlisting[language=c]{../src/prng.c}
 
-### prng.h
+## prng.h
 
 \lstinputlisting[language=c]{../src/prng.h}
 
-### time.c
+## time.c
 
 \lstinputlisting[language=c]{../src/time.c}
 
-### time.h
+## time.h
 
 \lstinputlisting[language=c]{../src/time.h}
 
-### window.c
+## window.c
 
 \lstinputlisting[language=c]{../src/window.c}
 
-### window.h
+## window.h
 
 \lstinputlisting[language=c]{../src/window.h}
 
