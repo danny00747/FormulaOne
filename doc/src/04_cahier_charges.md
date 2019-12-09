@@ -62,7 +62,8 @@ Votre projet devra prendre en charge les choses suivantes.
 
 De plus, il vous est demandé de paramétrer votre programme.
 
-En effet, les circuits peuvent être de longueur très variable et, dès lors le nombre de tours pour la course varie également (on essaie que le nombre total de kilomètres soit toujours plus ou moins le même pour chacune des courses du calendrier).
+En effet, les circuits peuvent être de longueur très variable et, dès lors le nombre de tours pour la course varie également 
+(on essaie que le nombre total de kilomètres soit toujours plus ou moins le même pour chacune des courses du calendrier).
 
 ##### On vous demande de :
 
