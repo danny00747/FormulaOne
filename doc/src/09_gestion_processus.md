@@ -37,6 +37,74 @@ Pour pouvoir les données dans table, on utilise une librairie public `libfort` 
 | 4        |  40  | 40":04 | 43":03 | 43":03 |  0  |  0  |  10 | 1':40":11 |   1':51":47   |
 | 5        |  77  | 33":11 | 34":43 | 42":59 |  0  |  1  |  11 | 1':17":23 |   2':12":73   |
 
+Il y a également une deuxième table pour savoir qui a le meilleur temps dans chacun des secteurs. 
+
+| SECTOR | NAME |  TIME  |   
+|--------|------|--------|
+|   S1   |  3   | 31":03 | 
+|   S2   |  42  | 33":27 | 
+|   S3   |  36  | 38":44 | 
+
+Le code de la crétion de ces tables est présent dans le fichier de code source `display.c`. 
 Les autres parties du code arrivent par après. 
+
+**Le trie**
+
+Pour pouvoir classer les voitures en fonction de leur tour complet le plus rapide, ou en fonction de leur rapididté lors 
+la course, on utilise la fonction de la librairie `qsort`. 
+
+```c
+void qsort(void *base, size_t nel, size_t width,
+           int (*compar)(const void *, const void *));
+```
+Le premier est un pointeur vers le début de la zone mémoire à trier. Le second est le nombre d’éléments à trier. 
+Le troisième contient la taille des éléments stockés dans le tableau. Le quatrième argument est un pointeur vers la fonction 
+qui permet de comparer deux éléments du tableau. Cette fonction retourne un entier négatif si son premier argument est 
+inférieur au second et positif ou nul sinon. 
+
+Les deux arguments de type `(const void *)` font appel à l’utilisation de pointeurs `(void *)` qui est nécessaire car la fonction doit 
+être générique et pouvoir traiter n’importe quel type de pointeurs. `(void *)` est un pointeur vers une zone quelconque de mémoire 
+qui peut être casté vers n’importe quel type de pointeur par la fonction de comparaison. Le qualificatif const indique que la 
+fonction n’a pas le droit de modifier la donnée référencée par ce pointeur, même si elle reçoit un pointeur vers cette donnée. 
+On retrouve régulièrement cette utilisation de const dans les signatures des fonctions de la librairie pour spécifier des 
+contraintes sur les arguments passés à une fonction.
+
+Un exemple de fonction de comparaison est la fonction `strcmp` de la librairie 
+standard. Le pseudo-code repris ci-dessous est notre implémentation de la fonction `qsort`. 
+
+```c
+int compare(const void *left, const void *right) {
+    const F1_Car *process_a = (F1_Car *) left;
+    const F1_Car *process_b = (F1_Car *) right;
+
+    if (strcmp(circuit.step_name, "RACE")) {
+        if (process_a->best_lap_time < process_b->best_lap_time)
+            return -1;
+        else if (process_a->best_lap_time > process_b->best_lap_time)
+            return 1;
+        else
+            return 0;
+    } else {
+        if (process_a->lap < process_b->lap)
+            return 1;
+        else if (process_a->lap > process_b->lap)
+            return -1;
+        else
+            return 0;
+    }
+}
+
+sem_wait(sem);
+memcpy(car_array, data, sizeof(F1_Car) * circuit.number_of_cars); 
+sem_post(sem);
+qsort(car_array, circuit.number_of_cars, sizeof(F1_Car), compare);
+```
+
+Avant de trier on fait une copie des données du struct partagée entre les processus par la fonction `memcpy`. Cette fonction permet de copier 
+un bloc de mémoire spécifié par le paramètre source, et dont la taille est spécifiée via le paramètre size, dans un nouvel 
+emplacement désigné par le paramètre destination. Il est bien entendu qu'il est de notre responsabilité d'allouer suffisamment 
+de mémoire pour le bloc de destination afin qu'il puisse contenir toutes les données.
+
+
 
 \pagebreak 

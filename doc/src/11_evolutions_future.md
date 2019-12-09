@@ -13,12 +13,15 @@ Par exemple, on pourrait réaliser un code couleur pour :
 
 ### Affichage cliquable : TODO !
 
-Comme à la manière de `htop` dans Linux, la possibilité de cliquer sur un des en-têtes de colonne afin de trier automatiquement l'affichage en fonction de cette colonne pourrait s'avérer intéressante.
-En effet, si l'utilisateur souhaite prêter plus particulièrement son attention sur une catégorie d'information précise, cela pourrait lui être utile.
+Comme à la manière de `htop` dans Linux, la possibilité de cliquer sur un des en-têtes de colonne afin de trier automatiquement 
+l'affichage en fonction de cette colonne pourrait s'avérer intéressante.
+En effet, si l'utilisateur souhaite prêter plus particulièrement son attention sur une catégorie d'information précise, 
+cela pourrait lui être utile.
 
 ### Options lié à la pression d'une touche de clavier : TODO !
 
-Une autre idée d'implémentation est de proposer des options en fonction d'un bouton appuyé lorsque le programme est en cours de fonctionnement.
+Une autre idée d'implémentation est de proposer des options en fonction d'un bouton appuyé lorsque le programme est en cours 
+de fonctionnement.
 
 Imaginons par exemple les options suivantes :
 
