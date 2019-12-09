@@ -45,8 +45,7 @@ Il y a également une deuxième table pour savoir qui a le meilleur temps dans c
 |   S2   |  42  | 33":27 | 
 |   S3   |  36  | 38":44 | 
 
-Le code de la crétion de ces tables est présent dans le fichier de code source `display.c`. 
-Les autres parties du code arrivent par après. 
+Le code de la création de ces deux tables est présent dans le fichier de code source `display.c`. 
 
 **Le trie**
 
@@ -105,6 +104,6 @@ un bloc de mémoire spécifié par le paramètre source, et dont la taille est s
 emplacement désigné par le paramètre destination. Il est bien entendu qu'il est de notre responsabilité d'allouer suffisamment 
 de mémoire pour le bloc de destination afin qu'il puisse contenir toutes les données.
 
-
+Le code sur qui permet de gérer les trie est présent dans le fichier de code source `display.c`. 
 
 \pagebreak 
