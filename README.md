@@ -1,4 +1,4 @@
-![stronghold logo](img/logo.png)
+![stronghold logo](img/car.jpg)
 
 ![Build Status](https://img.shields.io/badge/build-passing%20-green)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
