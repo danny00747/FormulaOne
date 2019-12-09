@@ -56,6 +56,7 @@ la course, on utilise la fonction de la librairie `qsort`.
 void qsort(void *base, size_t nel, size_t width,
            int (*compar)(const void *, const void *));
 ```
+
 Le premier est un pointeur vers le début de la zone mémoire à trier. Le second est le nombre d’éléments à trier. 
 Le troisième contient la taille des éléments stockés dans le tableau. Le quatrième argument est un pointeur vers la fonction 
 qui permet de comparer deux éléments du tableau. Cette fonction retourne un entier négatif si son premier argument est 
