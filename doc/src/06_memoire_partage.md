@@ -18,7 +18,7 @@ l’accès à cette ressource commune aux processus ayant accès à cette mémoi
 La mémoire partagée contient un tableau de structure comportant les informations de secteurs entre autres choses.
 
 
-```c
+```{.c caption-eng = "La structure partagée. "}
 typedef struct F1_Car {
     int id;
     double lap_time;

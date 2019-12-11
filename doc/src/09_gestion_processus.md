@@ -12,6 +12,7 @@ La création des processus fils est présent dans le fichier de code source `mai
 Dans notre cas, nous avons un processus père donnant naissance au nombre de processus fils nécessaire à l'étape choisie.
 Chaque processus fils représente une voiture.
 
+
 Le processus père, quant à lui, va lire des informations provenant de la mémoire partagée.
 Il s'occupe également de l'affichage ainsi que du tri tout comme la sauvegarde des informations sur fichier des étapes de 
 qualifications et de la course. 

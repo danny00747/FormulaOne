@@ -15,5 +15,9 @@ cela nous a entraînés dans une seconde tentative pour ce projet.
 Nous avons également découvert l'utilité de l'utilisation de quelques librairies, ainsi 
 que d'une documentation disponible en ligne, nous permettant de mieux comprendre certaines implémentations nécessaires.
 
+
+![Flowchart](imgs/flowchart.png)
+
+
 \pagebreak
  
