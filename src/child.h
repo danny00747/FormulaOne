@@ -17,7 +17,6 @@
 #include <unistd.h>
 #include <string.h>
 
-
 #define NUMBER_OF_CARS 20
 
 typedef struct Circuit {
