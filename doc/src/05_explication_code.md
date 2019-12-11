@@ -17,5 +17,6 @@ Ce tableau est également trié en fonction du meilleur temps de tour par pilote
 Au départ de la course, chaque participant démarre dans l'ordre précédemment déterminé par les séances de qualifications et 
 avec une pénalité relative à leur position de départ.
 
+
 Lorsque la simulation d'une étape est terminée, les positions des pilotes est sauvegardée dans un fichier.
 Ce fichier sera chargé lors de l'étape suivante afin de déterminer les participants ainsi que leurs positions. 
