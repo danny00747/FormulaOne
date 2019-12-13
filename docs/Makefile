@@ -27,7 +27,7 @@ FLAGS += -N --listings
 all: $(OUT)
 
 $(OUT): $(PANDOC_IN)
-	@echo "Starting Pandoc"
+	@echo "Starting Pandoc ..."
 	@pandoc $(PANDOC_IN) -f $(FROM) -t $(TO) -o $@ $(FLAGS)
 	@echo "$(OUT) updated"
 
