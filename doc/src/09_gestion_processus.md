@@ -38,7 +38,11 @@ Pour pouvoir les données dans table, on utilise une librairie public `libfort` 
 | 4        |  40  | 40":04 | 43":03 | 43":03 |  0  |  0  |  10 | 1':40":11 |   1':51":47   |
 | 5        |  77  | 33":11 | 34":43 | 42":59 |  0  |  1  |  11 | 1':17":23 |   2':12":73   |
 
+Table:  Table des résultats.
+
 Il y a également une deuxième table pour savoir qui a le meilleur temps dans chacun des secteurs. 
+
+Table:  Table de meilleur temps dans chacun des secteurs.
 
 | SECTOR | NAME |  TIME  |   
 |--------|------|--------|

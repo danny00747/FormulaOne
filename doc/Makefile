@@ -8,14 +8,13 @@ CODE_MD = $(REPORT_IN_DIR)/code.md
 REPORT_IN = $(filter-out $(CODE_MD), $(sort $(REPORT_IN_DIR)/*.md))
 REPORT_OUT=report.pdf
 
+
+
 .PHONY: report
 
 report: $(REPORT_OUT)
 
-eisvogel.tex:
-	wget -O $@ 'https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/master/eisvogel.tex' 
-
-$(REPORT_OUT): $(REPORT_IN) eisvogel.tex $(CODE_MD)
+$(REPORT_OUT): $(REPORT_IN) $(CODE_MD)
 	pandoc -f markdown --template eisvogel.tex -N \
 	    -o $@ --listings --pdf-engine xelatex \
 	    $(REPORT_IN)
@@ -23,3 +22,10 @@ $(REPORT_OUT): $(REPORT_IN) eisvogel.tex $(CODE_MD)
 
 $(CODE_MD): $(SRC_SORTED)
 	./gencode-md.sh $^ > $@
+
+watch:
+	@echo $(REPORT_IN) $(SRC) | tr ' ' '\n' | \
+		entr -s 'notify-send -t 5000 "Compiling PDF" && \
+             $(MAKE) --no-print-directory && \
+             notify-send -t 5000 "Done" || \
+             notify-send -t 5000 "Failed"'

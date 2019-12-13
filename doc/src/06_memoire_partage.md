@@ -17,8 +17,7 @@ l’accès à cette ressource commune aux processus ayant accès à cette mémoi
 
 La mémoire partagée contient un tableau de structure comportant les informations de secteurs entre autres choses.
 
-
-```{.c caption-eng = "La structure partagée. "}
+\begin{lstlisting}[caption={structure de la mémoire partagée} ]
 typedef struct F1_Car {
     int id;
     double lap_time;
@@ -34,8 +33,7 @@ typedef struct F1_Car {
     int best_lap_time;
     int done;
 } F1_Car;
-```
-
+\end{lstlisting}
 
 Sous Linux, la mémoire partagée peut s’utiliser via les appels systèmes `shmget`, `shmat` et `shmdt`. 
 L’appel système `shmget` permet de créer un segment de mémoire partagée. Le premier argument de `shmget` est une clé 
@@ -48,12 +46,12 @@ du segment. Enfin, le troisième argument est une combinaison (par OU bit à bit
 typiquement l’option IPC_CREAT|0666, et pour l’acquisition simplement 0666.
 
 
-```c
+\begin{lstlisting}[language=c, caption={shmget} ]
 #include <sys/ipc.h>
 #include <sys/shm.h>
 
 int shmget(key_t key, size_t size, int shmflg);
-```
+\end{lstlisting}
 
 
 L’appel système `shmget` retourne un entier qui identifie le segment de mémoire partagée à l’intérieur du processus 

@@ -5,6 +5,5 @@ printf '%s\n\n' '======================'
 
 for file in "$@"; do
     title=$(basename $file)
-    printf '%s\n\n' "## $title"
-    printf '\lstinputlisting[language=c]{%s}\n\n' "$file"
+    printf '\lstinputlisting[caption={%s}]{%s}\n\n'  "$title" "$file"
 done

@@ -40,7 +40,7 @@ void print_table() {
     ft_set_cell_prop(table, 0, FT_ANY_COLUMN, FT_CPROP_CELL_TEXT_STYLE, FT_TSTYLE_BOLD);
     ft_set_cell_prop(table, 0, FT_ANY_COLUMN, FT_CPROP_CONT_FG_COLOR, FT_COLOR_CYAN);
 
-    ft_write_ln(table, "POSITION", "NAME", "S1", "S2", "S3", "OUT", "PIT", "LAP", "LAP TIME", "BEST LAP TIME");
+    ft_write_ln(table, "POSITION", "NAME", "S1", "S2", "SS3", "OUT", "PIT", "LAP", "LAP TIME", "BEST LAP TIME");
 
     for (int i = 0; i < circuit.number_of_cars; i++) {
         F1_Car current = car_array[i];

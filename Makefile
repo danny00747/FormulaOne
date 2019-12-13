@@ -17,7 +17,11 @@ format:
 	clang-format -i $(SRC)
 
 watch:
-	echo $(SRC) | entr -s 'make --no-print-directory compile' 
+		@echo $(SRC) $(LIBS) | tr ' ' '\n' | \
+    	entr -s 'notify-send -t 5000 "Compiling source files" && \
+            $(MAKE) --no-print-directory && \
+             notify-send -t 5000 "Done" || \
+             notify-send -t 5000 "Failed"'
 
 clean:
 	rm $(EXE)

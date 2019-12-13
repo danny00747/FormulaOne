@@ -15,9 +15,13 @@ cela nous a entraînés dans une seconde tentative pour ce projet.
 Nous avons également découvert l'utilité de l'utilisation de quelques librairies, ainsi 
 que d'une documentation disponible en ligne, nous permettant de mieux comprendre certaines implémentations nécessaires.
 
+babar
 
-![Flowchart](imgs/flowchart.png)
-
+\begin{figure}[H]
+\centering
+\caption{Flowchart}
+\includegraphics[scale=0.25]{imgs/test.png}
+\end{figure}
 
 \pagebreak
  

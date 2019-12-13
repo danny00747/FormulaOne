@@ -9,7 +9,7 @@
  le signal ou ne s'y conforme pas, le sémaphore ne pourra éviter la collision.
  
  De même si un processus ne teste pas un sémaphore avant d'accéder à une ressource partagée, le chaos peut en résulter.
- Un sémaphore binaire n'a que deux états :
+ Un sémaphore binaire n'a que deux états:
  
  - 0 verrouillé (ou occupé).
  - 1 déverrouillé (ou libre).

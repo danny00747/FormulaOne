@@ -1,55 +1,29 @@
 Exemplaire du code
 ======================
 
-## child.c
+\lstinputlisting[caption={child.c}]{../src/child.c}
 
-\lstinputlisting[language=c]{../src/child.c}
+\lstinputlisting[caption={child.h}]{../src/child.h}
 
-## child.h
+\lstinputlisting[caption={display.c}]{../src/display.c}
 
-\lstinputlisting[language=c]{../src/child.h}
+\lstinputlisting[caption={display.h}]{../src/display.h}
 
-## display.c
+\lstinputlisting[caption={files.c}]{../src/files.c}
 
-\lstinputlisting[language=c]{../src/display.c}
+\lstinputlisting[caption={files.h}]{../src/files.h}
 
-## display.h
+\lstinputlisting[caption={main.c}]{../src/main.c}
 
-\lstinputlisting[language=c]{../src/display.h}
+\lstinputlisting[caption={prng.c}]{../src/prng.c}
 
-## files.c
+\lstinputlisting[caption={prng.h}]{../src/prng.h}
 
-\lstinputlisting[language=c]{../src/files.c}
+\lstinputlisting[caption={time.c}]{../src/time.c}
 
-## files.h
+\lstinputlisting[caption={time.h}]{../src/time.h}
 
-\lstinputlisting[language=c]{../src/files.h}
+\lstinputlisting[caption={window.c}]{../src/window.c}
 
-## main.c
-
-\lstinputlisting[language=c]{../src/main.c}
-
-## prng.c
-
-\lstinputlisting[language=c]{../src/prng.c}
-
-## prng.h
-
-\lstinputlisting[language=c]{../src/prng.h}
-
-## time.c
-
-\lstinputlisting[language=c]{../src/time.c}
-
-## time.h
-
-\lstinputlisting[language=c]{../src/time.h}
-
-## window.c
-
-\lstinputlisting[language=c]{../src/window.c}
-
-## window.h
-
-\lstinputlisting[language=c]{../src/window.h}
+\lstinputlisting[caption={window.h}]{../src/window.h}
 
