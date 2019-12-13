@@ -1,31 +1,48 @@
-SRC_DIR =../src
-SRC = $(wildcard $(SRC_DIR)/*.c)
-SRC += $(wildcard $(SRC_DIR)/*.h)
-SRC_SORTED = $(sort $(SRC))
-REPORT_IN_DIR = src
+SRC_DIR = ../src
+C       = $(wildcard $(SRC_DIR)/*.c)
+HEADERS = $(wildcard $(SRC_DIR)/*.h)
+SRC     = $(sort $(C) $(HEADERS))
 
-CODE_MD = $(REPORT_IN_DIR)/code.md
-REPORT_IN = $(filter-out $(CODE_MD), $(sort $(REPORT_IN_DIR)/*.md))
-REPORT_OUT=report.pdf
+MD_DIR  = src
+CODE_MD = $(MD_DIR)/99_code.md
+MD_WC   = $(filter-out $(CODE_MD), $(wildcard $(MD_DIR)/*.md))
+MD      = $(sort $(MD_WC))
 
+OUT = report.pdf
 
+FROM     = markdown
+TO       = latex
+METADATA = $(MD_DIR)/01_metadata.yaml
 
-.PHONY: report
+WATCHED_FILES = $(METADATA) $(SRC) $(MD)
 
-report: $(REPORT_OUT)
+PANDOC_IN = $(METADATA) $(MD) $(CODE_MD)
 
-$(REPORT_OUT): $(REPORT_IN) $(CODE_MD)
-	pandoc -f markdown --template eisvogel.tex -N \
-	    -o $@ --listings --pdf-engine xelatex \
-	    $(REPORT_IN)
-	    @echo "Build finished."
+FLAGS = --pdf-engine xelatex
+FLAGS += --template eisvogel.tex
+FLAGS += -N --listings
 
-$(CODE_MD): $(SRC_SORTED)
-	./gencode-md.sh $^ > $@
+.PHONY: all watch open clean
+
+all: $(OUT)
+
+$(OUT): $(PANDOC_IN)
+	@echo "Starting Pandoc"
+	@pandoc $(PANDOC_IN) -f $(FROM) -t $(TO) -o $@ $(FLAGS)
+	@echo "$(OUT) updated"
+
+$(CODE_MD): $(SRC)
+	@./gencode-md.sh $^ > $@
 
 watch:
-	@echo $(REPORT_IN) $(SRC) | tr ' ' '\n' | \
-		entr -s 'notify-send -t 5000 "Compiling PDF" && \
-             $(MAKE) --no-print-directory && \
-             notify-send -t 5000 "Done" || \
-             notify-send -t 5000 "Failed"'
+	@echo $(WATCHED_FILES) | tr ' ' '\n' | \
+	    entr -s 'notify-send -t 5000 "Compiling PDF" && \
+            $(MAKE) --no-print-directory && \
+            notify-send -t 5000 "Done" || \
+            notify-send -t 5000 "Failed"'
+
+open:
+	zathura --fork $(OUT)
+
+clean:
+	rm $(OUT) $(CODE_MD)
