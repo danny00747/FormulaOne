@@ -20,7 +20,7 @@ de processus attaché au segment de mémoire partagée, celui-ci est directement
 que le noyau retire le segment dès que le dernier processus s’en détache. `shmctl` retourne 0 en cas de succès et -1 en 
 cas d’échec.
 
-```c
+```{.c caption="man of shmdt and shmctl"}
 #include <sys/ipc.h>
 #include <sys/shm.h>
 
@@ -33,7 +33,7 @@ permet de libérer un sémaphore qui a été initialisé avec `sem_init`. Les s�
 être limitées dans certains environnements. Il est important de détruire proprement les sémaphores dès qu’ils ne sont plus 
 nécessaires.
 
-```c
+```{.c caption="destruction des semaphores"}
 shmdt(car);
 shmctl(struct_shm_id, IPC_RMID, NULL);
 sem_destroy(sem);

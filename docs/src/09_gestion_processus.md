@@ -57,7 +57,7 @@ Le code de la création de ces deux tables est présent dans le fichier de code 
 Pour pouvoir classer les voitures en fonction de leur tour complet le plus rapide, ou en fonction de leur rapididté lors 
 la course, on utilise la fonction de la librairie `qsort`. 
 
-```c
+```{.c caption="man of qsort"}
 void qsort(void *base, size_t nel, size_t width,
            int (*compar)(const void *, const void *));
 ```
@@ -77,7 +77,7 @@ contraintes sur les arguments passés à une fonction.
 Un exemple de fonction de comparaison est la fonction `strcmp` de la librairie 
 standard. Le pseudo-code repris ci-dessous est notre implémentation de la fonction `qsort`. 
 
-```c
+```{.c caption="la fonction de trie"}
 int compare(const void *left, const void *right) {
     const F1_Car *process_a = (F1_Car *) left;
     const F1_Car *process_b = (F1_Car *) right;

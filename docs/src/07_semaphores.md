@@ -21,7 +21,7 @@
  Dans notre projet on utilise les fonctions suivantes de la librairie pour gérer un sémaphore de type `sem_t` : 
  
  
- ```c
+ ```{.c caption="les semaphores"}
  #include <semaphore.h>
  
  int sem_init(sem_t *sem, int pshared, unsigned int value);
@@ -53,7 +53,7 @@
  de l'affichage. 
  
  
- ```c
+ ```{.c caption="semwait et sempost"}
  #include <semaphore.h>
  
  sem_t *sem;
