@@ -27,19 +27,18 @@ void
 read_files(int qualified_cars[], int race_ranking[], int last_cars_of_Q1[], int last_cars_of_Q2[], char file_to_read[],
            int lines_to_read) {
 
-    int path_size = findSize(file_to_read);
-
-    char path_name[path_size];
-    getcwd(path_name, path_size);
-    char file_path_name[path_size];
-    sprintf(file_path_name, "%s/%s", path_name, file_to_read);
+    int file_size = findSize(file_to_read);
+    char absolute_path[file_size];
+    getcwd(absolute_path, file_size);
+    char full_absolute_path[file_size];
+    sprintf(full_absolute_path, "%s/%s", absolute_path, file_to_read);
 
     FILE *cmd;
     char result[NUMBER_OF_CARS];
-    char command_file_path_name[path_size];
-    sprintf(command_file_path_name, "egrep -o '^[0-9]{1,2}' '%s'", file_path_name);
+    char grep_file_result[file_size];
+    sprintf(grep_file_result, "egrep -o '^[0-9]{1,2}' '%s'", full_absolute_path);
 
-    cmd = popen(command_file_path_name, "r");
+    cmd = popen(grep_file_result, "r");
     if (cmd == NULL) perror("popen failed !"), exit(EXIT_FAILURE);;
 
     int i = 0, j = 0, k = 0;
