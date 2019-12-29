@@ -91,8 +91,7 @@ int find_size(char *file_name) {
     FILE *file = fopen(file_name, "r");
 
     if (file == NULL) {
-        printf("%s : %s", circuit.step_name, "file not Found!\n");
-        return -1;
+        printf("%s '%s' %s", "File previous to", circuit.step_name, "NOT found !\n"), exit(EXIT_FAILURE);
     }
 
     fseek(file, 0L, SEEK_END);
@@ -135,7 +134,7 @@ void read_eliminated_cars(char file_to_read[], int array[]) {
 
     FILE *file = fopen(file_to_read, "r");
 
-    if (file == NULL)perror("fopen failed !"), exit(EXIT_FAILURE);
+    if (file == NULL) perror("fopen failed !"), exit(EXIT_FAILURE);
 
     int i = 15, j = 10;
     while (fgets(results, sizeof(results), file)) {
