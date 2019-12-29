@@ -10,7 +10,7 @@
 Circuit circuit;
 F1_Car *car;
 
-/********  Tableau par défaut des id des voitures si on est ni au Q2, Q3, RACE   *********/
+/********  Tableau par défaut des id des voitures si on est ni au Q2, Q3, RACE  *********/
 int car_names[NUMBER_OF_CARS] = {44, 77, 5, 7, 3, 33, 11, 31, 18, 35,
                                  27, 55, 10, 28, 8, 20, 2, 14, 9, 16};
 
@@ -145,17 +145,17 @@ int main(int argc, char **argv) {
     *              Sauvegarde des fichiers            *
     ***************************************************/
 
-    /******** Si on est au Q2, les éliminés du Q1 sont sauvegardés dans le fichier lastQ1  *********/
+    /******* Si on est au Q2, les éliminés du Q1 sont sauvegardés dans le fichier lastQ1 ******/
     !strcmp(circuit.step_name, "Q2") ?
     save_eliminated_cars("lastQ1", last_cars_of_Q1) :
 
-    /********  Si on est au Q3, les éliminés du Q2 sont sauvegardés dans le fichier lastQ2  *********/
+    /******* Si on est au Q3, les éliminés du Q2 sont sauvegardés dans le fichier lastQ2 ******/
     !strcmp(circuit.step_name, "Q3") ?
     save_eliminated_cars("lastQ2", last_cars_of_Q2) :
     NULL;
 
     /***************************************************
-    *           Création de la mémoire partagée         *
+    *           Création de la mémoire partagée        *
     ****************************************************/
 
     int struct_shm_id = shmget(IPC_PRIVATE, sizeof(F1_Car) * circuit.number_of_cars, 0600 | IPC_CREAT);

@@ -79,7 +79,7 @@ void print_table() {
     ft_set_cell_prop(table, 2, FT_ANY_COLUMN, FT_CPROP_CONT_FG_COLOR, FT_COLOR_LIGHT_BLUE);
     ft_set_cell_prop(table, 3, FT_ANY_COLUMN, FT_CPROP_CONT_FG_COLOR, FT_COLOR_LIGHT_YELLOW);
 
-    /********  Deuxième table à afficher.  rafraichissement*********/
+    /********  Deuxième table à afficher *********/
 
     ft_table_t *second_table = ft_create_table();
     ft_write_ln(second_table, "SECTORS", "NAME", "TIME");
@@ -100,7 +100,7 @@ void print_table() {
     ft_printf_ln(second_table, "%s|%d|%s", "S2", car_array[best_sector("S2")].id, s2_time);
     ft_printf_ln(second_table, "%s|%d|%s", "S3", car_array[best_sector("S3")].id, s3_time);
 
-    /********  affichage du gagnant lors de la course de dimanche *********/
+    /********  Affichage du gagnant lors de la course de dimanche *********/
     (!strcmp(circuit.step_name, "RACE")) ?
     ft_printf_ln(second_table, "%s|%d|%.7s", "Winner", car_array[best_car()].id, winner) : 0;
 
@@ -180,10 +180,8 @@ int finished() {
  *  Avant de trier les données on fait une copie, puis on trie la copie, à la fin on sauvegarde
  *  le fichier qui aura comme nom l'étape en exécution.
 
-*@param sem_t *sem c'est un sémaphore qui perment aux fils de n'est pas écrire en même temps
-                   dans la mémoire partagée. Techniquement ils peuvent mais on a choisi de procéder ainsi.
-*@param F1_Car *car c'est la variable de type F1_Car qui pointe vers la mémoire partagée.
-
+*@param sem_t *sem c'est un sémaphore pour sécuriser les données lors de la copie.
+*@param F1_Car *data c'est la variable de type F1_Car qui pointe vers la mémoire partagée.
 */
 
 void display(sem_t *sem, F1_Car *data) {

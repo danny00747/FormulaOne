@@ -83,7 +83,7 @@ read_files(int qualified_cars[], int race_ranking[], int last_cars_of_Q1[], int 
 /** la fonction find_size calcule la taille du fichier passé en paramètre
 
 *@param char *file_name le fichier à lire.
-* @return int size qui est la taille du fichier.
+*@return int size qui est la taille du fichier.
 */
 
 int find_size(char *file_name) {
@@ -124,7 +124,7 @@ void save_eliminated_cars(char file_to_save[], int array[]) {
 
 /** la fonction read_eliminated_cars lit les voitures élimninés depuis un fichier
  *  vers un tableau qui va contenir le classement de la course de dimanche.
- *
+
 *@param char file_to_read[] le fichier à lire qui contient les éliminés
 *@param int array[] le tableau qui contient le classmeent de la course de dimanche.
 */
