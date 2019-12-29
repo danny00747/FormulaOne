@@ -68,7 +68,6 @@ F1_Car *car;
     }
 ```
 
-
 Cette modification à la table des pages du processus se fait en utilisant `shmat`. Cet appel 
 système permet d’attacher un segment de mémoire partagée à un processus. Il prend comme premier argument l’identifiant 
 du segment de mémoire retourné par `shmget`. Le deuxième argument est un pointeur vers la zone mémoire via laquelle le segment 

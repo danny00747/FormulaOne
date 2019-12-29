@@ -36,7 +36,7 @@ void print_usage() {
 
 void help() {
     printf("\n%s\n\n", "These are some commands used to run this program.");
-    printf("%s\n", "For P sessions : \t There are run on fridays & P3 on sat. Use the --day command.");
+    printf("%s\n", "For P sessions : \t There are run on fridays but P3 on sat. Use the --day command.");
     printf("%s\n", "\t\t\t followed by a day name and which step needs to be runned for the P sessions.");
     printf("%s\n\n", "\t\t\t --day fri --step P2 for instance.");
     printf("%s\n", "For Q sessions : \t There are run on saturdays, use the --day command.");
@@ -57,9 +57,9 @@ int main(int argc, char **argv) {
     circuit.lap_km = 7;
     circuit.race_km = 305;
 
-    /****************************************************************************
-    *                             Paramétrage du programme                     *
-    ****************************************************************************/
+    /*************************************************
+    *            Paramétrage du programme            *
+    **************************************************/
 
     int user_km = 0;
     char day_name[5], step_name[5];
@@ -141,18 +141,22 @@ int main(int argc, char **argv) {
         print_usage();
     }
 
-    /****************************************************************************
-    *                            Sauvegarde des fichiers                     *
-    ****************************************************************************/
+    /**************************************************
+    *              Sauvegarde des fichiers            *
+    ***************************************************/
 
-    !strcmp(circuit.step_name, "Q2") ? save_eliminated_cars("lastQ1", last_cars_of_Q1)
-                                     : !strcmp(circuit.step_name, "Q3") ? save_eliminated_cars("lastQ2",
-                                                                                               last_cars_of_Q2)
-                                                                        : NULL;
+    /******** Si on est au Q2, les éliminés du Q1 sont sauvegardés dans le fichier lastQ1  *********/
+    !strcmp(circuit.step_name, "Q2") ?
+    save_eliminated_cars("lastQ1", last_cars_of_Q1) :
 
-    /****************************************************************************
-    *                    Création de la mémoire partagée                        *
-    ****************************************************************************/
+    /********  Si on est au Q3, les éliminés du Q2 sont sauvegardés dans le fichier lastQ2  *********/
+    !strcmp(circuit.step_name, "Q3") ?
+    save_eliminated_cars("lastQ2", last_cars_of_Q2) :
+    NULL;
+
+    /***************************************************
+    *           Création de la mémoire partagée         *
+    ****************************************************/
 
     int struct_shm_id = shmget(IPC_PRIVATE, sizeof(F1_Car) * circuit.number_of_cars, 0600 | IPC_CREAT);
     if (struct_shm_id == -1) {
@@ -166,9 +170,9 @@ int main(int argc, char **argv) {
         exit(EXIT_FAILURE);
     }
 
-    /**********************************************************************
-    *                    Création des sémaphores                           *
-    ***********************************************************************/
+    /******************************************************
+    *                Création des sémaphores              *
+    *******************************************************/
 
     int sem_shm_id = shmget(IPC_PRIVATE, sizeof(sem_t), 0600 | IPC_CREAT);
     if (sem_shm_id == -1) {
@@ -183,9 +187,9 @@ int main(int argc, char **argv) {
 
     sem_init(sem, 1, 1);
 
-    /****************************************************************************
-     *                       Création des fils/voitures                         *
-     ****************************************************************************/
+    /**********************************************************
+     *               Création des fils/voitures               *
+     **********************************************************/
 
     int i;
     pid_t pid = 0;
