@@ -17,4 +17,4 @@
 void display(sem_t *_sem, F1_Car *data);
 int compare(const void *left, const void *right);
 int best_sector(char sector[]);
-int best_lap_time();
+int best_car();

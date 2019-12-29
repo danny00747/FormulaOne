@@ -10,11 +10,19 @@
 Circuit circuit;
 F1_Car *car;
 
-
+/********  Tableau par défaut des id des voitures si on est ni au Q2, Q3, RACE   *********/
 int car_names[NUMBER_OF_CARS] = {44, 77, 5, 7, 3, 33, 11, 31, 18, 35,
                                  27, 55, 10, 28, 8, 20, 2, 14, 9, 16};
 
+/**
+*  qualified_cars va stocker les voitures qualifiés.
+*  race_ranking va stocker le classement désiré pour la course de dimanche.
+*  last_cars_of_Q1 va stocker les élimninés au Q1.
+*  last_cars_of_Q2 va stocker les élimninés au Q2.
+*/
 int qualified_cars[15], race_ranking[20], last_cars_of_Q1[15], last_cars_of_Q2[10];
+
+/********  Gestion d'erreur dans le paramétrage du programme   *********/
 
 void print_usage() {
     printf("%s", "Usage: ./prog --day [dayName] --step [stepName]\n");
@@ -23,6 +31,8 @@ void print_usage() {
     printf("%s", "Use the --help command for more information. \n");
     exit(EXIT_FAILURE);
 }
+
+/********  Manuel du programme  *********/
 
 void help() {
     printf("\n%s\n\n", "These are some commands used to run this program.");
@@ -43,8 +53,13 @@ int main(int argc, char **argv) {
 
     signal(SIGINT, return_cursor);
 
+    //valeurs par défaut
     circuit.lap_km = 7;
     circuit.race_km = 305;
+
+    /****************************************************************************
+    *                             Paramétrage du programme                     *
+    ****************************************************************************/
 
     int user_km = 0;
     char day_name[5], step_name[5];
@@ -75,6 +90,7 @@ int main(int argc, char **argv) {
         }
     }
 
+    /********  Friday *********/
     if (!strcmp(day_name, "fri")) {
         if (!strcmp(step_name, "P1")) {
             circuit = (Circuit) {.number_of_cars = 20, .step_name = "P1", .step_total_time = minutes_to_ms(90)};
@@ -83,6 +99,8 @@ int main(int argc, char **argv) {
         } else {
             print_usage();
         }
+
+        /********  Saturday *********/
     } else if (!strcmp(day_name, "sat")) {
         if (!strcmp(step_name, "P3")) {
             circuit = (Circuit) {.number_of_cars = 20, .step_name = "P3", .step_total_time = minutes_to_ms(60)};
@@ -97,6 +115,8 @@ int main(int argc, char **argv) {
         } else {
             print_usage();
         }
+
+        /********  Sunday *********/
     } else if (!strcmp(day_name, "sun")) {
         if (!strcmp(step_name, "RACE")) {
             circuit.number_of_cars = 20;
@@ -121,10 +141,18 @@ int main(int argc, char **argv) {
         print_usage();
     }
 
+    /****************************************************************************
+    *                            Sauvegarde des fichiers                     *
+    ****************************************************************************/
+
     !strcmp(circuit.step_name, "Q2") ? save_eliminated_cars("lastQ1", last_cars_of_Q1)
                                      : !strcmp(circuit.step_name, "Q3") ? save_eliminated_cars("lastQ2",
                                                                                                last_cars_of_Q2)
                                                                         : NULL;
+
+    /****************************************************************************
+    *                    Création de la mémoire partagée                        *
+    ****************************************************************************/
 
     int struct_shm_id = shmget(IPC_PRIVATE, sizeof(F1_Car) * circuit.number_of_cars, 0600 | IPC_CREAT);
     if (struct_shm_id == -1) {
@@ -137,6 +165,10 @@ int main(int argc, char **argv) {
         perror("shmat failed !");
         exit(EXIT_FAILURE);
     }
+
+    /**********************************************************************
+    *                    Création des sémaphores                           *
+    ***********************************************************************/
 
     int sem_shm_id = shmget(IPC_PRIVATE, sizeof(sem_t), 0600 | IPC_CREAT);
     if (sem_shm_id == -1) {
@@ -151,6 +183,10 @@ int main(int argc, char **argv) {
 
     sem_init(sem, 1, 1);
 
+    /****************************************************************************
+     *                       Création des fils/voitures                         *
+     ****************************************************************************/
+
     int i;
     pid_t pid = 0;
     for (i = 0; i < circuit.number_of_cars; i++) {
@@ -160,25 +196,42 @@ int main(int argc, char **argv) {
     }
 
     switch (pid) {
+
         case -1:
+            /********  échec du fork  *********/
             fprintf(stderr, "fork failed !");
             exit(EXIT_FAILURE);
+
         case 0:
+            /********  Si on est au Q2 ou Q3 attribution des id par le tableau des qualifiés  *********/
             (!strcmp(circuit.step_name, "Q2") || !strcmp(circuit.step_name, "Q3")) ?
-            child(sem, &car[i], &qualified_cars[i]) : !strcmp(circuit.step_name, "RACE") ?
-                                                      child(sem, &car[i], &race_ranking[i]) :
-                                                      child(sem, &car[i], &car_names[i]);
+            child(sem, &car[i], &qualified_cars[i]) :
+
+            /********  Si on est au RACE attribution des id par le tableau race_ranking  *********/
+            !strcmp(circuit.step_name, "RACE") ?
+            child(sem, &car[i], &race_ranking[i]) :
+
+            /********  Si on est aux autres étapes attribution des id par le tableau car_names  *********/
+            child(sem, &car[i], &car_names[i]);
 
             exit(0);
+
         default:
+            /********  Appel de la fonction display qui va afficher les données  *********/
             display(sem, car);
+
+            /********  Si on est au RACE attribution des id par le tableau race_ranking  *********/
             for (int j = 0; j < circuit.number_of_cars; j++) {
                 wait(NULL);
             }
     }
+    /********  Détachament des segments de mémoire  *********/
     shmdt(car);
+
+    /********  Supprimer la mémoire partagée  *********/
     shmctl(struct_shm_id, IPC_RMID, NULL);
 
+    /********  Destruction des sémaphores  *********/
     sem_destroy(sem);
     shmdt(sem);
     shmctl(sem_shm_id, IPC_RMID, NULL);

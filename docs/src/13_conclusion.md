@@ -21,5 +21,11 @@ que d'une documentation disponible en ligne, nous permettant de mieux comprendre
 \includegraphics[scale=0.25]{imgs/test.png}
 \end{figure}
 
+\begin{figure}[H]
+\centering
+\caption{Structure des fichiers}
+\includegraphics[scale=0.9]{imgs/files-struct.png}
+\end{figure}
+
 \pagebreak
  

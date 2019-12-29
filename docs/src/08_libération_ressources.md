@@ -11,7 +11,7 @@ Lorsqu’un processus se termine, tous les segments auxquels il était attaché 
 
 Détacher la mémoire partagée ne la supprime pas. Détacher la mémoire partagée permet juste de casser la correspondance 
 entre les pages de l'espace virtuel dédiées au segment  de mémoire et les pages frames de la mémoire physique dédiées 
-au segment de mémoire partagée. Pour réellement la mémoire partagée on fait appel à la fonction `shmctl`. 
+au segment de mémoire partagée. Pour réellement supprimer la mémoire partagée on fait appel à la fonction `shmctl`. 
 
 L’appel système `shmctl` prend trois arguments. Le premier est un identifiant de segment de mémoire partagée retourné 
 par `shmget`. Le deuxième est une constante qui spécifie une commande. On utilise uniquement la commande IPC_RMID 

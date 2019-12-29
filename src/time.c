@@ -4,6 +4,7 @@
 
 #include "time.h"
 
+/********  Conversion des données en temps réel  *********/
 Time time_to_ms(int msec) {
     Time formated_time;
     div_t result;
@@ -22,6 +23,7 @@ Time time_to_ms(int msec) {
 
 int minutes_to_ms(int minutes) { return minutes * 60000; }
 
+/********  Formatage du temps  *********/
 void to_string(int msec, char *str) {
     Time time = time_to_ms(msec);
     (time.min) ? sprintf(str, "%d':%d\"%d", time.min, time.sec, time.msec)

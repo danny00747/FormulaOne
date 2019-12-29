@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include "child.h"
 #include "window.h"
 #include "time.h"
@@ -10,10 +9,9 @@
 #include <unistd.h>
 #include <semaphore.h>
 
-
 void save_ranking();
 
-int findSize(char file_name[]);
+int find_size(char *file_name);
 
 void read_files(int qualified_cars[], int race_ranking[], int last_cars_of_Q1[], int last_cars_of_Q2[], char file[], int lines_to_read);
 

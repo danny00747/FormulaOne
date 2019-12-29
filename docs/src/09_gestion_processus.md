@@ -67,12 +67,12 @@ Le troisième contient la taille des éléments stockés dans le tableau. Le qua
 qui permet de comparer deux éléments du tableau. Cette fonction retourne un entier négatif si son premier argument est 
 inférieur au second et positif ou nul sinon. 
 
-Les deux arguments de type `(const void *)` font appel à l’utilisation de pointeurs `(void *)` qui est nécessaire car la fonction doit 
-être générique et pouvoir traiter n’importe quel type de pointeurs. `(void *)` est un pointeur vers une zone quelconque de mémoire 
-qui peut être casté vers n’importe quel type de pointeur par la fonction de comparaison. Le qualificatif const indique que la 
-fonction n’a pas le droit de modifier la donnée référencée par ce pointeur, même si elle reçoit un pointeur vers cette donnée. 
-On retrouve régulièrement cette utilisation de const dans les signatures des fonctions de la librairie pour spécifier des 
-contraintes sur les arguments passés à une fonction.
+Les deux arguments de type `(const void *)` font appel à l’utilisation de pointeurs `(void *)` qui est nécessaire car 
+la fonction doit être générique et pouvoir traiter n’importe quel type de pointeurs. `(void *)` est un pointeur vers 
+une zone quelconque de mémoire qui peut être casté vers n’importe quel type de pointeur par la fonction de comparaison. 
+Le qualificatif const indique que la fonction n’a pas le droit de modifier la donnée référencée par ce pointeur, 
+même si elle reçoit un pointeur vers cette donnée. On retrouve régulièrement cette utilisation de const dans 
+les signatures des fonctions de la librairie pour spécifier des contraintes sur les arguments passés à une fonction.
 
 Un exemple de fonction de comparaison est la fonction `strcmp` de la librairie 
 standard. Le pseudo-code repris ci-dessous est notre implémentation de la fonction `qsort`. 

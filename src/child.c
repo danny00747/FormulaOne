@@ -5,12 +5,20 @@ int current_lap = 0;
 F1_Car *vehicle;
 Circuit circuit;
 
+/*********************************************************
+*                Gestion de crash d'une voiture          *
+*********************************************************/
+
 void car_crash() {
     if (car_crashed(10000000))
         vehicle->out = 1;
     else
         vehicle->out = 0;
 }
+
+/*********************************************************
+*                Terminaison d'une étape                 *
+*********************************************************/
 
 int finished_running() {
     if (!strcmp(circuit.step_name, "RACE")) {
@@ -20,10 +28,20 @@ int finished_running() {
     }
 }
 
+/********  fonction qui permet aux voitures de n'est pas courir à la même vitesse  *********/
+
 int msleep(unsigned int tms) {
     return usleep(tms * 1000);
 }
 
+/** la fonction child fait tout ce qu'une voiture a à faire.
+ *  càd tout ce qui est géré par l'enfant/voiture
+
+*@param sem_t *sem c'est un sémaphore qui perment aux fils de n'est pas écrire en même temps
+                   dans la mémoire partagée. Techniquement ils peuvent mais on a choisi de procéder ainsi.
+*@param F1_Car *car c'est la variable de type F1_Car qui pointe vers la mémoire partagée où les fils écrivent.
+*@param int *car_names c'est la variable qui pointe vers le(s) tableau(x)qui contient les id.
+*/
 void child(sem_t *sem, F1_Car *car, int *car_names) {
 
     random_seed(getpid());
