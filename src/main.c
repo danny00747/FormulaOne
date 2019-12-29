@@ -237,7 +237,7 @@ int main(int argc, char **argv) {
     switch (pid) {
 
         case -1:
-            /********  échec du fork longueur *********/
+            /********  échec du fork *********/
             fprintf(stderr, "fork failed !");
             exit(EXIT_FAILURE);
 
