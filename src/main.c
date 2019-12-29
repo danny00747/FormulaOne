@@ -120,7 +120,7 @@ int main(int argc, char **argv) {
 
         } else if (!strcmp(step_name, "Q2")) {
 
-            /********  Lecture des 15 premiers voitures au Q1  *********/
+            /********  Assignation du nbr de voitures, du nom de l'étape et le temps de l'étape *********/
             circuit = (Circuit) {.number_of_cars = 15, .step_name = "Q2", .step_total_time = minutes_to_ms(15)};
 
             /********  Lecture des 15 premiers voitures au Q1  *********/
@@ -128,7 +128,7 @@ int main(int argc, char **argv) {
 
         } else if (!strcmp(step_name, "Q3")) {
 
-            /********  Lecture des 15 premiers voitures au Q1  *********/
+            /********  Assignation du nbr de voitures, du nom de l'étape et le temps de l'étape *********/
             circuit = (Circuit) {.number_of_cars = 10, .step_name = "Q3", .step_total_time = minutes_to_ms(12)};
 
             /********  Lecture des 10 premiers voitures au Q2  *********/
