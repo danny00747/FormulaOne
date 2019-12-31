@@ -108,26 +108,19 @@ int main(int argc, char **argv) {
     } else if (!strcmp(day_name, "sat")) {
         if (!strcmp(step_name, "P3")) {
             circuit = (Circuit) {.number_of_cars = 20, .step_name = "P3", .step_total_time = minutes_to_ms(60)};
-
         } else if (!strcmp(step_name, "Q1")) {
             circuit = (Circuit) {.number_of_cars = 20, .step_name = "Q1", .step_total_time = minutes_to_ms(18)};
-
         } else if (!strcmp(step_name, "Q2")) {
             circuit = (Circuit) {.number_of_cars = 15, .step_name = "Q2", .step_total_time = minutes_to_ms(15)};
-
             /********  Lecture des 15 premiers voitures au Q1  *********/
             read_files(qualified_cars, race_ranking, last_cars_of_Q1, last_cars_of_Q2, "Q1", 15);
-
         } else if (!strcmp(step_name, "Q3")) {
             circuit = (Circuit) {.number_of_cars = 10, .step_name = "Q3", .step_total_time = minutes_to_ms(12)};
-
             /********  Lecture des 10 premiers voitures au Q2  *********/
             read_files(qualified_cars, race_ranking, last_cars_of_Q1, last_cars_of_Q2, "Q2", 10);
-
         } else {
             print_usage();
         }
-
         /********  Sunday *********/
     } else if (!strcmp(day_name, "sun")) {
         if (!strcmp(step_name, "RACE")) {
