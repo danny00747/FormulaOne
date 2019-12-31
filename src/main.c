@@ -98,8 +98,6 @@ int main(int argc, char **argv) {
             circuit = (Circuit) {.number_of_cars = 20, .step_name = "P1", .step_total_time = minutes_to_ms(90)};
 
         } else if (!strcmp(step_name, "P2")) {
-
-            /********  Assignation du nbr de voitures, du nom de l'étape et le temps de l'étape *********/
             circuit = (Circuit) {.number_of_cars = 20, .step_name = "P2", .step_total_time = minutes_to_ms(90)};
 
         } else {
@@ -109,26 +107,18 @@ int main(int argc, char **argv) {
         /********  Saturday *********/
     } else if (!strcmp(day_name, "sat")) {
         if (!strcmp(step_name, "P3")) {
-
-            /********  Assignation du nbr de voitures, du nom de l'étape et le temps de l'étape *********/
             circuit = (Circuit) {.number_of_cars = 20, .step_name = "P3", .step_total_time = minutes_to_ms(60)};
 
         } else if (!strcmp(step_name, "Q1")) {
-
-            /********  Assignation du nbr de voitures, du nom de l'étape et le temps de l'étape *********/
             circuit = (Circuit) {.number_of_cars = 20, .step_name = "Q1", .step_total_time = minutes_to_ms(18)};
 
         } else if (!strcmp(step_name, "Q2")) {
-
-            /********  Assignation du nbr de voitures, du nom de l'étape et le temps de l'étape *********/
             circuit = (Circuit) {.number_of_cars = 15, .step_name = "Q2", .step_total_time = minutes_to_ms(15)};
 
             /********  Lecture des 15 premiers voitures au Q1  *********/
             read_files(qualified_cars, race_ranking, last_cars_of_Q1, last_cars_of_Q2, "Q1", 15);
 
         } else if (!strcmp(step_name, "Q3")) {
-
-            /********  Assignation du nbr de voitures, du nom de l'étape et le temps de l'étape *********/
             circuit = (Circuit) {.number_of_cars = 10, .step_name = "Q3", .step_total_time = minutes_to_ms(12)};
 
             /********  Lecture des 10 premiers voitures au Q2  *********/
@@ -259,7 +249,7 @@ int main(int argc, char **argv) {
             /********  Appel de la fonction display qui va afficher les données  *********/
             display(sem, car);
 
-            /********  Si on est au RACE attribution des id par le tableau race_ranking  *********/
+            /********  wait for children to finish  *********/
             for (int j = 0; j < circuit.number_of_cars; j++) {
                 wait(NULL);
             }
