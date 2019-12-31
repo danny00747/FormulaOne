@@ -236,7 +236,7 @@ int main(int argc, char **argv) {
             /********  Si on est aux autres étapes attribution des id par le tableau car_names  *********/
             child(sem, &car[i], &car_names[i]);
 
-            exit(0);
+            exit(EXIT_SUCCESS);
 
         default:
             /********  Appel de la fonction display qui va afficher les données  *********/
