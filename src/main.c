@@ -93,13 +93,10 @@ int main(int argc, char **argv) {
     /********  Friday *********/
     if (!strcmp(day_name, "fri")) {
         if (!strcmp(step_name, "P1")) {
-
             /********  Assignation du nbr de voitures, du nom de l'étape et le temps de l'étape *********/
             circuit = (Circuit) {.number_of_cars = 20, .step_name = "P1", .step_total_time = minutes_to_ms(90)};
-
         } else if (!strcmp(step_name, "P2")) {
             circuit = (Circuit) {.number_of_cars = 20, .step_name = "P2", .step_total_time = minutes_to_ms(90)};
-
         } else {
             print_usage();
         }
