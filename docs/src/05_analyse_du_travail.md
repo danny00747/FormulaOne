@@ -61,14 +61,20 @@ Une fois qu'on avait une voiture qui tournait correctement, on est passé à l'�
 représenter les données en console sous forme d'une table. Il existe plusieurs librairies qui permettent d'avoir une 
 table en console mais la plupart supporte pas le rafraichissement. L'un de plus gros challenge qu'on a rencontré, 
 c'était le rafraichissement des données dans une table en console. On a fini par utiliser une librairie disponible 
-sur github sous le nom de **libfort** et quelques commandes bash qu'on a dû convertir en langage C pour obtenir le 
-rafraichissement des données affichés en console.
+sur github sous le nom de **libfort** ([lien](https://github.com/seleznevae/libfort "github de libfort")) 
+et quelques commandes bash qu'on a dû convertir en langage C pour obtenir le rafraichissement des données 
+affichés en console.
 
 Après avoir réussi à obtenir une voiture qui tournait correctement et un affichage qui nous convenait bien, on est passé 
 à la création de la mémoire partagée, évidemment créer ce dernier sans avoir au moins 2 processus qui tournent n'a pas de 
 de sens. On est resté bloquer sur la mémoire partagée pendant plusieurs semaines car on a connu plusieurs problèmes notamment 
 les fils qui terminaient jamais, des processus zombie, les voitures qui tournaient plus alors qu'une tournait bien avant 
-la mémoire partagée... 
+la mémoire partagée...Mais tous ces problèmes ont étaient résolu. 
 
+À ce stade, on avait un affichage correcte et la mémoire partagée qui fonctionnait correctement, on est passé l'étape 
+suivant, le trie des données et surtout trouver un moyen d'avoir le bon classement pour la course de dimanche.
+Cette étape englobe plusieurs choses, pour pouvoir arriver à un bon classement des voitures pour la course de dimanche, 
+il a fallu introduire le paramétrage du programme qu'on n'a pas encore traité càd passer les étapes P1, P2, Q1 
+jusqu'à RACE comme arguments de notre programme et la gestion des dépassements qui va engendrer la création des fichiers.
 
 \pagebreak
