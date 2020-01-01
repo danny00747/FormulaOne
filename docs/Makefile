@@ -29,7 +29,7 @@ all: $(OUT)
 $(OUT): $(PANDOC_IN)
 	@echo "Starting Pandoc ..."
 	@pandoc $(PANDOC_IN) -f $(FROM) -t $(TO) -o $@ $(FLAGS)
-	@echo "$(OUT) updated"
+	@echo "$(OUT) updated !"
 
 $(CODE_MD): $(SRC)
 	@./gencode-md.sh $^ > $@

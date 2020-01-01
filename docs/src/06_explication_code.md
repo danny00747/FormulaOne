@@ -1,4 +1,3 @@
-
 Explication des particularités du code
 --------------------------------------
 
@@ -19,3 +18,10 @@ avec une pénalité relative à leur position de départ.
 
 Lorsque la simulation d'une étape est terminée, les positions des pilotes est sauvegardée dans un fichier.
 Ce fichier sera chargé lors de l'étape suivante afin de déterminer les participants ainsi que leurs positions. 
+
+
+Tout premièrement, nous avons décidé de travailler avec un logiciel de gestion de version notamment connu sous le nom de 
+git. 
+
+On a remarqué tout au début du projet qu'il était primordiale d'avoir une voiture qui tourne et affiche bien les donnés 
+en console avant d'en avoir 20 qui tournent en même temps. Du coup 
