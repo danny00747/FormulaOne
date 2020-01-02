@@ -10,12 +10,12 @@ Pour l'implémentation voir le code en annexe dans le fichier **main.c**.
 
 Notre programme prend en tant qu'arguments 4 options : 
 
-1. L'option **--day** qui prend comme paramètre le nom du jour 
-2. L'option **--step** qui prend comme paramètre le nom de l'étape 
-3. L'option **--length** qui prend comme paramètre la longueur d'un tour en kilomètre
-3. L'option **--help** qui prend aucun paramètre, sert juste à afficher le manuel du programme.
+1. L'option **_--day_** qui prend comme paramètre le nom du jour 
+2. L'option **_--step_** qui prend comme paramètre le nom de l'étape 
+3. L'option **_--length_** qui prend comme paramètre la longueur d'un tour en kilomètre
+3. L'option **_--help_** qui prend aucun paramètre, sert juste à afficher le manuel du programme.
 
-Si l'option **--length** n'est pas fourni comme argument du programme, une valeur par défaut est attribuée.
+Si l'option **_--length_** n'est pas fourni comme argument du programme, une valeur par défaut est attribuée.
 
 > Lors des séances d’essais (P1, P2, P3) :
 >
