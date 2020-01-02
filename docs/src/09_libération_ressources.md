@@ -14,7 +14,7 @@ entre les pages de l'espace virtuel dédiées au segment de mémoire et les page
 au segment de mémoire partagée. Pour réellement supprimer la mémoire partagée on fait appel à la fonction `shmctl`. 
 
 L’appel système `shmctl` prend trois arguments. Le premier est un identifiant de segment de mémoire partagée retourné 
-par `shmget`. Le deuxième est une constante qui spécifie une commande. On utilise uniquement la commande IPC_RMID 
+par `shmget`. Le deuxième est une constante qui spécifie une commande. On utilise uniquement la commande _IPC_RMID_ 
 qui permet de retirer le segment de mémoire partagée dont l’identifiant est passé comme premier argument. Si il n’y a plus 
 de processus attaché au segment de mémoire partagée, celui-ci est directement supprimé. Sinon, il est marqué de façon à ce 
 que le noyau retire le segment dès que le dernier processus s’en détache. `shmctl` retourne 0 en cas de succès et -1 en 
