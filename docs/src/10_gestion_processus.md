@@ -65,9 +65,11 @@ permet de copier un bloc de mémoire spécifié par le paramètre source, et don
 dans un nouvel emplacement désigné par le paramètre destination. Il est bien entendu qu'il est de notre responsabilité 
 d'allouer suffisamment de mémoire pour le bloc de destination afin qu'il puisse contenir toutes les données.
 
+Voilà la signature de la fonction `memcpy`. fournit par man : 
+
 ```{.c caption="man of memcpy"}
 #include <string.h>
-void *memcpy(void *dest, const void *src, size_t n);
+void memcpy(void *dest, const void *src, size_t n);
 ```
 
 Pour pouvoir classer les voitures en fonction de leur tour complet le plus rapide, ou pour pouvoir gérer les dépassements 

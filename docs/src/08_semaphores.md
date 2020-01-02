@@ -9,7 +9,7 @@ Dans notre cas, la mémoire partagée n’est accédée ou modifiée qu’avec u
 alors que le lecteur est le processus père.
 
 Il y a plusieurs variété de sémaphores, les sémaphores du System V et également les plus récents les sémaphores POSIX. 
-La librairie POSIX comprend deux types les **unnamed semaphores** & **named semaphores**. Dans notre projet on utilise 
+La librairie POSIX comprend deux types; les **unnamed semaphores** & **named semaphores**. Dans notre projet on utilise 
 les sémaphores POSIX de type **unnamed semaphores** qui sont disponibles dans la librairie standard C (GNU). 
 
 La glibc (GNU C Library) offre donc une implémentation des sémaphores. Ces derniers nous permettent de garantir l’accès 
