@@ -10,7 +10,7 @@ De plus, certaines informations doivent être disponible : temps au tour, temps 
 temps depuis le début de la course.
 
 De plus, nous devons appliquer des concepts vus en cours en première année ainsi qu'en deuxième : processus père-fils 
-(dont `fork` est la création d'un nouveau processus utilisateur), sémaphores (pour gérer la synchronisation des processus) 
+(dont `fork()` est la création d'un nouveau processus utilisateur), sémaphores (pour gérer la synchronisation des processus) 
 et la mémoire partagée (allocation et utilisation par appel des mémoires partagées via leurs identificateurs).
 
 \pagebreak

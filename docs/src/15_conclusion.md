@@ -50,10 +50,10 @@ Le plus dur était de comprendre comment le `fork()` et comment fonctionne plusi
 Mais en sachant comment fonctionne la formule 1 cela m'a aidé pour la compréhension du projet, donc je pouvais plus  me 
 concentrer sur la compréhension du langage C. 
 
-Grâce aux autres membres j'ai pu mieux comprendre comment le langage C et apprendre  
-à mon rythme tout en essayant de comprendre les différentes caractéristique de celui-ci. Pour conclure le gros problème pour moi 
-dans ce projet était de me  mettre à niveau par rapport au autres membres du groupe, ce projet m'a permit d'apprendre un langage 
-que je connaissais très peu et dans un future proche faire d'autres projets en C.
+Grâce aux autres membres j'ai pu mieux comprendre comment le langage C et apprendre à mon rythme tout en essayant de comprendre 
+les différentes caractéristique de celui-ci. Pour conclure le gros problème pour moi dans ce projet était de me  mettre à niveau 
+par rapport au autres membres du groupe, ce projet m'a permit d'apprendre un langage que je connaissais très peu et dans un future 
+proche faire d'autres projets en C.
 
 \pagebreak
  
