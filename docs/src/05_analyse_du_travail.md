@@ -38,7 +38,7 @@ Sans surprise, le fichier le plus important c'est le fichier **main.c**. C'est d
 de la mémoire partagée, des sémaphores, paramétrage du programme et également la création des fils/voitures qui vont participer 
 au Grand Prix. Le fichier **display.c**. sert principalement à afficher les données triées en console, 
 le fichier **child.c** comme son nom l'indique c'est dans ce fichier que les voitures créé par la fonction
-`fork` dans **main.c** vont écrire dans la mémoire partagée. et finalement parmis les fichiers principaux, on a le fichier 
+`fork()` dans **main.c** vont écrire dans la mémoire partagée. et finalement parmis les fichiers principaux, on a le fichier 
 **files.c** qui va se charger de tout ce qui a avoir avec un fichier. La création et la lecture des fichiers est géré par
 ce fichier **files.c**. 
  
