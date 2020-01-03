@@ -8,5 +8,5 @@ jamais se lancer si le fichier Q2 est inexistant car Q3 dépend de Q2. Pour l'é
 plusieurs fichiers notamment Q3, les fichiers contenant les élimninés du Q1 et Q2. 
 
 Il existe également un manuel (**_--help_** ) qui est affiché lorsque la commande passé comme arguments du programme est erroné afin 
-d'éviter le crash du programme. Cela nous perment aussi de garantir que le programme se lancer uniquement si ce dernier a reçu correctement 
+d'éviter le crash du programme. Cela nous permet aussi de garantir que le programme se lancer uniquement si ce dernier a reçu correctement 
 les arguments attendu. L'implémentation de tout cela voir le code en annexe dans le fichier **main.c**.  
