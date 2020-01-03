@@ -21,7 +21,7 @@ Pour avoir l’ordre sur la grille de départ lors de la course de dimanche, on 
     
     Le fichier lastQ1 contient les 5 derniers voitures du Q1, lastQ2 contient les 5 derniers voitures du Q2. Comme au Q3
     aucune voiture est éliminé on n'a donc pas besoin de créer un troisième fichier pour les éliminés. On utilise le 
-    fichier Q3 géneré à la fin de Q3 afin de déterminer et classer les 10 premiers positions sur la grille de départ. Les 
+    fichier Q3 généré à la fin de Q3 afin de déterminer et classer les 10 premiers positions sur la grille de départ. Les 
     autres places restant sont remplis grâce aux fichiers lastQ1 et lastQ2. Pour l'implémentation de ces 3 étapes voir 
     le code en annexe dans le fichier **files.c**. 
     

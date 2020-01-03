@@ -44,14 +44,14 @@ au second quadrimestre avoir le projet afin de maximiser ma compréhension de la
 
 ## Martin Perdaens
 
-Etant en première et deuxième année de TI et n'ayant pas eu le cours de OS de première année et ayant très peu programmer 
+Étant en première et deuxième année de TI et n'ayant pas eu le cours de OS de première année et ayant très peu programmé
 en C j'avais des craintes sur la réalisation du projet, surtout au niveau de mon aide au sein du groupe.
 Le plus dur était de comprendre comment le fork() et le fonctionnement de plusieurs processus tournant en même temps.
 Mais en sachant comment fonctionne la formule 1 cela m'a aidé pour la compréhension du projet, donc je pouvais plus  me 
 concentrer sur la programmation. 
 
 Grâce aux autres membres j'ai pu mieux comprendre comment le langage C fonctionne et 
-l'apprendre  à mon rythme tout en essayant de comprendre les différentes caractéristique de ce langague. Pour conclure le 
+l'apprendre  à mon rythme tout en essayant de comprendre les différentes caractéristique de ce langage. Pour conclure le 
 gros problème pour moi dans ce projet était de me  mettre à niveau par rapport au autres membres du groupe, ce projet m'a 
 permit d'apprendre un langage que je connaissais très peu et dans un future proche faire d'autres projets en C.
 
