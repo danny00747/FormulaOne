@@ -55,6 +55,5 @@ Grâce aux autres membres j'ai pu mieux comprendre comment le langage C et appre
 dans ce projet était de me  mettre à niveau par rapport au autres membres du groupe, ce projet m'a permit d'apprendre un langage 
 que je connaissais très peu et dans un future proche faire d'autres projets en C.
 
-
 \pagebreak
  
