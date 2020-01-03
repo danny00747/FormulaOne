@@ -3,7 +3,7 @@
 Chaque voiture correspond à un processus fils, tandis que le père s'occupe de la gestion des étapes passés comme arguments 
 du programme et de l'affichage.
 
-La création des processus se fait par la fonction `fork`, faisant partie des appels système POSIX. Elle permet de donner 
+La création des processus se fait par la fonction `fork()`, faisant partie des appels système POSIX. Elle permet de donner 
 naissance à un nouveau processus qui est sa copie.
 
 La création des processus fils est présent dans le fichier de code source **main.c**.

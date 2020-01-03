@@ -14,7 +14,7 @@ les sémaphores POSIX de type **unnamed semaphores** qui sont disponibles dans l
 
 La glibc (GNU C Library) offre donc une implémentation des sémaphores. Ces derniers nous permettent de garantir l’accès 
 exclusif à la mémoire partagée. Pour pouvoir utiliser un sémaphore, il faut d’abord l’initialiser. Cela se fait en 
-utilisant la fonction `sem_init` qui prend comme premier argument un pointeur vers le sémaphore à initialiser, deuxième 
+utilisant la fonction `sem_init(...)` qui prend comme premier argument un pointeur vers le sémaphore à initialiser, deuxième 
 argument pshared indique si ce sémaphore sera partagé entre les threads d’un processus ou entre processus. 
 
 Si pshared vaut 0, le sémaphore est partagé entre les threads d’un processus si non c’est entre les processus. 

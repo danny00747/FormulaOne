@@ -13,7 +13,7 @@ Références bibliographiques
 
 - Cours de Systèmes informatiques **SINF1252** donné aux étudiants en informatique à l'Université catholique de Louvain (UCL). 
   Le cours est donné par Prof. Olivier Bonaventure et est disponible en ligne : 
-  ([**SINF1252**](https://github.com/obonaventure/SystemesInformatiques "lien vers libfort"))
+  ([**SINF1252**](https://github.com/obonaventure/SystemesInformatiques "lien vers le site"))
   
   
   

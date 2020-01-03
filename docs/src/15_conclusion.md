@@ -21,7 +21,7 @@ la réalisation de ce projet, ou en tout cas de l'aide que je pouvais apporter a
 
 Heureusement j'avais déjà programmé en C par le passé et il m'a donc fallu peu de temps pour réacquérir les bases. 
 Cependant je n'avais aucune notion de programmation avec la gestion de multiples processus. J'ai dès lors du comprendre 
-par moi-même le fonctionnement d'un fork() et de toutes ses contraintes ainsi que la gestion de la concurrence inter-processus. 
+par moi-même le fonctionnement d'un `fork()` et de toutes ses contraintes ainsi que la gestion de la concurrence inter-processus. 
 
 Une fois à jour avec les autres membres du groupe j'ai pu participer activement à la réalisation du projet. 
 
