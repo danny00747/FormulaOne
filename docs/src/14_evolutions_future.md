@@ -3,11 +3,12 @@
 
 ### Intégration de codes couleurs dans l'affichage : DONE ! 
 
-Il s'agit certes d'une implémentation de moindre importance, mais cela pourrait s'avérer pratique pour ressortir de manière plus rapide les informations les plus importantes.
-Par exemple, on pourrait réaliser un code couleur pour :
+Il s'agit certes d'une implémentation de moindre importance, mais on pense que cela pourrait s'avérer pratique pour 
+ressortir de manière plus rapide les informations les plus importantes. On a donc réalisé un code couleur pour :
 
 - Les 3 premières places dans le classement,
 - Le temps le plus rapide au tour,
+- Les voitures au stand
 - La voiture ayant le temps le plus rapide au tour depuis le début de la course,
 - La ou les voiture(s) ayant abandonné la course (OUT).
 
@@ -30,13 +31,10 @@ Imaginons par exemple les options suivantes :
 - <kbd>F3</kbd> : Afficher / Retirer les codes couleurs
 - <kbd>F4</kbd> : Tri en fonction du meilleur temps au tour
 - <kbd>F5</kbd> : Tri en fonction du meilleur temps au tour total
+- <kbd>F6</kbd> : Tri en fonction du nom du pilote (id)
 - <kbd>F10</kbd> : Quitter
 
 ### Phase d'essai entièrement libre : TODO ! 
-
-Par souci de facilité (et pour se concentrer sur d'autres parties nécessitant plus de temps et de travail), 
-nous avons décidé que les voitures présentes lors d'une séance d'essai libre démarrent toutes comme s'il s'agissent 
-d'une étape classique (une qualification ou une course).
 
 Il serait possible, sans nécessairement y consacrer un temps considérable, de permettre aux différents pilotes de 
 commencer et arrêter leurs séances d'essais libres lorsqu'ils le souhaitent voire même s'ils rouleront lors de la séance.

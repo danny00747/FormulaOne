@@ -28,16 +28,16 @@ le programme affiche un manuel en console et s'arrêter.
 \includegraphics[scale=0.6]{imgs/files-struct.png}
 \end{figure}
 
-Pour simplifier le projet, nous avons décidé de découper ce dernier en plusieurs au lieu d'avoir tout le code dans un 
+Pour simplifier le projet, nous avons décidé de découper ce dernier en plusieurs fichiers au lieu d'avoir tout le code dans un 
 seul fichier. Nous avons **7 fichiers** C qui communiquent entre eux pour produire un exécutable. Le fait d'avoir coupé le 
-code en plusieurs fichiers nous a beaucoup aidé lors du débogage des problèmes rencontrés au fur qu'on avançait. 
+code en plusieurs fichiers nous a beaucoup aidé lors du débogage des problèmes rencontrés au fur à mesure qu'on avançait. 
 
 ### Fichiers principaux 
 
 Sans surprise, le fichier le plus important c'est le fichier **main.c**. C'est dans ce dernier qu'on trouve la création 
-de la mémoire partagée, des sémaphores, paramétrage du programme et également des fils/voitures qui vont participer 
+de la mémoire partagée, des sémaphores, paramétrage du programme et également la création des fils/voitures qui vont participer 
 au Grand Prix. Le fichier **display.c**. sert principalement à afficher les données triées en console, 
-le fichier **child.c** comme son nom l'indique c'est dans ce fichier que les voitures créent par la fonction
+le fichier **child.c** comme son nom l'indique c'est dans ce fichier que les voitures créé par la fonction
 `fork` dans **main.c** vont écrire dans la mémoire partagée. et finalement parmis les fichiers principaux, on a le fichier 
 **files.c** qui va se charger de tout ce qui a avoir avec un fichier. La création et la lecture des fichiers est géré par
 ce fichier **files.c**. 
@@ -45,7 +45,7 @@ ce fichier **files.c**.
 ### Description de la méthode de travail 
 
 Tout premièrement, nous avons décidé de travailler avec un logiciel de gestion de version notamment connu sous le nom de 
-git. Ce type de logiciel est devenu indispensable lorsqu’on travaille à plusieurs sur un même projet et donc sur 
+**_git_**. Ce type de logiciel est devenu indispensable lorsqu’on travaille à plusieurs sur un même projet et donc sur 
 le même code source. cela nous a permit deux choses : 
   
  - **suivre l’évolution du code source**, pour retenir les modifications effectuées sur chaque fichier et être 
@@ -69,7 +69,7 @@ Après avoir réussi à obtenir une voiture qui tournait correctement et un affi
 à la création de la mémoire partagée, évidemment créer ce dernier sans avoir au moins 2 processus qui tournent n'a pas de 
 de sens. On est resté bloquer sur la mémoire partagée pendant plusieurs semaines car on a connu plusieurs problèmes notamment 
 les fils qui terminaient jamais, des processus zombie, les voitures qui tournaient plus alors qu'une tournait bien avant 
-la mémoire partagée...Mais tous ces problèmes ont étaient résolu. 
+la mémoire partagée...Mais tous ces problèmes ont été résolu. 
 
 À ce stade, on avait un affichage correcte et la mémoire partagée qui fonctionnait correctement, on est passé l'étape 
 suivant, le trie des données et surtout trouver un moyen d'avoir le bon classement pour la course de dimanche.

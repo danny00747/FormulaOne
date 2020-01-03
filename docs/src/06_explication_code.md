@@ -3,16 +3,15 @@ Explication des particularités du code
 
 ### Fonctionnalités du code
 
-
-Pour le paramétrage du programme, nous avons décider d'utiliser un parser la ligne de commande avec la 
-fonction `getopt_long` disponible avec GNU C. Elle permet d'avoir des noms longs d'option, commençant par deux tirets. 
+Pour le paramétrage du programme, nous avons décider d'utiliser un parser la ligne de commande via la 
+fonction `getopt_long(...)` disponible avec GNU C. Elle permet d'avoir des noms longs d'option, commençant par deux tirets. 
 Pour l'implémentation voir le code en annexe dans le fichier **main.c**. 
 
 Notre programme prend en tant qu'arguments 4 options : 
 
 1. L'option **_--day_** qui prend comme paramètre le nom du jour 
 2. L'option **_--step_** qui prend comme paramètre le nom de l'étape 
-3. L'option **_--length_** qui prend comme paramètre la longueur d'un tour en kilomètre
+3. L'option **_--length_** qui prend comme paramètre la longueur du circuit en kilomètre
 3. L'option **_--help_** qui prend aucun paramètre, sert juste à afficher le manuel du programme.
 
 Si l'option **_--length_** n'est pas fourni comme argument du programme, une valeur par défaut est attribuée.
