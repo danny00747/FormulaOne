@@ -20,7 +20,7 @@ qualifications et de la course de dimanche.
 **Rôle des processus fils**
 
 Dans le cadre de ce projet, les fils sont seulement chargés à courir. Càd exécuter les étapes à faire pour un week-end complet d’un 
-grand prix de Formule 1. Pour y arriver on utilise une boucle `while(...)` qui a comme condition si _le temps de l'étape chosi n'a
+grand prix de Formule 1. Pour y arriver on utilise une boucle `while(...)` qui a comme condition si _le temps de l'étape choisie n'a
 pas écoulé, alors les fils continuent à courir_ en écrivant leur temps des secteurs dans le struct présent dans la mémoire partagée. 
 Pour la course de dimanche les fils courent tant qu'ils n'ont pas fini les tours à faire. 
 

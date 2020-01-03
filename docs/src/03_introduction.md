@@ -5,7 +5,7 @@ Ce projet consiste à présenter un week-end complet d'un grand prix de Formule 
 jusqu'à la course du dimanche, en passant par les essais du samedi et la séance de qualifications.
 
 Notre but consiste à reproduire cela dans un langage de programmation performant à l'exécution des méthodes implémentées, 
-le langage C. Nous devons générer un affichage qui gèrera les séances d'essais libres, les qualifications ainsi que la course.
+le langage C. Nous devons générer un affichage qui gérera les séances d'essais libres, les qualifications ainsi que la course.
 De plus, certaines informations doivent être disponible : temps au tour, temps secteur, disqualification, arrêt aux stands, 
 temps depuis le début de la course.
 

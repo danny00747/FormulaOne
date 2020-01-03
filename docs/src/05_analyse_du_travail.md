@@ -38,7 +38,7 @@ Sans surprise, le fichier le plus important c'est le fichier **main.c**. C'est d
 de la mémoire partagée, des sémaphores, paramétrage du programme et également la création des fils/voitures qui vont participer 
 au Grand Prix. Le fichier **display.c**. sert principalement à afficher les données triées en console, 
 le fichier **child.c** comme son nom l'indique c'est dans ce fichier que les voitures créé par la fonction
-`fork` dans **main.c** vont écrire dans la mémoire partagée. et finalement parmis les fichiers principaux, on a le fichier 
+`fork` dans **main.c** vont écrire dans la mémoire partagée. et finalement parmi les fichiers principaux, on a le fichier 
 **files.c** qui va se charger de tout ce qui a avoir avec un fichier. La création et la lecture des fichiers est géré par
 ce fichier **files.c**. 
  
@@ -59,10 +59,10 @@ générer aléatoirement le temps secteurs, le temps passé au stand etc...
 
 Une fois qu'on avait une voiture qui tournait correctement, on est passé à l'étape suivante l'affichage. On a décidé de 
 représenter les données en console sous forme d'une table. Il existe plusieurs librairies qui permettent d'avoir une 
-table en console mais la plupart supporte pas le rafraichissement. L'un de plus gros challenge qu'on a rencontré, 
-c'était le rafraichissement des données dans une table en console. On a fini par utiliser une librairie disponible 
+table en console mais la plupart supporte pas le rafraîchissement. L'un de plus gros challenge qu'on a rencontré, 
+c'était le rafraîchissement des données dans une table en console. On a fini par utiliser une librairie disponible 
 sur github sous le nom de **libfort** ([lien](https://github.com/seleznevae/libfort "github de libfort")) 
-et quelques commandes bash qu'on a dû convertir en langage C pour obtenir le rafraichissement des données 
+et quelques commandes bash qu'on a dû convertir en langage C pour obtenir le rafraîchissement des données 
 affichés en console.
 
 Après avoir réussi à obtenir une voiture qui tournait correctement et un affichage qui nous convenait bien, on est passé 
