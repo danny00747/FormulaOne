@@ -49,6 +49,25 @@ void help() {
     exit(EXIT_SUCCESS);
 }
 
+void version() {
+
+    printf(R"EOF(
+ $$$$$$$$\                                          $$\                   $$\
+ $$  _____|                                         $$ |                $$$$ |
+ $$ |    $$$$$$\   $$$$$$\  $$$$$$\$$$$\  $$\   $$\ $$ | $$$$$$\        \_$$ |
+ $$$$$\ $$  __$$\ $$  __$$\ $$  _$$  _$$\ $$ |  $$ |$$ | \____$$\         $$ |
+ $$  __|$$ /  $$ |$$ |  \__|$$ / $$ / $$ |$$ |  $$ |$$ | $$$$$$$ |        $$ |
+ $$ |   $$ |  $$ |$$ |      $$ | $$ | $$ |$$ |  $$ |$$ |$$  __$$ |        $$ |
+ $$ |   \$$$$$$  |$$ |      $$ | $$ | $$ |\$$$$$$  |$$ |\$$$$$$$ |      $$$$$$\
+ \__|    \______/ \__|      \__| \__| \__| \______/ \__| \_______|      \______|
+
+ This is the final version 4.0
+
+     )EOF");
+
+    exit(EXIT_SUCCESS);
+}
+
 int main(int argc, char **argv) {
 
     signal(SIGINT, return_cursor);
@@ -64,17 +83,21 @@ int main(int argc, char **argv) {
     int user_km = 0;
     char day_name[5], step_name[5];
 
-    static struct option long_options[] = {{"day",    required_argument, NULL, 'd'},
-                                           {"step",   required_argument, NULL, 's'},
-                                           {"length", required_argument, NULL, 'l'},
-                                           {"help",   no_argument, 0,          'h'},
-                                           {NULL, 0,                     NULL, 0}};
+    static struct option long_options[] = {{"day",     required_argument, NULL, 'd'},
+                                           {"step",    required_argument, NULL, 's'},
+                                           {"length",  required_argument, NULL, 'l'},
+                                           {"version", no_argument, 0,          'v'},
+                                           {"help",    no_argument, 0,          'h'},
+                                           {NULL, 0,                      NULL, 0}};
 
     char opt;
-    while ((opt = getopt_long(argc, argv, "hd:s:l:", long_options, NULL)) != EOF) {
+    while ((opt = getopt_long(argc, argv, "vhd:s:l:", long_options, NULL)) != EOF) {
         switch (opt) {
             case 'h':
                 help();
+                break;
+            case 'v':
+                version();
                 break;
             case 'd':
                 strcpy(day_name, optarg);

@@ -53,6 +53,19 @@ This a project of the lesson Operating Systems. (Unix) 2nd Bachelor at EPHEC
 
 > [IntelliJ IDEA Community Edition](https://www.jetbrains.com/clion/) - A cross-platform IDE for C and C++
 
+## Program Manuel
+
+Use the help command for more information on how to run this program
+
+>``` ./prog --help ```
+>
+
+## Program Version
+
+Use the version command in order to get the program current version 
+
+>``` ./prog --version ```
+
 ## Tâches à faire
 
 - [x] Création du GitHub
