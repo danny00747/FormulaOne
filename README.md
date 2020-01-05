@@ -36,16 +36,38 @@ This a project of the lesson Operating Systems. (Unix) 2nd Bachelor at EPHEC
  with it's value to specify which step that needs to be runned `Q1` for instance. 
  For race the user has the option to specify the lap `--length`, 
  by default it's 7Km. The length command is optional. 
-
->P1/P2/P3 for warmup
+ 
+> For P sessions on friday (P1, P2, P3) :
+>
 >>
->>``` ./prog --day fri --step P2Q1/Q2/Q3 : for qualifications
+>>``` ./prog --day fri --step P2```
 >>
->>``` ./prog --day sat --step Q1 ```
 
->RACE : for the race.
+> For Q sessions on saturday (Q1, Q2, Q3) :
+>
+>>
+>>``` ./prog --day sat --step Q3```
+>>
+
+> For the RACE on sunday (RACE) :
+>
 >>
 >>``` ./prog --day sun --step RACE --length 10 ```
+>>
+>>``` ./prog -d sun -s RACE -l 10 ```
+>>
+
+> For the manuel info (help) :
+>
+>>
+>>``` ./prog --help ``` or ``` ./prog -h ``` 
+>>
+
+> For the version info (version) :
+>
+>>
+>>``` ./prog --version ``` or ``` ./prog -v ``` 
+>>
 
 ![GIF demo](img/how-to-run-prog.gif.gif)
 
