@@ -1,0 +1,17 @@
+
+
+These are some commands used to run this program.
+
+For P sessions :         There are run on fridays but P3 on sat. Use the --day command.
+                         followed by a day name and which step needs to be runned for the P sessions.
+                         --day fri --step P2 for instance.
+
+For Q sessions :         There are run on saturdays, use the --day command.
+                         followed by a day name and which step needs to be runned for the Q sessions.
+                         --day sat --step Q3 for instance.
+
+For the RACE session :   It's run on sundays, use the --day command.
+                         followed by a day name. Here you can specify the race's lap length.
+                         by default it's 7km, the --length command is optional.
+                         --day sun --step RACE --length 10 for instance. 
+                         

@@ -1,12 +1,10 @@
-Q1
-Q2
-Q3
-RACE
-P1
-P2
-P3
-lastQ1
-lastQ2
+# Git ignore of F1-of-Linux Project
+# See repository at https://github.com/danny00747/FormulaOne
+# ============================================================
+
+
+#CLion files
+
 prog
 .idea
 cmake-build-debug

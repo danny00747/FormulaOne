@@ -1,0 +1,7 @@
+
+Usage: ./prog --day [dayName] --step [stepName]
+Usage: For race you can specify the lap length, by default it's 7km !
+Usage: ./prog --day [dayName] --step [stepName] --length [number]
+
+Use the --help command for more information. 
+

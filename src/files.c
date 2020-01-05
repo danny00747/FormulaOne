@@ -8,13 +8,27 @@
 Circuit circuit;
 F1_Car car_array[20];
 
-/** la fonction save_ranking créer un fichier qui a comme nom l'étape
- *  en exécution. Ce fichier est créé à la fin de l'étape.
-*/
+/** la fonction get_resources_file récupérer les fichiers dans le dossier src/resources un fichier
+ *
+*@param char file_name nom du fichier qui se trouve dans le dossier resources.
+ */
+
+char *get_resources_file(char *file_name) {
+
+    /*** static array in the function, to avoid lose of the array when the function ends ***/
+    static char resource_files[20];
+    strcpy(resource_files, "src/resources/");
+    strcat(resource_files, file_name);
+    return resource_files;
+
+}
 
 void save_ranking() {
 
-    FILE *file = fopen(circuit.step_name, "w");
+    char rsrc_file[20];
+    strcpy(rsrc_file, get_resources_file(circuit.step_name));
+
+    FILE *file = fopen(rsrc_file, "w");
 
     if (file == NULL) perror("fopen failed !"), exit(EXIT_FAILURE);
 
@@ -46,8 +60,12 @@ read_files(int qualified_cars[], int race_ranking[], int last_cars_of_Q1[], int 
     int file_size = find_size(file_to_read);
     char absolute_path[file_size];
     getcwd(absolute_path, file_size);
+
+    char rsrc_file[20];
+    strcpy(rsrc_file, get_resources_file(file_to_read));
+
     char full_absolute_path[file_size];
-    sprintf(full_absolute_path, "%s/%s", absolute_path, file_to_read);
+    sprintf(full_absolute_path, "%s/%s", absolute_path, rsrc_file);
 
     FILE *cmd;
     char result[NUMBER_OF_CARS];
@@ -88,7 +106,10 @@ read_files(int qualified_cars[], int race_ranking[], int last_cars_of_Q1[], int 
 
 int find_size(char *file_name) {
 
-    FILE *file = fopen(file_name, "r");
+    char rsrc_file[20];
+    strcpy(rsrc_file, get_resources_file(file_name));
+
+    FILE *file = fopen(rsrc_file, "r");
 
     if (file == NULL) {
         printf("%s '%s' %s", "File previous to", circuit.step_name, "NOT found !\n"), exit(EXIT_FAILURE);
@@ -108,7 +129,11 @@ int find_size(char *file_name) {
 */
 
 void save_eliminated_cars(char file_to_save[], int array[]) {
-    FILE *file = fopen(file_to_save, "w");
+
+    char rsrc_file[20];
+    strcpy(rsrc_file, get_resources_file(file_to_save));
+
+    FILE *file = fopen(rsrc_file, "w");
 
     if (file == NULL)
         perror("fopen failed !"), exit(EXIT_FAILURE);
@@ -132,7 +157,10 @@ void read_eliminated_cars(char file_to_read[], int array[]) {
 
     char results[5];
 
-    FILE *file = fopen(file_to_read, "r");
+    char rsrc_file[20];
+    strcpy(rsrc_file, get_resources_file(file_to_read));
+
+    FILE *file = fopen(rsrc_file, "r");
 
     if (file == NULL) perror("fopen failed !"), exit(EXIT_FAILURE);
 
@@ -152,4 +180,32 @@ void read_eliminated_cars(char file_to_read[], int array[]) {
 
     if (fclose(file) != 0)
         perror("fclose failed !"), exit(EXIT_FAILURE);
+}
+
+
+/** la fonction read_resources_files permet de lire les fichiers dans le dossier src/resources un fichier
+ *
+*@param char file_name nom du fichier qui se trouve dans le dossier resources.
+ */
+
+void read_resources_files(char *file_name) {
+
+    int file_size = find_size(file_name);
+
+    FILE *file;
+
+    char result[file_size];
+
+    char rsrc_file[20];
+    strcpy(rsrc_file, get_resources_file(file_name));
+
+    file = fopen(rsrc_file, "r");
+
+    if (file == NULL)
+        perror("fopen failed !"), exit(EXIT_FAILURE);
+
+    while (fgets(result, sizeof(result), file)) {
+
+        printf("%s", result);
+    }
 }

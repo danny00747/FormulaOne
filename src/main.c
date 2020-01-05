@@ -25,46 +25,19 @@ int qualified_cars[15], race_ranking[20], last_cars_of_Q1[15], last_cars_of_Q2[1
 /********  Gestion d'erreur dans le paramétrage du programme   *********/
 
 void print_usage() {
-    printf("%s", "Usage: ./prog --day [dayName] --step [stepName]\n");
-    printf("%s", "Usage: For race you can specify the lap length, by default it's 7km !\n");
-    printf("%s", "Usage: ./prog --day [dayName] --step [stepName] --length [number]\n");
-    printf("%s", "Use the --help command for more information. \n");
+    read_resources_files("usage");
     exit(EXIT_FAILURE);
 }
 
 /********  Manuel du programme  *********/
 
 void help() {
-    printf("\n%s\n\n", "These are some commands used to run this program.");
-    printf("%s\n", "For P sessions : \t There are run on fridays but P3 on sat. Use the --day command.");
-    printf("%s\n", "\t\t\t followed by a day name and which step needs to be runned for the P sessions.");
-    printf("%s\n\n", "\t\t\t --day fri --step P2 for instance.");
-    printf("%s\n", "For Q sessions : \t There are run on saturdays, use the --day command.");
-    printf("%s\n", "\t\t\t followed by a day name and which step needs to be runned for the Q sessions.");
-    printf("%s\n\n", "\t\t\t --day sat --step Q3 for instance.");
-    printf("%s\n", "For the RACE session : \t It's run on sundays, use the --day command.");
-    printf("%s\n", "\t\t\t followed by a day name. Here you can specify the race's lap length.");
-    printf("%s\n", "\t\t\t by default it's 7km, the --length command is optional.");
-    printf("%s\n\n", "\t\t\t --day sun --step RACE --length 10 for instance. ");
+    read_resources_files("help");
     exit(EXIT_SUCCESS);
 }
 
 void version() {
-
-    printf(R"EOF(
- $$$$$$$$\                                          $$\                   $$\
- $$  _____|                                         $$ |                $$$$ |
- $$ |    $$$$$$\   $$$$$$\  $$$$$$\$$$$\  $$\   $$\ $$ | $$$$$$\        \_$$ |
- $$$$$\ $$  __$$\ $$  __$$\ $$  _$$  _$$\ $$ |  $$ |$$ | \____$$\         $$ |
- $$  __|$$ /  $$ |$$ |  \__|$$ / $$ / $$ |$$ |  $$ |$$ | $$$$$$$ |        $$ |
- $$ |   $$ |  $$ |$$ |      $$ | $$ | $$ |$$ |  $$ |$$ |$$  __$$ |        $$ |
- $$ |   \$$$$$$  |$$ |      $$ | $$ | $$ |\$$$$$$  |$$ |\$$$$$$$ |      $$$$$$\
- \__|    \______/ \__|      \__| \__| \__| \______/ \__| \_______|      \______|
-
- This is the final version 4.0
-
-     )EOF");
-
+    read_resources_files("version");
     exit(EXIT_SUCCESS);
 }
 
