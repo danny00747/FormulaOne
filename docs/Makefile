@@ -19,7 +19,7 @@ WATCHED_FILES = $(METADATA) $(SRC) $(MD)
 PANDOC_IN = $(METADATA) $(MD) $(CODE_MD)
 
 FLAGS = --pdf-engine xelatex
-FLAGS += --template eisvogel.tex
+FLAGS += --template eisvogel.tex --filter pandoc-latex-environment
 FLAGS += -N --listings
 
 .PHONY: all watch open clean

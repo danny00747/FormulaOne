@@ -28,5 +28,21 @@ lof: true
 lot: true
 lol: true
 toc-won-page: true
-toc-title: Table des matières 
+toc-title: Table des matières
+
+colorlinks: true
+
+header-includes:
+  - |
+    ```{=latex}
+    \usepackage{awesomebox}
+    ```
+pandoc-latex-environment:
+  noteblock: [note]
+  tipblock: [tip]
+  warningblock: [warning]
+  cautionblock: [caution]
+  importantblock: [important]
+
+
 ---

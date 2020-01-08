@@ -17,10 +17,17 @@ Nous avons décidé d'utilise des sémaphores POSIX de type **unnamed semaphores
 
 Pour pouvoir utiliser un sémaphore, il faut d’abord l’initialiser. Cela se fait en 
 utilisant la fonction `sem_init(...)` qui prend comme arguments :
+
+::: note 
+
 * un pointeur vers le sémaphore à initialiser
 * un flag 'pshared' indiquant si ce sémaphore sera partagé entre les threads d’un processus ou entre plusieurs processus 
 * la valeur initiale du sémaphore
 
-Les opérations `sem_wait(sem_t *sem)` et `sem_post(sem_t *sem)` permettent respectivement de verrouiller et déverrouiller une sémaphore. 
-> Voir le code en annexe dans le fichier **main.c** pour l'implémentation de ces fonctions. 
+:::
+
+Les opérations `sem_wait(sem_t *sem)` et `sem_post(sem_t *sem)` permettent respectivement de verrouiller et déverrouiller une sémaphore.
  
+::: tip
+Voir le code en annexe dans le fichier **main.c** pour l'implémentation de ces fonctions. 
+:::

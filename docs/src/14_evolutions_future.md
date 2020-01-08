@@ -6,10 +6,19 @@
 Il s'agit certes d'une implémentation de moindre importance, mais on pense que cela pourrait s'avérer pratique pour 
 ressortir de manière plus rapide les informations les plus importantes. On a donc réalisé un code couleur pour :
 
+
+```{=latex}
+\begin{awesomeblock}[white][\abShortLine]{0pt}{\faCheckCircle[regular]}{black}
+```
+
 - Les 3 premières places dans le classement
 - Le temps au tour le plus rapide
 - La ou les voiture(s) au stands
 - La ou les voiture(s) ayant abandonné la course (OUT).
+
+```{=latex}
+\end{awesomeblock}
+```
 
 ### Affichage cliquable : TODO !
 

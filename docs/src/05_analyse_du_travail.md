@@ -34,11 +34,17 @@ code en plusieurs fichiers nous a beaucoup aidé lors du débogage des problème
 
 ### Fichiers principaux 
 
-Sans surprise, le fichier le plus important est le fichier **main.c**. C'est dans ce dernier qu'on trouve la création 
+::: important
+
+- Sans surprise, le fichier le plus important est le fichier **main.c**. C'est dans ce dernier qu'on trouve la création 
 de la mémoire partagée, des sémaphores, paramétrage du programme et également la création des fils/voitures qui participeront 
 au Grand Prix. Le fichier **display.c**. sert principalement à afficher les données triées en console. 
-Le fichier **child.c** contient quant à lui tout ce qui est propre à une voiture. C'est dans ce fichier que la voiture va "s'exécuter" une fois créée par le `fork()` du **main.c**. Finalement on a aussi un fichier
-**files.c** qui se charge de la creation, écriture et lecture des fichiers texte contenant les données des classements après chaque session. 
+
+- Le fichier **child.c** contient quant à lui tout ce qui est propre à une voiture. C'est dans ce fichier que la voiture va "s'exécuter" 
+une fois créée par le `fork()` du **main.c**. Finalement on a aussi un fichier **files.c** qui se charge de la creation, écriture 
+et lecture des fichiers texte contenant les données des classements après chaque session. 
+
+:::
  
 ### Description de la méthode de travail 
 
@@ -58,22 +64,32 @@ générer aléatoirement le temps secteurs, le temps passé au stand etc...
 
 Une fois qu'on avait une voiture qui tournait correctement, on est passé à l'étape suivante l'affichage. On a décidé de 
 représenter les données en console sous forme d'une table. Il existe plusieurs librairies qui permettent d'avoir une 
-table en console mais la plupart ne supportent pas le rafraîchissement. L'un de plus gros challenge rencontré était le rafraîchissement des données dans une table en console. On a fini par utiliser une librairie disponible 
-sur github sous le nom de **libfort** ([lien](https://github.com/seleznevae/libfort "github de libfort")) 
-et quelques commandes bash qu'on a dû convertir en langage C.
+table en console mais la plupart ne supportent pas le rafraîchissement. L'un de plus gros challenge rencontré était le rafraîchissement 
+des données dans une table en console. On a fini par utiliser une librairie disponible sur github sous le nom 
+de **libfort** ([lien](https://github.com/seleznevae/libfort "github de libfort")) et quelques commandes bash qu'on a dû convertir 
+en langage C.
 
 Après avoir réussi à obtenir une voiture qui tournait correctement et un affichage qui nous convenait, on est passé 
 à la création de la mémoire partagée. Evidemment créer cette derniere sans avoir au moins 2 processus qui tournent n'a pas de 
 de sens. On est resté bloqué sur la mémoire partagée pendant plusieurs semaines car on a connu plusieurs problèmes tels que :
-* des processus qui ne terminent jamais
+
+::: warning
+
+* des processus qui ne terminent jamais (le père et les fils restaient bloqué après à la fin d'une session)
 * des processus zombie
 * des voitures qui tournaient plus
-  
+
+::: 
+
 Néanmoins, tous ces problèmes ont été résolu. 
 
-À ce stade, on avait une mémoire partagée fonctionnelle et un affichage digne de ce nom. L'étape suivante était donc de trier les données afin d'obtenir un classement correct pour la course du dimanche. 
-Ceci implique plusieurs choses: 
-1. La mise en place du paramétrage de notre programme.
-2. La création d'un fichier par classement en fonction de l'étape.  
+À ce stade, on avait une mémoire partagée fonctionnelle et un affichage digne de ce nom. L'étape suivante était donc de trier 
+les données afin d'obtenir un classement correct pour la course du dimanche. Ceci implique plusieurs choses: 
 
+::: tip
+
+* La mise en place du paramétrage de notre programme.
+* La création d'un fichier par classement en fonction de l'étape.  
+
+:::
 \pagebreak

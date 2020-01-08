@@ -5,7 +5,9 @@ Chaque voiture correspond à un processus fils, tandis que le père s'occupe de 
 La création des processus se fait par la fonction `fork()`, faisant partie des appels système POSIX. Elle permet de donner 
 naissance à un nouveau processus qui est une copie du programme au moment de l'appel.
 
-> Voir le code en annexe dans le fichier **main.c** pour la création des processus fils. 
+::: tip
+Voir le code en annexe dans le fichier **main.c** pour la création des processus fils. 
+::: 
 
 **Rôle du processus père**
 
@@ -18,12 +20,15 @@ En fin de session, il sauvegarde les informations dans les fichiers correspondan
 **Rôle des processus fils**
 
 Les fils sont seulement chargés de "courir". C'est à dire, d'exécuter les étapes d'un week-end complet de
-grand prix de Formule 1. Pour ce faire nous avons utilisé une boucle `while(...)` qui tourne tant que la voiture n'a pas dépassé le temps de session autorisé ou,
-si nous sommes en course, tant que la voiture n'a pas fait les X tours de circuit demandé. 
+grand prix de Formule 1. Pour ce faire nous avons utilisé une boucle `while(...)` qui tourne tant que la voiture n'a pas 
+dépassé le temps de session autorisé ou, si nous sommes en course, tant que la voiture n'a pas fait les X tours de circuit demandé. 
 
 Le nombre de tours à faire est déterminé par la longueur du circuit qui varie en fonction l'option **_--length_** passé 
 en argument du programme. Si ce dernier n'est pas fourni une valeur par défaut de 7km lui est attribuée. 
-> Le code du fils se trouve dans le fichier **child.c**. 
+
+::: tip
+Le code du fils se trouve dans le fichier **child.c**. 
+::: 
 
 **Affichage**
 
@@ -53,13 +58,15 @@ Table:  Table de meilleur temps dans chacun des secteurs.
 |   S2   |  42  | 33":27 | 
 |   S3   |  36  | 38":44 | 
 
-> Voir le code en annexe dans le fichier **display.c** pour l'implémentation de ces tableaux. 
-
+::: tip
+Voir le code en annexe dans le fichier **display.c** pour l'implémentation de ces tableaux. 
+:::
 **Le tri du classement**
 
 Avant de trier on fait une copie des données de la mémoire partagée par le biais de la fonction `memcpy(...)`. Cette fonction 
 permet de copier un bloc de mémoire spécifié par le paramètre source, et dont la taille est spécifiée via le paramètre size, 
-dans un nouvel emplacement désigné par le paramètre destination. Il faut évidemment allouer suffisamment de mémoire pour le bloc de destination afin que celui-ci puisse contenir toutes les données.
+dans un nouvel emplacement désigné par le paramètre destination. Il faut évidemment allouer suffisamment de mémoire pour le bloc 
+de destination afin que celui-ci puisse contenir toutes les données.
 
 Pour pouvoir classer les voitures en fonction de leur tour le plus rapide, ou en fonction de leur position par rapport aux autres,
 on utilise la fonction de la librairie `qsort(...)`. 
@@ -70,13 +77,21 @@ void qsort(void *base, size_t nel, size_t width,
 ```
 
 Voici une petite explication des arguments de cette fonction:
-argument n° :
+
+::: note
+Argument n° :
+
 1. un pointeur vers le début de la zone mémoire à trier
 2. le nombre d’éléments à trier
 3. la taille des éléments stockés dans le tableau
-4. un pointeur vers la fonction permettant de comparer deux éléments du tableau. Cette fonction retourne un entier négatif si son premier argument est inférieur au second et positif ou nul sinon. 
+4. un pointeur vers la fonction permettant de comparer deux éléments du tableau. Cette fonction retourne un entier négatif si 
+    son premier argument est inférieur au second et positif ou nul sinon. 
 5. les paramètres suivant sont expliqué ci-dessous
+::: 
 
+```{=latex}
+\begin{awesomeblock}[white][\abLongLine][\textbf{Les const de qsort}]{0pt}{\faBookReader}{black}
+```
 Les deux paramètres de type `(const void *)` font appel à l’utilisation de pointeurs `(void *)` qui sont nécessaire car 
 la fonction doit être générique et pouvoir traiter n’importe quel type de pointeurs. `(void *)` est un pointeur vers 
 une zone quelconque de mémoire qui peut être casté vers n’importe quel type de pointeur par la fonction de comparaison. 
@@ -84,6 +99,11 @@ Le qualificatif `const` indique que la fonction n’a pas le droit de modifier l
 même si elle reçoit un pointeur vers cette donnée. On retrouve régulièrement cette utilisation de `const` dans 
 les signatures des fonctions de la librairie pour spécifier des contraintes sur les arguments passés à une fonction.
 
-> Voir le code en annexe dans le fichier **display.c** pour l'implémentation de ces fonctions. 
+```{=latex}
+\end{awesomeblock}
+```
 
+::: tip
+Voir le code en annexe dans le fichier **display.c** pour l'implémentation de ces fonctions. 
+:::
 \pagebreak 

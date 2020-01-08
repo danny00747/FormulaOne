@@ -11,6 +11,11 @@ l’identifiant du segment de mémoire retourné par `shmget(...)`.
 
 Notre mémoire partagée est constituée d'un `struct` comportant les informations propre à une voiture :
 
+```{=latex}
+\begin{awesomeblock}[white][\abLongLine][\textbf{Le struct partagée où les différents pilotes vont écrire leurs données }] 
+{0pt}{\faUsers}{black}
+```
+
 ```{.c caption="shared struct"}
 typedef struct F1_Car {
     int id;
@@ -29,6 +34,9 @@ typedef struct F1_Car {
 } F1_Car;
 ```
 
+```{=latex}
+\end{awesomeblock}
+```
 
 
 

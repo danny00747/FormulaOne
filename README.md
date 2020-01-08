@@ -24,7 +24,7 @@ This a project of the lesson Operating Systems. (Unix) 2nd Bachelor at EPHEC
 1. **Daniel Olivier** ([@danny00747](https://github.com/danny00747 "danny00747"))
 2. **Martin Michotte** ([@MMichotte](https://github.com/MMichotte "Martin Michotte"))
 3. **Morgan Valentin** ([@momo007dev](https://github.com/momo007dev "Morgan Valentin"))
-4. Others will be added later... 
+4. **Martin Pardens** ([@Martinp-95](https://github.com/martinp-95 "Martin Pardens"))
 
 ## How to compile this program
 
