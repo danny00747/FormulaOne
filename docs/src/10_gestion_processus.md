@@ -1,37 +1,34 @@
 ### Création et gestion des processus
 
-Chaque voiture correspond à un processus fils, tandis que le père s'occupe de la gestion des étapes passés comme arguments 
-du programme et de l'affichage.
+Chaque voiture correspond à un processus fils, tandis que le père s'occupe de la gestion des étapes.
 
 La création des processus se fait par la fonction `fork()`, faisant partie des appels système POSIX. Elle permet de donner 
-naissance à un nouveau processus qui est sa copie.
+naissance à un nouveau processus qui est une copie du programme au moment de l'appel.
 
-La création des processus fils est présent dans le fichier de code source **main.c**.
+> Voir le code en annexe dans le fichier **main.c** pour la création des processus fils. 
 
 **Rôle du processus père**
 
-Dans notre cas, nous avons un processus père donnant naissance au nombre de processus fils nécessaire à l'étape choisie.
-Chaque processus fils représente une voiture.
+Dans notre cas, nous avons un processus père qui donne naissance à un nombre de processus fils en fonction de l'étape choisie.
 
-Le processus père, quant à lui, va lire des informations provenant de la mémoire partagée.
-Il s'occupe également de l'affichage ainsi que du tri tout comme sauvegarde des informations sur fichier des étapes de 
-qualifications et de la course de dimanche. 
+Le processus père est chargé de lire les données stockées en mémoire partagée.
+Il s'occupe également du tri des voitures ainsi que de l'affichage.
+En fin de session, il sauvegarde les informations dans les fichiers correspondant.  
 
 **Rôle des processus fils**
 
-Dans le cadre de ce projet, les fils sont seulement chargés à courir. Càd exécuter les étapes à faire pour un week-end complet d’un 
-grand prix de Formule 1. Pour y arriver on utilise une boucle `while(...)` qui a comme condition si _le temps de l'étape choisie n'a
-pas écoulé, alors les fils continuent à courir_ en écrivant leur temps des secteurs dans le struct présent dans la mémoire partagée. 
-Pour la course de dimanche les fils courent tant qu'ils n'ont pas fini les tours à faire. 
+Les fils sont seulement chargés de "courir". C'est à dire, d'exécuter les étapes d'un week-end complet de
+grand prix de Formule 1. Pour ce faire nous avons utilisé une boucle `while(...)` qui tourne tant que la voiture n'a pas dépassé le temps de session autorisé ou,
+si nous sommes en course, tant que la voiture n'a pas fait les X tours de circuit demandé. 
 
 Le nombre de tours à faire est déterminé par la longueur du circuit qui varie en fonction l'option **_--length_** passé 
-comme argument du programme, si ce dernier n'est pas fourni une valeur par défaut est attribuée qui vaut 7km. Le code du 
-fils est présent dans le fichier **child.c**. 
+en argument du programme. Si ce dernier n'est pas fourni une valeur par défaut de 7km lui est attribuée. 
+> Le code du fils se trouve dans le fichier **child.c**. 
 
 **Affichage**
 
-Pour pouvoir les données dans table, on utilise une librairie public **libfort** disponible sur 
-github : <https://github.com/seleznevae/libfort>. Voilà un exemple du résultat lors de l'étape Q2. 
+Pour pouvoir afficher les données proprement dans un tableaux, nous avons utilisé la librairie public **libfort** disponible sur 
+github : <https://github.com/seleznevae/libfort>. Voici un exemple du tableau des résultats lors de l'étape Q2. 
 
 | Position | NAME |   S1   |   S2   |   S3   | OUT | PIT | LAP | LAP TIME  | BEST LAP TIME |
 |----------|------|--------|--------|--------|-----|-----|-----|-----------|---------------|
@@ -43,10 +40,10 @@ github : <https://github.com/seleznevae/libfort>. Voilà un exemple du résultat
 
 Table:  Table des résultats.
 
-Pour les colonnes de secteurs, lap time et best lap time, les données qui sont initialement des entiers sont convertis en 
-temps réel pour une question de lisibilité. 
+Pour les colonnes de secteurs, lap time et best lap time, les données utilisé dans notre programme sont des entiers.
+Afin de rendre les choses plus lisible, nous les avons converties vers un format temporel. 
 
-Il y a également une deuxième table pour savoir qui a le meilleur temps dans chacun des secteurs. 
+Nous avons également un deuxième tableau affichant le meilleur temps de chaque secteur ainsi que la voiture qui l'a fait. 
 
 Table:  Table de meilleur temps dans chacun des secteurs.
 
@@ -56,38 +53,37 @@ Table:  Table de meilleur temps dans chacun des secteurs.
 |   S2   |  42  | 33":27 | 
 |   S3   |  36  | 38":44 | 
 
-L'implémentation de ces tables voir le code en annexe dans le fichier **display.c**.  
+> Voir le code en annexe dans le fichier **display.c** pour l'implémentation de ces tableaux. 
 
-**Le trie**
+**Le tri du classement**
 
-Avant de trier on fait une copie des données du struct partagée entre les processus via la fonction `memcpy(...)`. Cette fonction 
+Avant de trier on fait une copie des données de la mémoire partagée par le biais de la fonction `memcpy(...)`. Cette fonction 
 permet de copier un bloc de mémoire spécifié par le paramètre source, et dont la taille est spécifiée via le paramètre size, 
-dans un nouvel emplacement désigné par le paramètre destination. Il est bien entendu qu'il est de notre responsabilité 
-d'allouer suffisamment de mémoire pour le bloc de destination afin qu'il puisse contenir toutes les données.
+dans un nouvel emplacement désigné par le paramètre destination. Il faut évidemment allouer suffisamment de mémoire pour le bloc de destination afin que celui-ci puisse contenir toutes les données.
 
-Pour pouvoir classer les voitures en fonction de leur tour complet le plus rapide, ou pour pouvoir gérer les dépassements 
-lors la course, on utilise la fonction de la librairie `qsort(...)`. 
+Pour pouvoir classer les voitures en fonction de leur tour le plus rapide, ou en fonction de leur position par rapport aux autres,
+on utilise la fonction de la librairie `qsort(...)`. 
 
 ```{.c caption="man of qsort"}
 void qsort(void *base, size_t nel, size_t width,
            int (*compar)(const void *, const void *));
 ```
 
-Son premier paramètre est un pointeur vers le début de la zone mémoire à trier, Le second est le nombre d’éléments à trier, 
-le troisième contient la taille des éléments stockés dans le tableau et le quatrième argument est un pointeur vers la fonction 
-qui permet de comparer deux éléments du tableau. Cette fonction retourne un entier négatif si son premier argument est 
-inférieur au second et positif ou nul sinon. 
+Voici une petite explication des arguments de cette fonction:
+argument n° :
+1. un pointeur vers le début de la zone mémoire à trier
+2. le nombre d’éléments à trier
+3. la taille des éléments stockés dans le tableau
+4. un pointeur vers la fonction permettant de comparer deux éléments du tableau. Cette fonction retourne un entier négatif si son premier argument est inférieur au second et positif ou nul sinon. 
+5. les paramètres suivant sont expliqué ci-dessous
 
-Les deux paramètres de type `(const void *)` font appel à l’utilisation de pointeurs `(void *)` qui est nécessaire car 
+Les deux paramètres de type `(const void *)` font appel à l’utilisation de pointeurs `(void *)` qui sont nécessaire car 
 la fonction doit être générique et pouvoir traiter n’importe quel type de pointeurs. `(void *)` est un pointeur vers 
 une zone quelconque de mémoire qui peut être casté vers n’importe quel type de pointeur par la fonction de comparaison. 
 Le qualificatif `const` indique que la fonction n’a pas le droit de modifier la donnée référencée par ce pointeur, 
 même si elle reçoit un pointeur vers cette donnée. On retrouve régulièrement cette utilisation de `const` dans 
 les signatures des fonctions de la librairie pour spécifier des contraintes sur les arguments passés à une fonction.
 
-Les voitures sont triés sur leur tour complet le plus rapide et sur leur tour lors de la course de dimanche. Cela 
-est géré par la fonction `compare(...)` qui est passé en paramètre à la fonction `qsort(...)`. 
-
-L'implémentation de ces fonctions voir le code en annexe dans le fichier **display.c**.  
+> Voir le code en annexe dans le fichier **display.c** pour l'implémentation de ces fonctions. 
 
 \pagebreak 

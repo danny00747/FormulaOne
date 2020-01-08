@@ -20,7 +20,6 @@ Le calendrier d’un week-end de F1 est établi comme suit :
   - Q3, durée 12 minutes, qui permet de classer les 10 voitures restantes pour établir les 10 premières places sur la grille de départ de la course
 - Dimanche après-midi, la course en elle-même.
 
-Votre projet devra prendre en charge les choses suivantes.
 
 ### Première partie : gestion des séances d’essai, des qualifications et de la course
 

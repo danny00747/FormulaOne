@@ -1,12 +1,13 @@
 ### Sécurité du programme 
 
-Pour éviter de rendre le code lourd on a décidé de rendre les séances d’essais libre. Càd on peut passer au P2 sans 
-avoir exécuter P1. Par contre quand on passe au séances de qualifications surtout au Q2 et Q3, on a ajouté de la sécurité. 
-Q2 sera jamais exécuter si Q1 n'a jamais été lancé car Q2 lit un fichier généré à la fin de Q1 afin de déterminer les 
-participants ainsi que leurs positions. Si ce fichier n'est pas disponible le programme s'arrêter, également pour Q3 qui va 
-jamais se lancer si le fichier Q2 est inexistant car Q3 dépend de Q2. Pour l'étape RACE, ce dernier dépend de 
-plusieurs fichiers notamment Q3, les fichiers contenant les éliminés du Q1 et Q2. 
+Pour éviter de rendre le code trop lourd on a décidé de ne pas obliger l'utilisateur à lancer toutes les séances d'essais. On peut donc passer au P2 sans 
+avoir exécuté P1. Par contre pour les séances de qualifications on a ajouté de la sécurité. 
+Nous avons fait en sorte qu'une qualification ne puisse pas être lancée si la précédente n'a pas été lancée et terminée auparavant.
+Q2 ne sera donc jamais exécuté avant Q1 tout comme Q3 ne sera jamais exécuté avant Q2 ou Q1. 
+Il en va de même pour la course, celle-ci ne peut être lancée si les 3 qualifications ont été terminées.
 
 Il existe également un manuel (**_--help_** ) qui est affiché lorsque la commande passé comme arguments du programme est erroné afin 
-d'éviter le crash du programme. Cela nous permet aussi de garantir que le programme se lancer uniquement si ce dernier a reçu correctement 
-les arguments attendu. L'implémentation de tout cela voir le code en annexe dans le fichier **main.c**.  
+d'éviter le crash du programme. Cela nous permet aussi de garantir que le programme se lancer uniquement si ce dernier a reçu les arguments attendu.
+
+> Voir le code en annexe dans le fichier **main.c** pour l'implémentation de la sécurité 
+
