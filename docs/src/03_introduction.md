@@ -20,19 +20,9 @@ Nous afficherons dès lors :
 
 De plus, nous devons appliquer des concepts vus en cours comme:
 
-* utilisation de processus père-fils -> `fork()` (cours de 1ère année)
+* utilisation de processus père-fils via la fonction `fork()` (cours de 1ère année)
 * utilisation de la mémoire partagée pour le partage de données entre processus
 * utilisation de sémaphores pour gérer la synchronisation des processus.
 
-```{=latex}
-\begin{awesomeblock}[magenta]{1pt}{\faCertificate}{magenta}
-\awesomebox{0pt}{\faCogs}{black}{Lorem ipsum…}
-```
-* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam aliquet
-* libero quis lectus elementum fermentum.
-
-```{=latex}
-\end{awesomeblock}
-```
 \pagebreak
 

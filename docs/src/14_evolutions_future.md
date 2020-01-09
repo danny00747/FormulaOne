@@ -8,7 +8,7 @@ ressortir de manière plus rapide les informations les plus importantes. On a do
 
 
 ```{=latex}
-\begin{awesomeblock}[white][\abShortLine]{0pt}{\faCheckCircle[regular]}{black}
+\begin{awesomeblock}[white][\abShortLine]{0pt}{\faCheckCircle}{green}
 ```
 
 - Les 3 premières places dans le classement
@@ -32,13 +32,21 @@ de fonctionnement.
 
 Imaginons par exemple les options suivantes :
 
+```{=latex}
+\begin{awesomeblock}[white][\abShortLine]{0pt}{\faThumbsUp}{blue}
+```
+
 - <kbd>F1</kbd> : Help
 - <kbd>F2</kbd> : Mettre en pause / Reprendre
 - <kbd>F3</kbd> : Afficher / Retirer les codes couleurs
 - <kbd>F4</kbd> : Tri en fonction du meilleur temps au tour
 - <kbd>F5</kbd> : Tri en fonction du meilleur temps au tour total
 - <kbd>F6</kbd> : Tri en fonction du nom du pilote (id)
-- <kbd>F10</kbd> : Quitter
+- <kbd>F10</kbd> : Quitter 
+
+```{=latex}
+\end{awesomeblock}
+```
 
 ### Phase d'essai entièrement libre : TODO ! 
 

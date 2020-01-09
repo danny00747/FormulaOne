@@ -44,5 +44,4 @@ pandoc-latex-environment:
   cautionblock: [caution]
   importantblock: [important]
 
-
 ---

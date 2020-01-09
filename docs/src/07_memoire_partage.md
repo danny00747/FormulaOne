@@ -18,7 +18,7 @@ Notre mémoire partagée est constituée d'un `struct` comportant les informatio
 
 ```{=latex}
 \begin{awesomeblock}[white][\abLongLine][\textbf{Le struct partagée où les différents pilotes vont écrire leurs données }] 
-{0pt}{\faUsers}{black}
+{5pt}{\faUsers}{orange}
 ```
 
 ```{.c caption="shared struct"}

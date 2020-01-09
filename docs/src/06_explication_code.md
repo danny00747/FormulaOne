@@ -13,7 +13,7 @@ Voir code en annexe dans le fichier **main.c** pour l'implémentation.
 Notre programme prend 4 options d'argument : 
 
 ```{=latex}
-\begin{awesomeblock}[black]{0.2pt}{\faCogs}{black}  
+\begin{awesomeblock}[gray]{1pt}{\faCogs}{gray}  
 ```
 
 1. L'option **_--day_** qui prend comme paramètre le nom du jour 
@@ -25,11 +25,19 @@ Notre programme prend 4 options d'argument :
 \end{awesomeblock}
 ```
 
+```{=latex}
+\begin{awesomeblock}[black]{1pt}{\faToggleOff}{green}  
+```
+
 Si l'option **_--length_** n'est pas fourni comme argument du programme, une valeur par défaut est attribuée. 
 
 ```{=latex}
+\end{awesomeblock}
+```
+
+```{=latex}
 \begin{awesomeblock}[white][\abLongLine][\textbf{Voici quelques exemples de lancement de notre programme avec des arguments}]
- {0pt}{\faCogs}{black}
+ {0pt}{\faCogs}{gray}
 ```
 
 > Lors des séances d’essais (P1, P2, P3) :

@@ -22,11 +22,20 @@ le programme affiche le manuel d'utilisation en console et s'arrêter.
  
 ### Découpage en plusieurs fichiers 
 
+```{=latex}
+\begin{awesomeblock}[white][\abShortLine][\textbf{Tous les fichiers C du projet }] 
+{5pt}{\faFileCode}{purple}
+```
+
 \begin{figure}[H]
 \centering
 \caption{Structure des fichiers}
 \includegraphics[scale=0.6]{imgs/files-struct.png}
 \end{figure}
+
+```{=latex}
+\end{awesomeblock}
+```
 
 Pour simplifier le projet, nous avons décidé de découper ce dernier en plusieurs fichiers au lieu d'avoir tout le code dans un 
 seul fichier. Nous avons **7 fichiers** C qui communiquent entre eux pour produire un exécutable. Le fait d'avoir découpé le 
@@ -53,10 +62,19 @@ Premièrement, nous avons décidé de travailler avec un logiciel de gestion de 
 le même code source. 
 
 Cela nous a permit deux choses : 
+
+```{=latex}
+\begin{awesomeblock}[orange]{1.7pt}{\faGit*}{orange} 
+```
+
  - **suivre l’évolution du code source**, pour retenir les modifications effectuées sur chaque fichier et être 
    ainsi capable de revenir en arrière en cas de problème. 
  - **travailler à plusieurs**, sans risquer de se marcher sur les pieds. Si deux personnes modifient un même fichier en même 
    temps, leurs modifications doivent pouvoir être fusionnées sans perte d’information.
+   
+```{=latex}
+\end{awesomeblock}
+```
 
 On a remarqué au début du projet qu'il était primordiale d'avoir d'abord une voiture qui tourne et affiche convenablement les données 
 en console avant d'en avoir 20 qui tournent en même temps. Du coup on a commencé par créer le fichier **child.c** pour 
@@ -71,25 +89,35 @@ en langage C.
 
 Après avoir réussi à obtenir une voiture qui tournait correctement et un affichage qui nous convenait, on est passé 
 à la création de la mémoire partagée. Evidemment créer cette derniere sans avoir au moins 2 processus qui tournent n'a pas de 
-de sens. On est resté bloqué sur la mémoire partagée pendant plusieurs semaines car on a connu plusieurs problèmes tels que :
+de sens. On est resté bloqué sur la mémoire partagée pendant plusieurs semaines. 
 
-::: warning
+```{=latex}
+\begin{awesomeblock}[white][\abShortLine][\textbf{Quelquels problèmes rencontrés}]
+{0pt}{\faQuestionCircle}{red} 
+```
 
 * des processus qui ne terminent jamais (le père et les fils restaient bloqué après à la fin d'une session)
 * des processus zombie
 * des voitures qui tournaient plus
 
-::: 
+```{=latex}
+\end{awesomeblock}
+``` 
 
 Néanmoins, tous ces problèmes ont été résolu. 
 
 À ce stade, on avait une mémoire partagée fonctionnelle et un affichage digne de ce nom. L'étape suivante était donc de trier 
 les données afin d'obtenir un classement correct pour la course du dimanche. Ceci implique plusieurs choses: 
 
-::: tip
+```{=latex}
+\begin{awesomeblock}[black]{0.2pt}{\faHandPointRight}{black}  
+```
 
 * La mise en place du paramétrage de notre programme.
 * La création d'un fichier par classement en fonction de l'étape.  
 
-:::
+```{=latex}
+\end{awesomeblock}
+```
+
 \pagebreak
