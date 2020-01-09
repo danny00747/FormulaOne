@@ -1,13 +1,19 @@
 \pagebreak
 
-Rapport du projet : F1-of-Linux
-===============================
+Rapport du projet : F1
+=======================
 
 **Groupe 4**
 
-Notre groupe est constitué de 4 personnes :
+```{=latex}
+\begin{awesomeblock}[black][\abShortLine][\textbf{Notre groupe est constitué de 4 personnes}]{0pt}{\faDev}{blue}
+```
 
 - Daniel Olivier
 - Martin Michotte
 - Morgan Valentin
 - Martin Perdaens
+
+```{=latex}
+\end{awesomeblock}
+```

@@ -45,8 +45,16 @@ github : <https://github.com/seleznevae/libfort>. Voici un exemple du tableau de
 
 Table:  Table des résultats.
 
+```{=latex}
+\begin{awesomeblock}[gray]{1pt}{\faGrin*[regular]}{gray}   
+```
+
 Pour les colonnes de secteurs, lap time et best lap time, les données utilisé dans notre programme sont des entiers.
 Afin de rendre les choses plus lisible, nous les avons converties vers un format temporel. 
+ 
+```{=latex}
+\end{awesomeblock}
+```
 
 Nous avons également un deuxième tableau affichant le meilleur temps de chaque secteur ainsi que la voiture qui l'a fait. 
 
@@ -90,11 +98,12 @@ Argument n° :
 ::: 
 
 ```{=latex}
-\begin{awesomeblock}[white][\abLongLine][\textbf{Les const de qsort}]{0pt}{\faBookReader}{black}
+\begin{awesomeblock}[white][\abShortLine][\textbf{Les const de qsort}]{0pt}{\faBookReader}{black}
 ```
 Les deux paramètres de type `(const void *)` font appel à l’utilisation de pointeurs `(void *)` qui sont nécessaire car 
 la fonction doit être générique et pouvoir traiter n’importe quel type de pointeurs. `(void *)` est un pointeur vers 
 une zone quelconque de mémoire qui peut être casté vers n’importe quel type de pointeur par la fonction de comparaison. 
+\newline \newline 
 Le qualificatif `const` indique que la fonction n’a pas le droit de modifier la donnée référencée par ce pointeur, 
 même si elle reçoit un pointeur vers cette donnée. On retrouve régulièrement cette utilisation de `const` dans 
 les signatures des fonctions de la librairie pour spécifier des contraintes sur les arguments passés à une fonction.

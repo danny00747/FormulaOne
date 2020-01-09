@@ -45,11 +45,11 @@ code en plusieurs fichiers nous a beaucoup aidé lors du débogage des problème
 
 ::: important
 
-- Sans surprise, le fichier le plus important est le fichier **main.c**. C'est dans ce dernier qu'on trouve la création 
+Sans surprise, le fichier le plus important est le fichier **main.c**. C'est dans ce dernier qu'on trouve la création 
 de la mémoire partagée, des sémaphores, paramétrage du programme et également la création des fils/voitures qui participeront 
 au Grand Prix. Le fichier **display.c**. sert principalement à afficher les données triées en console. 
-
-- Le fichier **child.c** contient quant à lui tout ce qui est propre à une voiture. C'est dans ce fichier que la voiture va "s'exécuter" 
+\newline \newline 
+Le fichier **child.c** contient quant à lui tout ce qui est propre à une voiture. C'est dans ce fichier que la voiture va "s'exécuter" 
 une fois créée par le `fork()` du **main.c**. Finalement on a aussi un fichier **files.c** qui se charge de la creation, écriture 
 et lecture des fichiers texte contenant les données des classements après chaque session. 
 
@@ -67,9 +67,10 @@ Cela nous a permit deux choses :
 \begin{awesomeblock}[orange]{1.7pt}{\faGit*}{orange} 
 ```
 
- - **suivre l’évolution du code source**, pour retenir les modifications effectuées sur chaque fichier et être 
+ 1. **suivre l’évolution du code source**, pour retenir les modifications effectuées sur chaque fichier et être 
    ainsi capable de revenir en arrière en cas de problème. 
- - **travailler à plusieurs**, sans risquer de se marcher sur les pieds. Si deux personnes modifient un même fichier en même 
+\newline 
+ 2. **travailler à plusieurs**, sans risquer de se marcher sur les pieds. Si deux personnes modifient un même fichier en même 
    temps, leurs modifications doivent pouvoir être fusionnées sans perte d’information.
    
 ```{=latex}

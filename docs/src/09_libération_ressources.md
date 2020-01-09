@@ -7,11 +7,11 @@ enfants ont terminés leur fonction et que le programme est prêt à quitter.
 
 ::: note 
 
-- L’appel système `shmdt(...)` permet de détacher un segment de mémoire qui avait été attaché en utilisant `shmat(...)`. 
+L’appel système `shmdt(...)` permet de détacher un segment de mémoire qui avait été attaché en utilisant `shmat(...)`. 
 L’argument passé à `shmdt(...)` est l’adresse d’un segment de mémoire. 
 Lorsqu’un processus se termine, tous les segments auxquels il était attaché sont détachés lors de l’appel `exit(...)`. 
-
-- Néanmois, détacher la mémoire partagée ne la supprime pas. Détacher la mémoire partagée permet juste de casser la correspondance 
+\newline \newline 
+Néanmoins, détacher la mémoire partagée ne la supprime pas. Détacher la mémoire partagée permet juste de casser la correspondance 
 entre les pages de l'espace virtuel dédiées au segment de mémoire et les pages frames de la mémoire physique dédiées 
 au segment de mémoire partagée. Pour réellement supprimer la mémoire partagée on fait appel à la fonction `shmctl(...)`. 
 
