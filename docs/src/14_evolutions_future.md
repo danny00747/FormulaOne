@@ -52,8 +52,8 @@ Imaginons par exemple les options suivantes :
 
 Il serait possible, sans nécessairement y consacrer un temps considérable, de permettre aux différents pilotes de 
 commencer et arrêter leurs séances d'essais libres lorsqu'ils le souhaitent.
-La question concrète serait : "Est-ce que lors de la limite du temps imparti d'une séance d'essais libres, un pilote souhaite 
-prendre le volant ou non et si oui, pour combien de tours ou combien de temps?"
+La question concrète serait : "_Est-ce que lors de la limite du temps imparti d'une séance d'essais libres, un pilote souhaite 
+prendre le volant ou non et si oui, pour combien de tours ou combien de temps?_"
 
 Cela correspondrait bien plus à une course de Formule 1 en condition réelle.
 

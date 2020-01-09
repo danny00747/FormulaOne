@@ -89,7 +89,7 @@ de **libfort** ([lien](https://github.com/seleznevae/libfort "github de libfort"
 en langage C.
 
 Après avoir réussi à obtenir une voiture qui tournait correctement et un affichage qui nous convenait, on est passé 
-à la création de la mémoire partagée. Evidemment créer cette derniere sans avoir au moins 2 processus qui tournent n'a pas de 
+à la création de la mémoire partagée. Évidemment créer cette dernière sans avoir au moins 2 processus qui tournent n'a pas de 
 de sens. On est resté bloqué sur la mémoire partagée pendant plusieurs semaines. 
 
 ```{=latex}

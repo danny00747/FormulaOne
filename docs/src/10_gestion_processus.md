@@ -9,7 +9,7 @@ naissance à un nouveau processus qui est une copie du programme au moment de l'
 Voir le code en annexe dans le fichier **main.c** pour la création des processus fils. 
 ::: 
 
-**Rôle du processus père**
+**I. Rôle du processus père**
 
 Dans notre cas, nous avons un processus père qui donne naissance à un nombre de processus fils en fonction de l'étape choisie.
 
@@ -17,7 +17,7 @@ Le processus père est chargé de lire les données stockées en mémoire partag
 Il s'occupe également du tri des voitures ainsi que de l'affichage.
 En fin de session, il sauvegarde les informations dans les fichiers correspondant.  
 
-**Rôle des processus fils**
+**II. Rôle des processus fils**
 
 Les fils sont seulement chargés de "courir". C'est à dire, d'exécuter les étapes d'un week-end complet de
 grand prix de Formule 1. Pour ce faire nous avons utilisé une boucle `while(...)` qui tourne tant que la voiture n'a pas 
@@ -30,7 +30,7 @@ en argument du programme. Si ce dernier n'est pas fourni une valeur par défaut 
 Le code du fils se trouve dans le fichier **child.c**. 
 ::: 
 
-**Affichage**
+**III. Affichage**
 
 Pour pouvoir afficher les données proprement dans un tableaux, nous avons utilisé la librairie public **libfort** disponible sur 
 github : <https://github.com/seleznevae/libfort>. Voici un exemple du tableau des résultats lors de l'étape Q2. 
@@ -69,7 +69,7 @@ Table:  Table de meilleur temps dans chacun des secteurs.
 ::: tip
 Voir le code en annexe dans le fichier **display.c** pour l'implémentation de ces tableaux. 
 :::
-**Le tri du classement**
+**IV. Le tri du classement**
 
 Avant de trier on fait une copie des données de la mémoire partagée par le biais de la fonction `memcpy(...)`. Cette fonction 
 permet de copier un bloc de mémoire spécifié par le paramètre source, et dont la taille est spécifiée via le paramètre size, 

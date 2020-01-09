@@ -3,7 +3,7 @@
 Afin de libérer les ressources de l'ordinateur, deux étapes sont réalisées une fois que les processus 
 enfants ont terminés leur fonction et que le programme est prêt à quitter.
 
-**Détachement" de la mémoire partagée et suppression de celui-ci**
+**I. Détachement" de la mémoire partagée et suppression de celui-ci**
 
 ::: note 
 
@@ -33,7 +33,7 @@ Si il n’y a plus de processus attaché au segment de mémoire partagée, celui
 façon à ce que le noyau retire le segment dès que le dernier processus s’en détache. `shmctl(...)` retourne 0 en cas de succès et -1 
 en cas d’échec.
 
-**Suppression des sémaphore**
+**II. Suppression des sémaphore**
 
 La fonction `sem_destroy(...)` permet de libérer un sémaphore qui a été initialisé avec `sem_init(...)`. Les sémaphores consomment 
 des ressources qui peuvent être limitées dans certains environnements. Il est important de détruire proprement les sémaphores 
