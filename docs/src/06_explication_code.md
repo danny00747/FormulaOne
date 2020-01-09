@@ -13,7 +13,7 @@ Voir code en annexe dans le fichier **main.c** pour l'implémentation.
 Notre programme prend 4 options d'argument : 
 
 ```{=latex}
-\begin{awesomeblock}[gray]{1pt}{\faCogs}{gray}  
+\begin{awesomeblock}[gray]{1pt}{\faCog}{gray}  
 ```
 
 1. L'option **_--day_** qui prend comme paramètre le nom du jour 
