@@ -21,8 +21,8 @@ L’appel système `shmctl(...)` prend trois arguments :
 
 ::: note
 
-1. un identifiant de segment de mémoire partagée (retourné par `shmget(...)`
-2. le deuxième est une constante qui spécifie une commande. Nous utiliserons uniquement la commande _IPC_RMID_ qui 
+1. un identifiant de segment de mémoire partagée (retourné par `shmget(...)`). 
+2. le deuxième est une constante qui spécifie une commande. On utilise uniquement la commande _IPC_RMID_ qui 
     permet de retirer le segment de mémoire partagée dont l’identifiant est passé comme premier argument.
 3. le troisième est un pointeur _buf_ sur une structure paratagée. Avec la commande _IPC_RMID_, buf pourra être positionné à 
    NULL dans ce cas. 
