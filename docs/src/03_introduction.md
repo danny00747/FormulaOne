@@ -10,12 +10,14 @@ commande afin d'afficher la grille des positions tout au long des séances d'ess
 Nous afficherons dès lors :
 
 ::: note
+
 * le meilleur temps au tour par voiture
-* le meilleur temps par secteur par voiture
-* le temps total depuis le début de la course
-* les disqualifiés 
-* les arrêt aux stands
+* les noms(id) de voitures ainsi que leurs positions 
+* qui a le meilleur temps dans chacun des secteurs
+* le nombre de tours(lap) effectué par voiture
+* les voitures aux stand(pit)
 * ...
+
 :::
 
 De plus, nous devons appliquer des concepts vus en cours comme:

@@ -4,11 +4,10 @@
 ### Intégration de codes couleurs dans l'affichage : DONE ! 
 
 Il s'agit certes d'une implémentation de moindre importance, mais on pense que cela pourrait s'avérer pratique pour 
-ressortir de manière plus rapide les informations les plus importantes. On a donc réalisé un code couleur pour :
-
+ressortir de manière plus rapide les informations les plus importantes.
 
 ```{=latex}
-\begin{awesomeblock}[white][\abShortLine]{0pt}{\faCheckCircle}{green}
+\begin{awesomeblock}[white][\abShortLine][\textbf{On a donc réalisé un code couleur pour : }]{5pt}{\faCheckCircle}{green}
 ```
 
 - Les 3 premières places dans le classement
@@ -30,10 +29,8 @@ l'affichage du tableau en fonction de cette colonne pourrait s'avérer intéress
 Une autre idée d'implémentation est de proposer des options en fonction d'un bouton appuyé lorsque le programme est en cours 
 de fonctionnement.
 
-Imaginons par exemple les options suivantes :
-
 ```{=latex}
-\begin{awesomeblock}[white][\abShortLine]{0pt}{\faThumbsUp}{blue}
+\begin{awesomeblock}[white][\abShortLine][\textbf{Imaginons par exemple les options suivantes : }]{5pt}{\faThumbsUp}{blue}
 ```
 
 - <kbd>F1</kbd> : Help
@@ -52,8 +49,6 @@ Imaginons par exemple les options suivantes :
 
 Il serait possible, sans nécessairement y consacrer un temps considérable, de permettre aux différents pilotes de 
 commencer et arrêter leurs séances d'essais libres lorsqu'ils le souhaitent.
-La question concrète serait : "_Est-ce que lors de la limite du temps imparti d'une séance d'essais libres, un pilote souhaite 
-prendre le volant ou non et si oui, pour combien de tours ou combien de temps?_"
 
 Cela correspondrait bien plus à une course de Formule 1 en condition réelle.
 

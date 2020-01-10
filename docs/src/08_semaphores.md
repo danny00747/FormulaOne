@@ -9,10 +9,17 @@ Deux processus fils ne poserons jamais de problème de concurrence car ceux-ci �
 Il y a donc seulement un risque de concurrence si le père lit une adresse mémoire en cours d'écriture par un fils.
 Pour résoudre ce problème, nous avons utilisé des sémaphores.
 
-Il y a plusieurs variété de sémaphores, les sémaphores du System V et les sémaphores POSIX.
+Il y a plusieurs variété de sémaphores, les sémaphores du _System V_ et les sémaphores _POSIX_.
 On peut encore différencier 2 type de sémaphore POSIX:
-* **unnamed semaphores** 
-* **named semaphores**
+
+::: note
+
+1. **unnamed semaphores** (`sem_init (...)`, `sem_destroy (...)`, `sem_wait (...)`, `sem_post (...)`)
+\newline
+2. **named semaphores**  (`sem_open (...)`, `sem_unlink (...)`, `sem_wait (...)`, `sem_post (...)`)
+
+:::
+
 Nous avons décidé d'utilise des sémaphores POSIX de type **unnamed semaphores** disponibles dans la librairie standard C (GNU). 
 
 Pour pouvoir utiliser un sémaphore, il faut d’abord l’initialiser. Cela se fait en 

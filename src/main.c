@@ -36,6 +36,8 @@ void help() {
     exit(EXIT_SUCCESS);
 }
 
+/********  Version du programme  *********/
+
 void version() {
     read_resources_files("version");
     exit(EXIT_SUCCESS);

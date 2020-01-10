@@ -183,7 +183,7 @@ void read_eliminated_cars(char file_to_read[], int array[]) {
 }
 
 
-/** la fonction read_resources_files permet de lire les fichiers dans le dossier src/resources un fichier
+/** la fonction read_resources_files permet de lire les fichiers dans le dossier src/resources
  *
 *@param char file_name nom du fichier qui se trouve dans le dossier resources.
  */

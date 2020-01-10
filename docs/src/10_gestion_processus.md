@@ -49,7 +49,7 @@ Table:  Table des résultats.
 \begin{awesomeblock}[gray]{1pt}{\faGrin*[regular]}{gray}   
 ```
 
-Pour les colonnes de secteurs, lap time et best lap time, les données utilisé dans notre programme sont des entiers.
+Pour les colonnes de "_secteurs, lap time et best lap time_", les données utilisé dans notre programme sont des entiers.
 Afin de rendre les choses plus lisible, nous les avons converties vers un format temporel. 
  
 ```{=latex}
