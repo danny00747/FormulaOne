@@ -19,7 +19,7 @@ at ([**Mordern C**](https://modernc.gforge.inria.fr/ "lien vers le livre"))
 ```
 
 ```{=latex}
-\begin{awesomeblock}[orange]{1pt}{\faGithub}{orange}  
+\begin{awesomeblock}[orange]{1pt}{\faGithub}{orange}   
 ```
 
 SELEZNEV Anton, librairie **libfort** disponible sur github : 
