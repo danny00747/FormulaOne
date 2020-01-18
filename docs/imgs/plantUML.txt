@@ -1,0 +1,186 @@
+
+@startuml
+title F1 Flowchart
+start
+if (FRI) then (true)
+  if (P1) then (true);
+    #yellow :shared memory;
+    if (fork?) then (yes)
+       fork
+	       #lightcoral :parent;
+         repeat 
+     #deepskyblue :20 cars/
+        if (all child finished?) then
+          -[#red,dashed]->
+          #darkorange:display;
+          -> ** 5 sec **;
+          -[#red,dashed]->
+          #lawngreen :20 cars> 
+          -> save the file;
+          -[#red,dashed]->
+          #red :exit;
+          -[#red,dashed]->
+          end
+        else (false)
+          -[#green,dashed]->
+           #lightsalmon :copy;
+           -[#green,dashed]->
+           #lightsalmon :sort;
+           -[#green,dashed]->
+          -[#green,dashed]->
+          #darkorange :display;
+     endif
+     repeat while (true)
+     detach
+  
+       fork again
+	       #hotpink :child;
+         while (time > 90 mins?) is (true)
+     #deepskyblue :20 cars/
+     #aqua :run;
+        if (crashed?) then
+          -[#red,dashed]->
+          #red :exit;
+          -[#red,dashed]->
+          stop
+        else (false)
+          -[#green,dashed]->
+          #aqua :continue running;
+          -[#green,dashed]->
+          #aqua :time++>
+     endif
+     endwhile
+      #mistyrose :child finished; 
+      #lawngreen :20 cars>
+     stop
+       end fork
+    endif
+    #red :exit;
+     note right
+         fork failed !
+        end note
+   
+    end
+    
+
+
+
+else if (P2) then (true);
+    #lightgrey: idem P1;
+    end
+    endif
+    #lightsteelblue :usage; 
+    end
+
+
+
+
+else if (SAT) then (true)
+  if (P3) then (true);
+    : (time > 60 mins?); 
+    #lightgrey :idem P1;
+    end
+    
+    
+   else if (Q1) then (true);
+   while (time > 18 mins?) is (true)
+    #deepskyblue :20 cars/
+    #lightgrey :idem P1;
+    endwhile
+    #lawngreen :15 cars>
+     -> save the file;
+        note right
+         15 cars are 
+         qualified 
+         for Q2
+        end note
+        end
+        note left
+         5 cars are 
+         eliminated 
+         and take the 
+         15th - 20th 
+         positions on 
+         SUN
+        end note
+    
+    
+    
+    
+    else if (Q2) then (true);
+    while (time > 15 mins?) is (true)
+    #deepskyblue :15 cars/
+     -> read Q1 file;
+    #lightgrey :idem P1;
+    endwhile
+    #lawngreen :10 cars>
+    -> save the file;
+        note right
+         10 cars are 
+         qualified 
+         for Q3
+        end note
+        end
+        note left
+         5 cars are 
+         eliminated 
+         and take the 
+         10th - 15th 
+         positions on 
+         SUN
+        end note
+    
+    
+    else if (Q3) then (true);
+    while (time > 12 mins?) is (true)
+    #deepskyblue :10 cars/
+     -> read Q2 file;
+    #lightgrey :idem P1;
+    endwhile
+    #lawngreen :10 cars>
+    -> save the file;
+        end
+        note left
+         NO cars are 
+         eliminated, 
+         all 10 cars 
+         take the 
+         1st - 10th
+         positions 
+         on SUN
+        end note
+    endif
+    #lightsteelblue :usage;  
+    end
+
+
+    
+else if (SUN) then (true)
+  if (RACE) then (true);
+    while (lap > x rounds || time > 120 mins?) is (true)
+     #deepskyblue :20 cars/
+     -> read Q3 file;
+     #lightblue :starting ranking/
+     #lightgrey :idem P1;
+     endwhile
+     #lawngreen :20 cars>
+     -> save the file;
+
+
+    
+    end
+      note left
+        End of the 
+        Grand Prix !
+      end note
+    endif
+    #lightsteelblue :usage; 
+    end
+    endif 
+    #lightsteelblue :usage; 
+    end
+
+
+
+
+@enduml

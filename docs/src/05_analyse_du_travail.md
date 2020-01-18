@@ -10,7 +10,7 @@ de mieux visualiser le projet :
 \begin{figure}[H]
 \centering
 \caption{Flowchart}
-\includegraphics[scale=0.25]{imgs/test.png}
+\includegraphics[scale=0.25]{imgs/inkscape-pic-of-plantuml.png}
 \end{figure}
 
 Malheureusement vu la taille du l'image, on était obligé de l'imprimer à part sur une feuille A3 qui se trouve en annexe 
