@@ -24,6 +24,7 @@ titlepage-rule-color: "ef4524"
 titlepage-text-color: "343434"
 titlepage-background: "imgs/back.jpg"
 table-use-row-colors: true
+colorlinks: true
 date: 07 dec 2019
 toc: true
 lof: true
