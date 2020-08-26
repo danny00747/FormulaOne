@@ -36,6 +36,7 @@ header-includes:
   - |
     ```{=latex}
     \usepackage{awesomebox}
+    \usepackage{tcolorbox}
     ```
 pandoc-latex-environment:
   noteblock: [note]
@@ -43,5 +44,6 @@ pandoc-latex-environment:
   warningblock: [warning]
   cautionblock: [caution]
   importantblock: [important]
+  tcolorbox: [box]
 
 ---
