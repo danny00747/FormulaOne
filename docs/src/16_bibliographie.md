@@ -54,7 +54,26 @@ Cours de Systèmes informatiques **SINF1252** donné aux étudiants en informati
 ```{=latex}
 \end{awesomeblock}
 ```
-  
-\pagebreak
 
+#### Ref
+
+```{=latex}
+\printbibliography[
+heading=bibintoc,
+title={Whole bibliography}
+]
+```
+
+```{=latex}
+\printbibliography[heading=subbibintoc,type=article,title={Articles only}]
+
+\printbibliography[type=book,title={Books only}]
+
+\printbibliography[keyword={physics},title={Physics-related only}]
+
+\printbibliography[keyword={latex},title={\LaTeX-related only}]
+```
+
+
+\pagebreak
 

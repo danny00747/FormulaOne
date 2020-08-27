@@ -48,7 +48,9 @@ code en plusieurs fichiers nous a beaucoup aidé lors du débogage des problème
 Sans surprise, le fichier le plus important est le fichier **main.c**. C'est dans ce dernier qu'on trouve la création 
 de la mémoire partagée, des sémaphores, paramétrage du programme et également la création des fils/voitures qui participeront 
 au Grand Prix. Le fichier **display.c**. sert principalement à afficher les données triées en console. 
-\newline \newline 
+
+\medskip
+
 Le fichier **child.c** contient quant à lui tout ce qui est propre à une voiture. C'est dans ce fichier que la voiture va "s'exécuter" 
 une fois créée par le `fork()` du **main.c**. Finalement on a aussi un fichier **files.c** qui se charge de la creation, écriture 
 et lecture des fichiers texte contenant les données des classements après chaque session. 

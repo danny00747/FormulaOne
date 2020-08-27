@@ -32,12 +32,21 @@ lot: true
 lol: true
 toc-won-page: true
 toc-title: Table des matières
+bibliography: bibli/sample.bib
+reference-section-title : "References"
 
 header-includes:
   - |
     ```{=latex}
+    \usepackage{polyglossia}
     \usepackage{awesomebox}
-    \usepackage{tcolorbox}
+    \usepackage{tcolorbox} 
+    \usepackage[
+      backend=biber,
+      style=numeric,
+      sorting=ynt
+    ]{biblatex}
+    \addbibresource{bibli/sample.bib}
     ```
 pandoc-latex-environment:
   noteblock: [note]

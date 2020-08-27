@@ -10,9 +10,13 @@ quis lectus elementum fermentum.
 
 \begin{tcolorbox}[title=Préface]
 Je souhaite tout d'abord remercier Dreamnet SRL et leurs contacts, car sans eux, ce projet n'aurait sans doute pas existé. Leur soutien à été d'une grande aide malgré les circonstances atténuantes lié au COVID-19.
-\newline \newline 
+
+\medskip
+
 Je remercie également mon rapporteur de TFE, le professeur Arnaud Dewulf, pour les multiples échanges que nous avons eus et qui m'a permis de me conforter dans le choix de certains capteurs et de particularités à tenir en compte au niveau de l'aspect électronique de ce travail de fin d'études.
-\newline \newline 
+
+\medskip
+
 Je remercie également le client venant du professeur Arnaud Dewulf qui m'a orienté vers une réflexion poussée sur LoRaWAN et Zigbee. Cela m'a permis de tenir en compte de possibles ouvertures en termes de moyen de communication. De plus, il m'a permis de rediriger mes choix de capteurs afin de rendre ce travail le plus générique possible avec possibilité de personnalisation. Malheureusement, au vu des circonstances mondiales rencontrées, nos échanges n'ont finalement pas donné de suite.
 \end{tcolorbox}
 
